@@ -6,9 +6,10 @@
     height: 40px;
 }
 .logo2{
-    height: 75px;
-    padding-bottom: 15;
+    width: 200px;
+    height: 60px;
 }
+
 #nav2{
 background: #0c231e;
     height: 80px;
@@ -21,4 +22,19 @@ background: #0c231e;
     height:100px;
     width:100%;
     background:#13322b;
+ }
+
+ #info{
+    top: 24px;
+    position: relative;
+    padding-left: 280px;
+    font-family: 'Lucida Sans';
+    color: aliceblue;
+ }
+ #info2{
+    top: 48px;
+    right: 101px;
+    position: relative;
+    font-family: 'Lucida Sans';
+    color: aliceblue;
  }
