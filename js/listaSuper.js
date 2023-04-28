@@ -6,11 +6,19 @@ const respuesta= document.querySelector("#respuesta")
 //Evento
 document.addEventListener("DOMContentLoaded", llamrAPI)
 
+/** FORMA 1
 function llamrAPI(){
     //console.log("Entroo2")
     fetch(url)
     .then(resp => resp.json())
     .then((dato) => mostarListaSuper(dato))
+}
+*/
+/**FORMA 2 */
+async function llamrAPI(){
+    const respuesta = await fetch(url)
+    const dato = await respuesta.json()
+    mostarListaSuper(dato)
 }
 
 /*function mostarListaSuper(datos){
