@@ -9,6 +9,12 @@
     width: 200px;
     height: 60px;
 }
+.container{
+   justify-content: center;
+       align-items: center;
+       width: 100vw;
+       height: 100vh;
+}
 
 #nav2{
 background: #0c231e;
