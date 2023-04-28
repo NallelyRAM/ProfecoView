@@ -24,7 +24,7 @@ function mostarListaSuper(datos){
         const fila = document.createElement('tr')
         fila.innerHTML= `
         <td>${element.name}</td>
-        <td>${element.address}</td>
+        <td>${element.address.street}</td>
         <td>${element.email}</td>
         `
         respuesta.appendChild(fila)

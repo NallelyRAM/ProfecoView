@@ -247,16 +247,17 @@ section{
 
 }
 /* tabla */
-body{
-    background:#68B766
-}
+
 .contenedorListaSuper{
-    border: solid 1px rgba(38, 156, 35);
+    border: solid 0 rgba(38, 156, 35);
+     margin: 40px auto;
+     width: 500px;
 }
 table{
     align:center;
     color: #fff;
     font-size: 14px;
+    color:black;
     table-layout: fixed;
     border-collapse: collapse;
 }
