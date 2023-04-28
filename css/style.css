@@ -105,7 +105,7 @@ input{
     transition: all 0.3 ease;
     cursor: pointer
 }
-.form-group{
+.form-group1{
     display:flex;
     flex-direction:column;
     justify-content: center;
@@ -183,7 +183,7 @@ li a.activo, li a:hover{
     background: #BD8C4F;
     transition: .5s;
 }
-.checkbtn{
+.checkbtn1{
     font-size: 30px;
     color: aquamarine;
     float: right;
@@ -207,7 +207,7 @@ section{
     }
 }
 @media (max-width: 858px){
-    .checkbtn{
+    .checkbtn1{
         display: block;
     }
     ul{
@@ -237,6 +237,13 @@ section{
     }
 
 
+
 }
-
-
+#nav2{
+background: #0c231e;
+    height: 80px;
+    width: 100%;
+}
+#jumbotron{
+background: #13322B;
+}
