@@ -1,40 +1,44 @@
-.enlace{
+.enlace {
     position: absolute;
     padding: 20px 50px;
 }
-.logo{
+
+.logo {
     height: 40px;
 }
-.logo2{
+
+.logo2 {
     width: 200px;
     height: 60px;
 }
 
-#nav2{
-background: #0c231e;
+#nav2 {
+    background: #0c231e;
     height: 80px;
     width: 100%;
 }
-.footer {
-    position:fixed;
-    left:0px;
-    bottom:0px;
-    height:100px;
-    width:100%;
-    background:#13322b;
- }
 
- #info{
+.footer {
+    position: fixed;
+    left: 0px;
+    bottom: 0px;
+    height: 100px;
+    width: 100%;
+    background: #13322b;
+}
+
+#info {
     top: 24px;
     position: relative;
     padding-left: 280px;
     font-family: 'Lucida Sans';
     color: aliceblue;
- }
- #info2{
+}
+
+#info2 {
     top: 48px;
     right: 101px;
     position: relative;
     font-family: 'Lucida Sans';
     color: aliceblue;
- }
+}
