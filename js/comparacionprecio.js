@@ -43,7 +43,7 @@ function mostarListaSuper(datos){
 
 }
 
-function ordenarprecio(numero){
+async function ordenarprecio(numero){
     /**var numero= `<td>${element.address.zipcode}</td>
                         `
     numero.sort(function(a , b){
