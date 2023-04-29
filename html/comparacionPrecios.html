@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iniciar sesión</title>
+    <title>Lista de comparacion de precios entre supermercados</title>
 
     <link rel="stylesheet" href="../css/style.css">
 </head>
@@ -24,7 +24,7 @@
         <li><a href="#">Registrarse</a> </li>
     </ul>-->
 </nav>
-<section>
+<section><!--
   <div class="contenedorSesion">
       <div class="form-group">
           <input id="usuario" type="text" class="form-control" name="username" placeholder="Usuario">
@@ -32,14 +32,43 @@
 
           <br>
           <button id="boton" class="boton" onclick="login()">Iniciar Sesión</button>
-         <!-- <br>
+      -->   <!-- <br>
           <button id="boton2" class="boton" >Cancelar</button>-->
-      </div>
+    <!--  </div>
   </div>
-    <script src="../js/script.js"></script>
+    <script src="../js/script.js"></script>-->
+    <h1 class="ls1">Lista de precios entresupermercados</h1>
+    <div class="contenedorListaSuper">
+        <div class="fila">
+            <div class="col-8 offset-2">
+                <table class="table table-bordered" id="tabla">
+                    <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Precio</th>
+
+                    </tr>
+                    </thead>
+                    <tbody id="respuesta">
+                    <!--
+                    <tr>
+                        <td> OXXO</td>
+                        <td> Miguel Aleman</td>
+                        <td> oxxo.miguel@gmail.com</td>
+                    </tr>
+    -->
+                    </tbody>
+                </table>
+
+            </div>
+
+        </div>
+    </div>
+
 
 
 </section>
+<script src="../js/comparacionprecio.js"></script>
 </body>
 <!--<script src="js/menu.js"></script>-->
 <!--<script src="../js/script.js"></script>-->
