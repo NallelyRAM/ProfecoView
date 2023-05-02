@@ -1,4 +1,15 @@
+<<<<<<< HEAD
 .enlace {
+=======
+*{
+    padding: 0;
+    margin:0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+.enlace{
+>>>>>>> cambiosArturo
     position: absolute;
     padding: 20px 50px;
 }
@@ -11,12 +22,29 @@
     width: 200px;
     height: 60px;
 }
+.container{
+   justify-content: center;
+       align-items: center;
+       width: 100vw;
+       height: 100vh;
+}
 
 #nav2 {
     background: #0c231e;
     height: 80px;
     width: 100%;
 }
+<<<<<<< HEAD
+=======
+.footer {
+    position:fixed;
+    left:0px;
+    bottom:0px;
+    height:70px;
+    width:100%;
+    background:#13322b;
+ }
+>>>>>>> cambiosArturo
 
 .footer {
     position: fixed;

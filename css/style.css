@@ -105,6 +105,13 @@ input{
     transition: all 0.3 ease;
     cursor: pointer
 }
+.boton:hover{
+    background: #D7D3D3;
+}
+.boton:active{
+    background: #E5E1E1;
+}
+
 .form-group{
     display:flex;
     flex-direction:column;
