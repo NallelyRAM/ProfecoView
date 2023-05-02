@@ -23,6 +23,7 @@
     height: 80px;
     width: 100%;
 }
+<<<<<<< HEAD
 .footer {
     position:fixed;
     left:0px;
@@ -31,6 +32,8 @@
     width:100%;
     background:#13322b;
  }
+=======
+>>>>>>> CambiosJoaquin
 
 .footer {
     position: fixed;
