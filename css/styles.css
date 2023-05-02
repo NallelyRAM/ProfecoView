@@ -4,6 +4,8 @@
     text-decoration: none;
     list-style: none;
     box-sizing: border-box;
+    justify-content: center;
+    align-items: center;
 }
 .enlace{
     position: absolute;
@@ -51,3 +53,33 @@ background: #0c231e;
     font-family: 'Lucida Sans';
     color: aliceblue;
  }
+
+ #initProfecoimg{
+    margin-top: 50px;
+    width: 70%;
+    height: 170px;
+ }
+
+.opcionesPROFECO{
+    margin-left:20px;
+    margin-right:20px;
+ }
+
+ .contenedorImg{
+    align-items: center;
+    margin-right: 150px;
+    display: flex;
+    margin-top: 70px;
+}
+
+.buscador{
+    background-color: dimgray;
+    width: 350px;
+}
+
+.contenedorBuscador{
+    align-items: left;
+    margin-right: 150px;
+    display: flex;
+    margin-top: 70px;
+}
