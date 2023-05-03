@@ -299,3 +299,52 @@ tbody tr{
 tbody tr:hover{
     background: rgba(48, 237, 43 )
 }
+/** BUSCAR SUPERMERCADO*/
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+h1 {
+  margin-top: 50px;
+}
+
+#search-form {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+#search-input {
+  padding: 10px;
+  font-size: 16px;
+  width: 60%;
+  border-radius: 5px 0 0 5px;
+  border: 1px solid #ccc;
+}
+
+#search-input:focus {
+  outline: none;
+}
+
+#search-form button {
+  padding: 10px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  border-radius: 0 5px 5px 0;
+}
+
+#results {
+  margin-top: 30px;
+  display: none;
+  text-align: left;
+}
+
+#results p {
+  font-size: 16px;
+  margin-top: 10px;
+}
