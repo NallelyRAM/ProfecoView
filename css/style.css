@@ -301,9 +301,10 @@ tbody tr:hover{
 }
 /** BUSCAR SUPERMERCADO*/
 .container {
-  max-width: 800px;
+  max-width: 500px;
   margin: 0 auto;
   text-align: center;
+  
 }
 
 h1 {
