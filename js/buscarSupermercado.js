@@ -10,7 +10,7 @@ form.addEventListener('submit', function(event) {
   event.preventDefault();
   const searchTerm = input.value.trim();
   if (!searchTerm) return;
-
+//SE BUSCA POR NAME DEL USUARIO DE LA API
   fetch(`https://jsonplaceholder.typicode.com/users?name=${searchTerm}`)
     .then(function(response) {
       return response.json();
@@ -27,21 +27,28 @@ form.addEventListener('submit', function(event) {
       }
       //CUANDO SI EXISTA EL SUPERMERCADO EN LA API
       const user = data[0];
+
+      //EMPIEZA A CONSUMIR LOS DATOS DE LA API
       const name = document.createElement('p');
       name.textContent = `Nombre: ${user.name}`;
       results.appendChild(name);
+
       const username = document.createElement('p');
       username.textContent = `Nombre de usuario: ${user.username}`;
       results.appendChild(username);
+
       const email = document.createElement('p');
       email.textContent = `Email: ${user.email}`;
       results.appendChild(email);
+
       const phone = document.createElement('p');
       phone.textContent = `Teléfono: ${user.phone}`;
       results.appendChild(phone);
+
       const adrees = document.createElement('p');
             adrees.textContent = `Dirección: ${user.address.street}`;
             results.appendChild(adrees);
+
       results.style.display = 'block';
       console.log(" EXISTE");
     })
