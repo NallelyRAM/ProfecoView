@@ -19,6 +19,8 @@ form.addEventListener('submit', function(event) {
       //CUANDO NO ENCUENTRE EL SUPER O NO EXISTA EN LA API
       results.innerHTML = '';
       if (data.length === 0) {
+      alert('No se encontraron el supermercado');
+
         results.innerHTML = '<p>No se encontraron el supermercado</p>';
         console.log("NO EXISTE");
         return;
@@ -46,5 +48,6 @@ form.addEventListener('submit', function(event) {
     .catch(function(error) {
       console.log(error);
       results.innerHTML = '<p>Ha ocurrido un error al buscar el supermercado</p>';
+      alert('Ha ocurrido un error al buscar el supermercado');
     });
 });
