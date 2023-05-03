@@ -31,7 +31,7 @@ function mostarListaSuper(datos){
         //console.log(element)
         const fila = document.createElement('tr')
         fila.innerHTML= `
-        <td>${element.name}</td>
+        <td>${element.name}<br>${element.address.street}</td>
         <td>${element.address.street}</td>
         <td>${element.email}</td>
         `
