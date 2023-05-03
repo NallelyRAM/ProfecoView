@@ -25,22 +25,31 @@
     </ul>-->
 </nav>
 <section>
-  <div class="contenedorSesion">
-      <div class="form-group">
-          <input id="usuario" type="text" class="form-control" name="username" placeholder="Usuario">
-          <input id="contra" type="password" class="form-control" name="password" placeholder="Contraseña">
+ <!-- <div class="contenedorSesion">
+      <form class="login-form">
+          <input type="text" id="username" placeholder="Nombre de usuario" required>
+          <input type="password" id="password" placeholder="Contraseña" required>
+          <button type="submit">Iniciar sesión</button>
 
-          <br>
-          <button id="boton" class="boton" onclick="login()">Iniciar Sesión</button>
-         <!-- <br>
-          <button id="boton2" class="boton" >Cancelar</button>-->
-      </div>
-  </div>
-    <script src="../js/script.js"></script>
+          < <br>
+           <button id="boton2" class="boton" >Cancelar</button>
+      </form>
+  </div>-->
+    <div class="login-container">
+        <h2>Inicio de sesión</h2>
 
+        <form id="login-form">sss
 
+            <input type="text" id="username" placeholder="Nombre de usuario" required>
+            <input type="password" id="password" placeholder="Contraseña" required>
+            <button type="submit">Iniciar sesión</button>
+        </form>
+    </div>
+
+    <script src="../js/login.js"></script>
 </section>
 </body>
 <!--<script src="js/menu.js"></script>-->
 <!--<script src="../js/script.js"></script>-->
+
 </html>
