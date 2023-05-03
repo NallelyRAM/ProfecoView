@@ -18,9 +18,8 @@ function llamrAPI(){
 /**FORMA 2 */
 async function llamrAPI(){
     const respuesta = await fetch(url)
-    const dato = await respuesta.json()
-    mostarListaSuper(dato)
-
+    const datos = await respuesta.json()
+    ordenarprecio(datos)
 }
 
 /*function mostarListaSuper(datos){
@@ -34,16 +33,16 @@ function mostarListaSuper(datos){
         const fila = document.createElement('tr')
         fila.innerHTML= `
         <td>${element.name}</td>
-        <td>${element.address.zipcode}</td>
+        <td>${element.address.geo.lng}</td>
         `
         respuesta.appendChild(fila)
-        ordenarprecio( `${element.address.zipcode}</td>`)
+        ordenarprecio(`<td>${element.address.geo.lng}</td>`)
 
     });
 
 }
 
-async function ordenarprecio(numero){
+async function ordenarprecio(datos){
     /**var numero= `<td>${element.address.zipcode}</td>
                         `
     numero.sort(function(a , b){
@@ -69,41 +68,25 @@ async function ordenarprecio(numero){
 
     console.log(valores);
     console.log("ENTROOOO")*/
+    fetch('https://jsonplaceholder.typicode.com/users')
+    .then(response => response.json())
+    .then(data => {
+      // Ordenar usuarios por lng de mayor a menor
+      data.sort((a, b) => b.address.geo.lng - a.address.geo.lng);
+      // Mostrar usuarios ordenados
+      console.log('Usuarios ordenados por lng de mayor a menor:');
+      data.forEach(user => {
+        console.log(`Nombre: ${user.name} | lng: ${user.address.geo.lng}`);
 
+        const fila = document.createElement('tr')
+        fila.innerHTML= `
+        <td>${user.name}</td>
+        <td>${user.address.geo.lng}</td>
+        `
+        respuesta.appendChild(fila)
+        ordenarprecio(`<td>${user.address.geo.lng}</td>`)
 
+      });
+    });
 }
 
-fetch(url)
-  .then(response => response.json())
-  .then(data => {
-
-    // Agregamos la tabla al documento HTML
-    document.body.appendChild(tabla);
-
-    // Obtenemos las filas de la tabla
-    var filas = tabla.rows;
-
-    // Creamos un array vacío para almacenar los valores de la columna
-    var valores = [];
-
-    // Recorremos las filas de la tabla, comenzando desde la segunda fila (índice 1)
-    for (var i = 1; i < filas.length; i++) {
-      // Obtenemos la celda correspondiente a la segunda columna
-      var celda = filas[i].cells[1];
-
-      // Obtenemos el valor de la celda y lo convertimos a un número
-      var valor = parseFloat(celda.innerHTML);
-
-      // Agregamos el valor al array de valores
-      valores.push(valor);
-    }
-
-    // Ordenamos el array de valores en orden ascendente
-    valores.sort(function(a, b) {
-      return a - b;
-    });
-
-    // Imprimimos los valores ordenados en la consola
-    console.log(valores); // Devuelve los valores ordenados
-  })
-  .catch(error => console.error(error));
