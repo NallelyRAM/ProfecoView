@@ -75,6 +75,21 @@
     margin-top: 70px;
 }
 
+.contenedorActualizar{
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin-left: 130px;
+    align-items: center;
+}
+
+.botonActualizar {
+    display: block;
+    padding: 0.5rem 1rem;
+    width: 200px;
+    margin: 0 auto;
+    background-color: rgb(43, 234, 43);
+}
+
 .buscador{
     background-color: dimgray;
     width: 350px;
@@ -85,4 +100,10 @@
     margin-right: 150px;
     display: flex;
     margin-top: 70px;
+}
+
+.contenedorAgregar{
+    display: block;
+    padding: 0.5rem 1rem;
+    text-align: center;
 }

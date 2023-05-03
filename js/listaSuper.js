@@ -38,5 +38,4 @@ function mostarListaSuper(datos){
         respuesta.appendChild(fila)
 
     });
-
 }
