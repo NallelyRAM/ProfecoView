@@ -48,10 +48,10 @@
 
     <div class="container mt-3">
         <h2></h2>
-        <p>Este es un apartado donde se buscan los distintos supermercados.</p>
+        <p>Buscar ofertas entre los distintos supermercados.</p>
         <ul class="nav nav-tabs">
             <li class="nav-item">
-                <a class="nav-link" href="../html/consumidor.html">WishList</a>
+                <a class="nav-link" href="../html/consumidorWishList.html">WishList</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link " href="../html/consumidorFav.html">Favoritos</a>
@@ -65,10 +65,43 @@
         </ul>
         <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
             <form class="form-inline" action="/action_page.php">
-              <input class="form-control mr-sm-2" type="text" placeholder="Supermercado" size="100">
+              <input class="form-control mr-sm-2" type="text" placeholder="Buscar oferta en supermercado" size="100">
               <button class="btn btn-success" type="submit">Buscar</button>
             </form>
         </nav>
+        <br>
+        <div>
+            <section>
+                <div class="contenedorListaSuper">
+                    <div class="fila">
+                        <div class="col-8 offset-2">
+                            <table class="table table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Direción</th>
+                                    <th>Email</th>
+    
+                                </tr>
+                                </thead>
+                                <tbody id="respuesta">
+                                <!--
+                                <tr>
+                                    <td> OXXO</td>
+                                    <td> Miguel Aleman</td>
+                                    <td> oxxo.miguel@gmail.com</td>
+                                </tr>-->
+                                </tbody>
+                            </table>
+    
+                        </div>
+    
+                    </div>
+                </div>
+            </section>
+        </div>
+    
+    <script src="../js/listaSuper.js"></script>
     </div>
 
     
