@@ -19,11 +19,11 @@ loginForm.addEventListener('submit', (event) => {
 
         // DEPENDIENDO EL USUARIO SE ABRIRA LAS PANTALLAS DEPENDIENDO EL ID DEL USUARIO
         if (user.id === 1) {
-          window.location.href = 'Informes.html';//Editar dependiendo a que pantalla iran si es a la profeco, consumidor o super
+          window.location.href = 'ProFeCo.html';//Iniciando sesion como profeco
         } else if (user.id === 2) {
-          window.location.href = 'registro.html';//Editar dependiendo a que pantalla iran si es a la profeco, consumidor o super
+          window.location.href = 'supermercado.html';//Editar dependiendo a que pantalla iran si es a la profeco, consumidor o super
         } else if (user.id === 3) {
-          window.location.href = 'listaSuper.html';//Editar dependiendo a que pantalla iran si es a la profeco, consumidor o super
+          window.location.href = 'consumidor.html';//Editar dependiendo a que pantalla iran si es a la profeco, consumidor o super
         } else {
           alert('Usuario no autorizado');
         }

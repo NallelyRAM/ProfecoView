@@ -72,7 +72,7 @@ async function ordenarprecio(datos){
     .then(response => response.json())
     .then(data => {
       // Ordenar usuarios por lng de mayor a menor
-      data.sort((a, b) => b.address.geo.lng - a.address.geo.lng);
+      data.sort((a, b) => a.address.geo.lng - b.address.geo.lng);
       // Mostrar usuarios ordenados
       console.log('Usuarios ordenados por lng de mayor a menor:');
       data.forEach(user => {
@@ -85,7 +85,6 @@ async function ordenarprecio(datos){
         `
         respuesta.appendChild(fila)
         ordenarprecio(`<td>${user.address.geo.lng}</td>`)
-
       });
     });
 }
