@@ -107,3 +107,37 @@
     padding: 0.5rem 1rem;
     text-align: center;
 }
+
+.contenedorInconsistencia{
+    margin-top: 30px;
+    text-align: center;
+}
+
+.contenedorDescripcionInconsistencia{
+    margin-left: 650px;
+    margin-right: 200px;
+    text-align: left;
+}
+
+#etiquetaReportar{
+    margin-top: 10px;
+    color: red;
+}
+
+.etiquetaAgregarWishlist{
+    margin-top: 10px;
+    color: rgb(0, 115, 255);
+    text-decoration: underline;
+}
+
+.contenedorDetalle{
+    display: flex;
+    align-items: center;
+    margin-top: 40px;
+    margin-left: 30px;
+}
+
+.contenedorDescripcion{
+    text-align: left;
+    
+}
