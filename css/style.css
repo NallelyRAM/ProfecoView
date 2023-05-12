@@ -83,20 +83,20 @@ nav{
     text-align:center;
     text-justify: auto;
      margin-left:150px;
-     font: bold 20px/45px Helvetica, Arial, sans-serif;
+     font: bold 18px/21px Helvetica, Arial, sans-serif;
     color:black;
 }
 .a2{
     text-align:justify;
     text-justify: auto;
      margin-left:50px;
-     font: bold 20px/45px Helvetica, Arial, sans-serif;
+     font: bold 18px/21px Helvetica, Arial, sans-serif;
     color:black;
 }
 .a3{
     text-align:justify;
     text-justify: auto;
-     margin-left:50px;
+     margin-left:40px;
      font: bold 18px/21px Helvetica, Arial, sans-serif;
     color:black;
 }
@@ -107,6 +107,16 @@ nav{
      font: bold 15px/18px Helvetica, Arial, sans-serif;
     color:black;
 }
+
+.a5{
+    text-align:justify;
+    text-justify: auto;
+     margin-left:20px;
+     margin-right: 20px;
+     font: bold 18px/21px Helvetica, Arial, sans-serif;
+    color:black;
+}
+
 nav ul{
     float: right;
     margin-right: 20px;
