@@ -42,16 +42,31 @@
 }
 
 #info {
-    top: 24px;
+    top: 4px;
     position: relative;
     padding-left: 280px;
     font-family: 'Lucida Sans';
     color: aliceblue;
+    
 }
 
 #info2 {
-    top: 48px;
-    right: 101px;
+    top: 22px;
+    right: 102px;
+    position: relative;
+    font-family: 'Lucida Sans';
+    color: aliceblue;
+ }
+ #info3 {
+    top: 42px;
+    right: 905px;
+    position: relative;
+    font-family: 'Lucida Sans';
+    color: aliceblue;
+ }
+ #info4 {
+    top: 62px;
+    right: 1109px;
     position: relative;
     font-family: 'Lucida Sans';
     color: aliceblue;
