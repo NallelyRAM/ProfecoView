@@ -61,10 +61,8 @@ function obtenerUsuarios() {
           <td>${usuario.username}</td>
           <td>${usuario.address.geo.lat}</td>
           <td>${usuario.address.geo.lng}</td>
-          <td>${usuario.email}</td>
-          <td><button data-id="${usuario.id}" class="detalles">Detalles</button></td>
-                      <td><button data-id="${usuario.id}" class="actualizar" data-toggle="modal" data-target="#myModalUpdate">Actualizar</button>
-                          <button data-id="${usuario.id}" class="eliminar">Eliminar</button></td>
+          <td><button data-id="${usuario.id}" class="actualizar" data-toggle="modal" data-target="#myModalUpdate">Actualizar</button>
+                <button data-id="${usuario.id}" class="eliminar">Eliminar</button></td>
         `;
         tabla.appendChild(fila);
       });
