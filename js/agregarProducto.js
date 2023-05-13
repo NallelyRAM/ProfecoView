@@ -23,14 +23,14 @@ async function agregarUsuario() {
     const stock = document.querySelector("#stockProducto").value
 
     const producto = {
-        "id": Math.floor(Math.random() * 1000),
+        //"id": Math.floor(Math.random() * 1000),
         "nombre": nombre,
         "marca": marca,
         "precio":precio,
         "stock":stock,
-        "supermercado":{
-            "id":idSupermercado
-        }
+        //"supermercado":{
+           // "id":idSupermercado
+        //}
     }
     // este es para agregar productos a los supermercados
 /**
@@ -91,14 +91,22 @@ function obtenerUsuarios() {
           <td>${usuario.address.geo.lng}</td>
                       <td><button data-id="${usuario.id}" class="actualizar" href="myModal" class="btn btn-success">Actualizar</button>
                           <button data-id="${usuario.id}" class="eliminar">Eliminar</button class="btn btn-danger"></td>
+
+          <td>${usuario.email}</td>
+                      <td><button data-id="${usuario.id}" class="actualizar" href="myModal">Actualizar</button>
+                          <button data-id="${usuario.id}" class="eliminar">Eliminar</button></td>
+
+          <td style="margin-left=30px"><button data-id="${usuario.id}" class="actualizar" data-toggle="modal" data-target="#myModalUpdate">Actualizar</button>
+                <button data-id="${usuario.id}" class="eliminar">Eliminar</button></td>
+
         `;
         tabla.appendChild(fila);
       });
     });
 }
+
+
 obtenerUsuarios();
-
-
 //Obtener los detalles del prodcuto
 tabla.addEventListener("click", (event) => {
   const botonDetalles = event.target.closest(".detalles");
@@ -224,3 +232,20 @@ function mostrarUsuario(usuario) {
     `
     respuesta.appendChild(fila)
 }
+
+
+//F U N C I O N E S  P A R A  V A L I D A R
+
+//F U N C I O N E S  P A R A  V A L I D A R 
+
+/*
+function validarTexto(texto) {
+  return /^[a-zA-ZÀ-ÿ\s]+$/.test(texto);
+}
+function validarNumeros(cadena) {
+  const regex = /^\d{1,6}$/;
+  return regex.test(cadena);
+
+}
+
+}*/
