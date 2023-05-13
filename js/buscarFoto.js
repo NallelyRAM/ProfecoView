@@ -22,7 +22,7 @@ const container = document.getElementById('photos');
             photos.forEach(photo => {
             //TITULO
             const title = document.createElement('p');
-             title.textContent = photo.title;
+            title.textContent = photo.title;
             container.appendChild(title);
 
             //PRECIO
