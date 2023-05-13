@@ -63,7 +63,7 @@ function obtenerUsuarios() {
           <td>${usuario.address.geo.lng}</td>
           <td>${usuario.email}</td>
           <td><button data-id="${usuario.id}" class="detalles">Detalles</button></td>
-                      <td><button data-id="${usuario.id}" class="actualizar">Actualizar</button>
+                      <td><button data-id="${usuario.id}" class="actualizar" href="myModal">Actualizar</button>
                           <button data-id="${usuario.id}" class="eliminar">Eliminar</button></td>
         `;
         tabla.appendChild(fila);
@@ -71,6 +71,9 @@ function obtenerUsuarios() {
     });
 }
 obtenerUsuarios();
+
+
+//Obtener los detalles del prodcuto
 tabla.addEventListener("click", (event) => {
   const botonDetalles = event.target.closest(".detalles");
   if (botonDetalles) {
@@ -103,7 +106,66 @@ tabla.addEventListener('click', e => {
 });
 
 // Agregar event listener para el botón "Actualizar"
+// Agregar event listener para el botón "Actualizar"
+tabla.addEventListener('click', e => {
+  if (e.target.classList.contains('actualizar')) {
+    const idUsuario = e.target.dataset.id;
+    // Realizar solicitud fetch para obtener los datos del usuario
+    fetch(`https://jsonplaceholder.typicode.com/users/${idUsuario}`)
+      .then(response => response.json())
+      .then(usuario => {
+        // Llenar los campos del formulario con los datos del usuario
+        const formulario = document.querySelector('#formulario-actualizar');
+        formulario.querySelector('#nombreProducto').value = usuario.name;
+        formulario.querySelector('#marcaProducto').value = usuario.username;
+        formulario.querySelector('#precioProducto').value = usuario.address.geo.lat;
+        formulario.querySelector('#stockProducto').value = usuario.address.geo.lng;
 
+        // Mostrar la ventana modal
+        const modal = document.querySelector('#myModal');
+        //modal.style.display = 'modal';
+
+          modal.classList.add("show");
+          modal.classList.add("fade");
+          document.body.classList.add("modal-open");
+
+        // Agregar evento submit al formulario de la ventana modal
+        formulario.addEventListener('submit', e => {
+          e.preventDefault();
+          // Crear objeto con los nuevos datos del usuario
+          const nuevoUsuario = {
+            name: formulario.querySelector('#nombreProducto').value,
+            username: formulario.querySelector('#marcaProducto').value,
+            address: {
+              geo: {
+                lat: formulario.querySelector('#precioProducto').value,
+                lng: formulario.querySelector('#stockProducto').value
+              }
+            }
+          };
+          // Realizar solicitud fetch para actualizar los datos del usuario
+          fetch(`https://jsonplaceholder.typicode.com/users/${idUsuario}`, {
+            method: 'PUT',
+            body: JSON.stringify(nuevoUsuario),
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          })
+            .then(response => response.json())
+            .then(usuarioActualizado => {
+              // Actualizar los datos del usuario en la tabla
+              const fila = e.target.closest('tr');
+              fila.querySelector('td:nth-child(1)').textContent = usuarioActualizado.name;
+              fila.querySelector('td:nth-child(2)').textContent = usuarioActualizado.username;
+              fila.querySelector('td:nth-child(3)').textContent = usuarioActualizado.address.geo.lat;
+              fila.querySelector('td:nth-child(4)').textContent = usuarioActualizado.address.geo.lng;
+              // Cerrar la ventana modal
+              //modal.style.display = 'none';
+            });
+        });
+      });
+  }
+});
 
 
 //ABRE OTRA PANTALLA DONDE OBTIENE LA INFORMACIÓN
