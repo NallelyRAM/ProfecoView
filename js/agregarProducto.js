@@ -1,22 +1,22 @@
 const url = 'https://jsonplaceholder.typicode.com/users';
 const respuesta = document.querySelector("#respuesta")
-const btnAgregar = document.querySelector("#botonGuardar")
+const btnAgregar = document.querySelector("#btnGuardar")
 const tabla = document.querySelector("table tbody");
 
 const idSupermercado = 5
 
-document.addEventListener("DOMContentLoaded", mostrarUsuarios)
+document.addEventListener("DOMContentLoaded", mostrarProductos)
 
-btnAgregar.addEventListener("click", agregarUsuario)
+btnAgregar.addEventListener("click", agregarProducto)
 
-async function mostrarUsuarios() {
+async function mostrarProductos() {
     const respuesta = await fetch(url)
-    const usuarios = await respuesta.json()
-    //mostrarListaUsuarios(usuarios)
-   // obtenerUsuarios()
+    const productos = await respuesta.json()
+    //mostrarListaproductos(productos)
+   // obtenerProductos()
 }
 
-async function agregarUsuario() {
+async function agregarProducto() {
     const nombre = document.querySelector("#nombreProducto").value
     const marca = document.querySelector("#marcaProducto").value
     const precio = document.querySelector("#precioProducto").value
@@ -53,20 +53,13 @@ async function agregarUsuario() {
         return
       });*/
 
-
     const fila = document.createElement("tr");
             //nombre
             //marca
             //precio
             //stock
-            //SUPER SE TIENE CAMBIAR AUTO ↓↓↓↓↓↓            
-
-       /**     fila.innerHTML = `
-
-
-            /*
+            //SUPER SE TIENE CAMBIAR AUTO ↓↓↓↓↓↓
             fila.innerHTML = `
-
               <td>${producto.nombre}</td>
               <td>${producto.marca}</td>
               <td>${producto.precio}</td>
@@ -74,52 +67,17 @@ async function agregarUsuario() {
                           <td><button data-id="${producto.id}" class="actualizar" href="myModal" class="btn btn-primary">Actualizar</button>
                               <button data-id="${producto.id}" class="eliminar" class="btn btn-danger">Eliminar</button></td>
             `;
-
-            tabla.appendChild(fila);*/
-            
-
-
             tabla.appendChild(fila);
-
-            // V A L I D A C I O N E S 
-
-            const nombreValido = validarTexto(producto.nombre);
-            const marcaValida = validarTexto(producto.marca);
-            const precioValido = validarNumeros(producto.precio);
-            const stockValido = validarNumeros(producto.stock);
-
-            if (nombreValido && marcaValida && precioValido && stockValido) {
-              const fila = document.createElement("tr");
-          
-              fila.innerHTML = `
-                <td>${producto.nombre}</td>
-                <td>${producto.marca}</td>
-                <td>${producto.precio}</td>
-                <td>${producto.stock}</td>
-                <td>
-                  <button data-id="${producto.id}" class="actualizar" href="myModal" class="btn btn-primary">Actualizar</button>
-                  <button data-id="${producto.id}" class="eliminar" class="btn btn-danger">Eliminar</button>
-                </td>
-              `;
-          
-              tabla.appendChild(fila);
-               // Limpiar campos
-              document.querySelector("#nombreProducto").value="";
-              document.querySelector("#marcaProducto").value="";
-              document.querySelector("#precioProducto").value="";
-              document.querySelector("#stockProducto").value="";
-            }
 
     console.log(respuesta)
 }
 
 
-
-function obtenerUsuarios() {
+function obtenerProductos() {
   fetch(url)
     .then((response) => response.json())
     .then((data) => {
-      data.forEach((usuario) => {
+      data.forEach((producto) => {
         const fila = document.createElement("tr");
         //nombre
         //marca
@@ -127,12 +85,12 @@ function obtenerUsuarios() {
         //stock
         //SUPER SE TIENE CAMBIAR AUTO ↓↓↓↓↓↓
         fila.innerHTML = `
-          <td>${usuario.name}</td>
-          <td>${usuario.username}</td>
-          <td>${usuario.address.geo.lat}</td>
-          <td>${usuario.address.geo.lat}</td>
-          <td style="margin-left=30px"><button data-id="${usuario.id}" class="actualizar" data-toggle="modal" data-target="#myModalUpdate">Actualizar</button>
-                <button data-id="${usuario.id}" class="eliminar">Eliminar</button></td>
+          <td>${producto.name}</td>
+          <td>${producto.username}</td>
+          <td>${producto.address.geo.lat}</td>
+          <td>${producto.address.geo.lat}</td>
+          <td style="margin-left=30px"><button data-id="${producto.id}" class="actualizar" data-toggle="modal" data-target="#myModalUpdate">Actualizar</button>
+                <button data-id="${producto.id}" class="eliminar">Eliminar</button></td>
 
         `;
         tabla.appendChild(fila);
@@ -141,30 +99,30 @@ function obtenerUsuarios() {
 }
 
 
-obtenerUsuarios();
+obtenerProductos();
 //Obtener los detalles del prodcuto
 tabla.addEventListener("click", (event) => {
   const botonDetalles = event.target.closest(".detalles");
   if (botonDetalles) {
-    const idUsuario = botonDetalles.dataset.id;
-    mostrarDetallesUsuario(idUsuario);
+    const idProducto = botonDetalles.dataset.id;
+    mostrarDetalleProducto(idProducto);
   }
 });
 
 // Agregar event listener para el botón "Eliminar"
 tabla.addEventListener('click', e => {
   if (e.target.classList.contains('eliminar')) {
-    const idUsuario = e.target.dataset.id;
-    if (confirm(`¿Seguro que desea eliminar la oferta ${idUsuario}?`)) {
-      // Si el usuario confirma que desea eliminar, enviar la solicitud DELETE a la API
-      fetch(`https://jsonplaceholder.typicode.com/users/${idUsuario}`, {
+    const idProducto = e.target.dataset.id;
+    if (confirm(`¿Seguro que desea eliminar la oferta ${idProducto}?`)) {
+      // Si el producto confirma que desea eliminar, enviar la solicitud DELETE a la API
+      fetch(`https://jsonplaceholder.typicode.com/users/${idProducto}`, {
         method: 'DELETE'
       })
         .then(response => {
           if (response.ok) {
             // Si la solicitud DELETE tiene éxito, eliminar la fila correspondiente de la tabla
             e.target.closest('tr').remove();
-            alert(`La oferta ${idUsuario} eliminado correctamente.`);
+            alert(`La oferta ${idProducto} eliminado correctamente.`);
           } else {
             throw new Error('No se pudo eliminar la oferta.');
           }
@@ -178,21 +136,21 @@ tabla.addEventListener('click', e => {
 // Agregar event listener para el botón "Actualizar"
 tabla.addEventListener('click', e => {
   if (e.target.classList.contains('actualizar')) {
-    const idUsuario = e.target.dataset.id;
-    // Realizar solicitud fetch para obtener los datos del usuario
-    fetch(`https://jsonplaceholder.typicode.com/users/${idUsuario}`)
+    const idProducto = e.target.dataset.id;
+    // Realizar solicitud fetch para obtener los datos del producto
+    fetch(`https://jsonplaceholder.typicode.com/users/${idProducto}`)
       .then(response => response.json())
-      .then(usuario => {
-        // Llenar los campos del formulario con los datos del usuario
+      .then(producto => {
+        // Llenar los campos del formulario con los datos del producto
         const formulario = document.querySelector('#formulario-actualizar');
-        formulario.querySelector('#nombreProductoActualizar').value = usuario.name;
-        formulario.querySelector('#marcaProductoActualizar').value = usuario.username;
-        formulario.querySelector('#precioProductoActualizar').value = usuario.address.geo.lat;
-        formulario.querySelector('#stockProductoActualizar').value = usuario.address.geo.lng;
+        formulario.querySelector('#nombreProducto').value = producto.name;
+        formulario.querySelector('#marcaProducto').value = producto.username;
+        formulario.querySelector('#precioProducto').value = producto.address.geo.lat;
+        formulario.querySelector('#stockProducto').value = producto.address.geo.lng;
 
         // Mostrar la ventana modal
 
-        const modal = new bootstrap.Modal(document.querySelector('#myModalUpdate'));
+        const modal = new bootstrap.Modal(document.querySelector('#myModal'));
         modal.show();
 /**
           modal.classList.add("show");
@@ -202,44 +160,33 @@ tabla.addEventListener('click', e => {
         // Agregar evento submit al formulario de la ventana modal
         formulario.addEventListener('submit', e => {
           e.preventDefault();
-          // Crear objeto con los nuevos datos del usuario
-          /**
-          const nuevoUsuario = {
-            name: formulario.querySelector('#nombreProductoActualizar').value,
-            username: formulario.querySelector('#marcaProductoActualizar').value,
+          // Crear objeto con los nuevos datos del producto
+          const nuevoproducto = {
+            name: formulario.querySelector('#nombreProducto').value,
+            username: formulario.querySelector('#marcaProducto').value,
             address: {
               geo: {
-                lat: formulario.querySelector('#precioProductoActualizar').value,
-                lng: formulario.querySelector('#stockProductoActualizar').value
+                lat: formulario.querySelector('#precioProducto').value,
+                lng: formulario.querySelector('#stockProducto').value
               }
             }
-          };*/
-          const producto = {
-            //"id": Math.floor(Math.random() * 1000),
-            "nombre": formulario.querySelector('#nombreProductoActualizar').value,
-            "marca": formulario.querySelector('#marcaProductoActualizar').value,
-            "precio":formulario.querySelector('#precioProductoActualizar').value,
-            "stock":formulario.querySelector('#stockProductoActualizar').value
-            //"supermercado":{
-               // "id":idSupermercado
-            //}
-          }
-          // Realizar solicitud fetch para actualizar los datos del usuario
-          fetch(`https://jsonplaceholder.typicode.com/users/${idUsuario}`, {
+          };
+          // Realizar solicitud fetch para actualizar los datos del producto
+          fetch(`https://jsonplaceholder.typicode.com/users/${idProducto}`, {
             method: 'PUT',
-            body: JSON.stringify(producto),
+            body: JSON.stringify(nuevoproducto),
             headers: {
               'Content-Type': 'application/json'
             }
           })
             .then(response => response.json())
-            .then(usuarioActualizado => {
-              // Actualizar los datos del usuario en la tabla
+            .then(productoActualizado => {
+              // Actualizar los datos del producto en la tabla
               const fila = e.target.closest('tr');
-              fila.querySelector('td:nth-child(1)').textContent = usuarioActualizado.name;
-              fila.querySelector('td:nth-child(2)').textContent = usuarioActualizado.username;
-              fila.querySelector('td:nth-child(3)').textContent = usuarioActualizado.address.geo.lat;
-              fila.querySelector('td:nth-child(4)').textContent = usuarioActualizado.address.geo.lng;
+              fila.querySelector('td:nth-child(1)').textContent = productoActualizado.name;
+              fila.querySelector('td:nth-child(2)').textContent = productoActualizado.username;
+              fila.querySelector('td:nth-child(3)').textContent = productoActualizado.address.geo.lat;
+              fila.querySelector('td:nth-child(4)').textContent = productoActualizado.address.geo.lng;
               // Cerrar la ventana modal
               //modal.style.display = 'none';
             });
@@ -249,24 +196,49 @@ tabla.addEventListener('click', e => {
 });
 
 
+//ABRE OTRA PANTALLA DONDE OBTIENE LA INFORMACIÓN
+function mostrarDetalleProducto(idProducto) {
+  const url = `https://jsonplaceholder.typicode.com/users/${idProducto}`;
+  fetch(url)
+    .then((response) => response.json())
+    .then((producto) => {
+      const pantallaDetalles = window.open("", "Detalles", "width=400,height=400");
+      pantallaDetalles.document.body.innerHTML = `
+        <h1>${producto.name}</h1>
+        <p><strong>Username:</strong> ${producto.username}</p>
+        <p><strong>Email:</strong> ${producto.email}</p>
+        <p><strong>Phone:</strong> ${producto.phone}</p>
+        <p><strong>Website:</strong> ${producto.website}</p>
+        <p><strong>Company:</strong> ${producto.company.name}</p>
+        <p><strong>Address:</strong> ${producto.address.street}, ${producto.address.suite}, ${producto.address.city}, ${producto.address.zipcode}</p>
+      `;
+    });
+}
 
-function mostrarUsuario(usuario) {
+function mostrarProductos(producto) {
     const fila = document.createElement('tr')
     fila.innerHTML = `
-        <td>${usuario.name}</td>
-        <td>${usuario.username}</td>
-        <td>${usuario.address.geo.lat}</td>
-        <td>${usuario.address.geo.lng}</td>
+        <td>${producto.name}</td>
+        <td>${producto.username}</td>
+        <td>${producto.address.geo.lat}</td>
+        <td>${producto.address.geo.lng}</td>
     `
     respuesta.appendChild(fila)
 }
 
 
 //F U N C I O N E S  P A R A  V A L I D A R
+
+//F U N C I O N E S  P A R A  V A L I D A R 
+
+/*
 function validarTexto(texto) {
-  return /^[a-zA-ZÀ-ÿ\s]+$/.test(texto); //Mayusculas, minusculas, acentos, espacios
+  return /^[a-zA-ZÀ-ÿ\s]+$/.test(texto);
 }
 function validarNumeros(cadena) {
-  const regex = /^\d{1,6}$/; //Solo números con hasta 6 dígitos
+  const regex = /^\d{1,6}$/;
   return regex.test(cadena);
+
 }
+
+}*/
