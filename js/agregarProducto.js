@@ -60,6 +60,8 @@ async function agregarUsuario() {
             //precio
             //stock
             //SUPER SE TIENE CAMBIAR AUTO ↓↓↓↓↓↓            
+
+            /*
             fila.innerHTML = `
               <td>${producto.nombre}</td>
               <td>${producto.marca}</td>
@@ -69,9 +71,9 @@ async function agregarUsuario() {
                               <button data-id="${producto.id}" class="eliminar" class="btn btn-danger">Eliminar</button></td>
             `;
             tabla.appendChild(fila);
-            
+            */
+
             // V A L I D A C I O N E S 
-            /*
             const nombreValido = validarTexto(producto.nombre);
             const marcaValida = validarTexto(producto.marca);
             const precioValido = validarNumeros(producto.precio);
@@ -92,9 +94,13 @@ async function agregarUsuario() {
               `;
           
               tabla.appendChild(fila);
+               // Limpiar campos
+              document.querySelector("#nombreProducto").value="";
+              document.querySelector("#marcaProducto").value="";
+              document.querySelector("#precioProducto").value="";
+              document.querySelector("#stockProducto").value="";
             }
-            */
-
+            
     console.log(respuesta)
 }
 
