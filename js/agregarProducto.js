@@ -121,6 +121,7 @@ function obtenerUsuarios() {
     .then((data) => {
       data.forEach((usuario) => {
         const fila = document.createElement("tr");
+        /*
         const nombreValido = validarTexto(producto.nombre);
         const marcaValida = validarTexto(producto.marca);
         const precioValido = validarNumeros(producto.precio);
@@ -140,7 +141,7 @@ function obtenerUsuarios() {
           document.querySelector("#stockProductoActualizar").value = "";
         } else {
         
-
+*/
         fila.innerHTML = `
           <td>${usuario.name}</td>
           <td>${usuario.username}</td>
@@ -151,12 +152,14 @@ function obtenerUsuarios() {
         `;
 
         tabla.appendChild(fila);
+        /*
         // Limpiar campos
         document.querySelector("#nombreProductoActualizar").value="";
         document.querySelector("#marcaProductoActualizar").value="";
         document.querySelector("#precioProductoActualizar").value="";
         document.querySelector("#stockProductoActualizar").value="";
-        }
+        */
+
       });
     });
 }
