@@ -11,11 +11,13 @@
     width: 200px;
     height: 60px;
 }
+
 .container{
-   justify-content: center;
-       align-items: center;
-       width: 100vw;
-       height: 100vh;
+    
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
 }
 
 #nav2 {
@@ -23,14 +25,7 @@
     height: 80px;
     width: 100%;
 }
-.footer {
-    position:fixed;
-    left:0px;
-    bottom:0px;
-    height:70px;
-    width:100%;
-    background:#13322b;
- }
+
 
 .footer {
     position: fixed;
@@ -56,34 +51,34 @@
     position: relative;
     font-family: 'Lucida Sans';
     color: aliceblue;
- }
- #info3 {
+}
+#info3 {
     top: 42px;
     right: 905px;
     position: relative;
     font-family: 'Lucida Sans';
     color: aliceblue;
- }
- #info4 {
+}
+#info4 {
     top: 62px;
     right: 1109px;
     position: relative;
     font-family: 'Lucida Sans';
     color: aliceblue;
- }
+}
 
- #initProfecoimg{
+#initProfecoimg{
     margin-top: 50px;
     width: 70%;
     height: 170px;
- }
+}
 
 .opcionesPROFECO{
     margin-left:20px;
     margin-right:20px;
- }
+}
 
- .contenedorImg{
+.contenedorImg{
     align-items: center;
     margin-right: 150px;
     display: flex;
@@ -181,3 +176,8 @@
     justify-content: right;
 
 }
+
+#espacio-en-blanco {
+    height: 600px;
+}
+
