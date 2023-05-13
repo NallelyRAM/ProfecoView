@@ -231,10 +231,12 @@ function mostrarUsuario(usuario) {
     respuesta.appendChild(fila)
 }
 
+//F U N C I O N E S  P A R A  V A L I D A R 
+/*
 function validarTexto(texto) {
   return /^[a-zA-ZÀ-ÿ\s]+$/.test(texto);
 }
 function validarNumeros(cadena) {
   const regex = /^\d{1,6}$/;
   return regex.test(cadena);
-}
+}*/
