@@ -50,6 +50,11 @@ function mostrarListaUsuarios(usuarios) {
             <td>${usuario.username}</td>
             <td>${usuario.address.geo.lat}</td>
             <td>${usuario.address.geo.lng}</td>
+            <td>${usuario.username}</td>
+            <td>${usuario.username}</td>
+            <td><button data-id="${usuario.id}" class="detalles">Detalles</button></td>
+            <td><button data-id="${usuario.id}" class="detalles">Actualizar</button>
+                <button data-id="${usuario.id}" class="detalles">Eliminar</button></td>
         `
         respuesta.appendChild(fila)
     })
