@@ -1,8 +1,8 @@
 const url = 'https://jsonplaceholder.typicode.com/users';
 const respuesta = document.querySelector("#respuesta")
 const btnAgregar = document.querySelector("#botonActualizar")
-
 const tabla = document.querySelector("table tbody");
+
 
 document.addEventListener("DOMContentLoaded", mostrarUsuarios)
 
@@ -44,25 +44,7 @@ async function agregarUsuario() {
     console.log(respuesta)
 }
 
-/**
-function mostrarListaUsuarios(usuarios) {
-    usuarios.forEach(usuario => {
-        const fila = document.createElement('tr')
-        fila.innerHTML = `
-            <td>${usuario.name}</td>
-            <td>${usuario.username}</td>
-            <td>${usuario.username}</td>
-            <td>${usuario.username}</td>
-            <td>${usuario.username}</td>
-            <td><button data-id="${usuario.id}" class="detalles">Detalles</button></td>
-            <td><button data-id="${usuario.id}" class="detalles">Actualizar</button>
-                <button data-id="${usuario.id}" class="detalles">Eliminar</button></td>
-        `
-        tabla.appendChild(fila);
-        //respuesta.appendChild(fila)
-    })
-}
-*/
+
 function obtenerUsuarios() {
   fetch(url)
     .then((response) => response.json())
@@ -92,7 +74,34 @@ tabla.addEventListener("click", (event) => {
   }
 });
 
-//ABRE OTRA PANTALLA DO NDE OBTIENE LA IN
+// Agregar event listener para el botón "Eliminar"
+tabla.addEventListener('click', e => {
+  if (e.target.classList.contains('eliminar')) {
+    const idUsuario = e.target.dataset.id;
+    if (confirm(`¿Seguro que desea eliminar la oferta ${idUsuario}?`)) {
+      // Si el usuario confirma que desea eliminar, enviar la solicitud DELETE a la API
+      fetch(`https://jsonplaceholder.typicode.com/users/${idUsuario}`, {
+        method: 'DELETE'
+      })
+        .then(response => {
+          if (response.ok) {
+            // Si la solicitud DELETE tiene éxito, eliminar la fila correspondiente de la tabla
+            e.target.closest('tr').remove();
+            alert(`La oferta ${idUsuario} eliminado correctamente.`);
+          } else {
+            throw new Error('No se pudo eliminar la oferta.');
+          }
+        })
+        .catch(error => alert(error.message));
+    }
+  }
+});
+
+// Agregar event listener para el botón "Actualizar"
+
+
+
+//ABRE OTRA PANTALLA DONDE OBTIENE LA INFORMACIÓN
 function mostrarDetallesUsuario(idUsuario) {
   const url = `https://jsonplaceholder.typicode.com/users/${idUsuario}`;
   fetch(url)

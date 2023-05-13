@@ -4,21 +4,45 @@
     <title>Obtener cuerpo de API</title>
 </head>
 <body>
-<table>
+<table id="users-table">
     <thead>
     <tr>
         <th>Name</th>
-        <th>Username</th>
         <th>Email</th>
         <th>Phone</th>
-        <th>Company</th>
-        <th></th>
+        <th>City</th>
+        <th>Actions</th>
     </tr>
     </thead>
     <tbody>
-    <!-- Aquí se agregarán las filas de la tabla con los datos de la API -->
     </tbody>
 </table>
+
+<td>
+    <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#editModal">Update</button>
+</td>
+
+<!-- Modal -->
+<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editModalLabel">Edit User</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Form to edit user data -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="updateUser">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <script src="/js/comparacionprecio.js"></script>
 </body>
