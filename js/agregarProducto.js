@@ -79,9 +79,21 @@ async function agregarUsuario() {
             const precioValido = validarNumeros(producto.precio);
             const stockValido = validarNumeros(producto.stock);
 
-            if (nombreValido && marcaValida && precioValido && stockValido) {
+            if (!nombreValido) {
+              alert("Debe introducir un nombre válido");
+              document.querySelector("#nombreProducto").value = "";
+            } else if (!marcaValida) {
+              alert("La marca debe contener solo letras y espacios");
+              document.querySelector("#marcaProducto").value = "";
+            } else if (!precioValido) {
+              alert("El precio debe ser un número de hasta 6 dígitos");
+              document.querySelector("#precioProducto").value = "";
+            } else if (!stockValido) {
+              alert("El stock debe ser un número de hasta 6 dígitos");
+              document.querySelector("#stockProducto").value = "";
+            } else {
+              // Crear fila y agregar a tabla
               const fila = document.createElement("tr");
-          
               fila.innerHTML = `
                 <td>${producto.nombre}</td>
                 <td>${producto.marca}</td>
@@ -92,9 +104,7 @@ async function agregarUsuario() {
                   <button data-id="${producto.id}" class="eliminar" class="btn btn-danger">Eliminar</button>
                 </td>
               `;
-          
               tabla.appendChild(fila);
-               // Limpiar campos
               document.querySelector("#nombreProducto").value="";
               document.querySelector("#marcaProducto").value="";
               document.querySelector("#precioProducto").value="";
