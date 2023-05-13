@@ -58,7 +58,7 @@ async function agregarUsuario() {
             //marca
             //precio
             //stock
-            //SUPER SE TIENE CAMBIAR AUTO ↓↓↓↓↓↓
+            //SUPER SE TIENE CAMBIAR AUTO ↓↓↓↓↓↓            
             fila.innerHTML = `
               <td>${producto.nombre}</td>
               <td>${producto.marca}</td>
@@ -68,9 +68,35 @@ async function agregarUsuario() {
                               <button data-id="${producto.id}" class="eliminar" class="btn btn-danger">Eliminar</button></td>
             `;
             tabla.appendChild(fila);
+            
+            // V A L I D A C I O N E S 
+            /*
+            const nombreValido = validarTexto(producto.nombre);
+            const marcaValida = validarTexto(producto.marca);
+            const precioValido = validarNumeros(producto.precio);
+            const stockValido = validarNumeros(producto.stock);
+
+            if (nombreValido && marcaValida && precioValido && stockValido) {
+              const fila = document.createElement("tr");
+          
+              fila.innerHTML = `
+                <td>${producto.nombre}</td>
+                <td>${producto.marca}</td>
+                <td>${producto.precio}</td>
+                <td>${producto.stock}</td>
+                <td>
+                  <button data-id="${producto.id}" class="actualizar" href="myModal" class="btn btn-primary">Actualizar</button>
+                  <button data-id="${producto.id}" class="eliminar" class="btn btn-danger">Eliminar</button>
+                </td>
+              `;
+          
+              tabla.appendChild(fila);
+            }
+            */
 
     console.log(respuesta)
 }
+
 
 
 function obtenerUsuarios() {
@@ -228,17 +254,10 @@ function mostrarUsuario(usuario) {
 
 
 //F U N C I O N E S  P A R A  V A L I D A R
-
-//F U N C I O N E S  P A R A  V A L I D A R 
-
-/*
 function validarTexto(texto) {
-  return /^[a-zA-ZÀ-ÿ\s]+$/.test(texto);
+  return /^[a-zA-ZÀ-ÿ\s]+$/.test(texto); //Mayusculas, minusculas, acentos, espacios
 }
 function validarNumeros(cadena) {
-  const regex = /^\d{1,6}$/;
+  const regex = /^\d{1,6}$/; //Solo números con hasta 6 dígitos
   return regex.test(cadena);
-
 }
-
-}*/
