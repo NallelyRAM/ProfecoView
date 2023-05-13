@@ -69,8 +69,6 @@ async function agregarUsuario() {
                               <button data-id="${producto.id}" class="eliminar" class="btn btn-danger">Eliminar</button></td>
             `;
             tabla.appendChild(fila);*/
-
-
             const nombreValido = validarTexto(producto.nombre);
             const marcaValida = validarTexto(producto.marca);
             const precioValido = validarNumeros(producto.precio);
@@ -123,11 +121,26 @@ function obtenerUsuarios() {
     .then((data) => {
       data.forEach((usuario) => {
         const fila = document.createElement("tr");
-        //nombre
-        //marca
-        //precio
-        //stock
-        //SUPER SE TIENE CAMBIAR AUTO ↓↓↓↓↓↓
+        const nombreValido = validarTexto(producto.nombre);
+        const marcaValida = validarTexto(producto.marca);
+        const precioValido = validarNumeros(producto.precio);
+        const stockValido = validarNumeros(producto.stock);
+
+        if (!nombreValido) {
+          alert("Debe introducir un nombre válido");
+          document.querySelector("#nombreProductoActualizar").value = "";
+        } else if (!marcaValida) {
+          alert("La marca debe contener solo letras y espacios");
+          document.querySelector("#marcaProductoActualizar").value = "";
+        } else if (!precioValido) {
+          alert("El precio debe ser un número de hasta 6 dígitos");
+          document.querySelector("#precioProductoActualizar").value = "";
+        } else if (!stockValido) {
+          alert("El stock debe ser un número de hasta 6 dígitos");
+          document.querySelector("#stockProductoActualizar").value = "";
+        } else {
+        
+
         fila.innerHTML = `
           <td>${usuario.name}</td>
           <td>${usuario.username}</td>
@@ -135,17 +148,21 @@ function obtenerUsuarios() {
           <td>${usuario.address.geo.lat}</td>
           <td style="margin-left=30px"><button data-id="${usuario.id}" class="actualizar" data-toggle="modal" data-target="#myModalUpdate">Actualizar</button>
                 <button data-id="${usuario.id}" class="eliminar">Eliminar</button></td>
-
         `;
+
         tabla.appendChild(fila);
+        // Limpiar campos
+        document.querySelector("#nombreProductoActualizar").value="";
+        document.querySelector("#marcaProductoActualizar").value="";
+        document.querySelector("#precioProductoActualizar").value="";
+        document.querySelector("#stockProductoActualizar").value="";
+        }
       });
     });
 }
 
 
 obtenerUsuarios();
-
-
 // Agregar event listener para el botón "Eliminar"
 tabla.addEventListener('click', e => {
   if (e.target.classList.contains('eliminar')) {
