@@ -76,7 +76,7 @@ async function agregarUsuario() {
 
             if (!nombreValido) {
               alert("Debe introducir un nombre válido");
-              document.querySelector("#nombreProducto").value = "";
+
             } else if (!marcaValida) {
               alert("La marca debe contener solo letras y espacios");
               document.querySelector("#marcaProducto").value = "";
@@ -260,7 +260,9 @@ tabla.addEventListener('click', e => {
             });
         });
 
+
       });
+    
       //.catch(error => alert(error.message));
   }
 });
