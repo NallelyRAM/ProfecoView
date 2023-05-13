@@ -29,7 +29,7 @@ tabla.addEventListener("click", (event) => {
   }
 });
 
-//ABRE OTRA PANTALLA DO NDE OBTIENE LA INFO
+//ABRE OTRA PANTALLA DO NDE OBTIENE LA IN
 function mostrarDetallesUsuario(idUsuario) {
   const url = `https://jsonplaceholder.typicode.com/users/${idUsuario}`;
   fetch(url)
