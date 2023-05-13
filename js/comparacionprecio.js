@@ -7,6 +7,7 @@ const respuesta= document.querySelector("#respuesta")
 //Evento
 document.addEventListener("DOMContentLoaded", llamrAPI)
 
+
 /** FORMA 1
 function llamrAPI(){
     //console.log("Entroo2")
