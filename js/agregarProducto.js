@@ -143,14 +143,14 @@ tabla.addEventListener('click', e => {
       .then(usuario => {
         // Llenar los campos del formulario con los datos del usuario
         const formulario = document.querySelector('#formulario-actualizar');
-        formulario.querySelector('#nombreProducto').value = usuario.name;
-        formulario.querySelector('#marcaProducto').value = usuario.username;
-        formulario.querySelector('#precioProducto').value = usuario.address.geo.lat;
-        formulario.querySelector('#stockProducto').value = usuario.address.geo.lng;
+        formulario.querySelector('#nombreProductoActualizar').value = usuario.name;
+        formulario.querySelector('#marcaProductoActualizar').value = usuario.username;
+        formulario.querySelector('#precioProductoActualizar').value = usuario.address.geo.lat;
+        formulario.querySelector('#stockProductoActualizar').value = usuario.address.geo.lng;
 
         // Mostrar la ventana modal
 
-        const modal = new bootstrap.Modal(document.querySelector('#myModal'));
+        const modal = new bootstrap.Modal(document.querySelector('#myModalUpdate'));
         modal.show();
 /**
           modal.classList.add("show");
