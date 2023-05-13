@@ -43,31 +43,6 @@ function mostarListaSuper(datos){
 }
 
 async function ordenarprecio(datos){
-    /**var numero= `<td>${element.address.zipcode}</td>
-                        `
-    numero.sort(function(a , b){
-        return a - b
-    });
-
-    console.log(numero);*/
-/** ESTE ES EL MEROOOOOO
-    var tabla = document.getElementById("tabla");
-    var filas = tabla.rows;
-    var valores = [];
-
-    for (var i = 1; i < filas.length; i++) {
-      var celda = filas[i].cells[1];
-      var valor = parseFloat(celda.innerHTML);
-       valores.push(valor);
-    }
-
-    valores.sort(function(a, b) {
-      return a - b;
-    });
-
-
-    console.log(valores);
-    console.log("ENTROOOO")*/
     fetch('https://jsonplaceholder.typicode.com/users')
     .then(response => response.json())
     .then(data => {
@@ -84,7 +59,6 @@ async function ordenarprecio(datos){
         <td>${user.address.geo.lng}</td>
         `
         respuesta.appendChild(fila)
-        ordenarprecio(`<td>${user.address.geo.lng}</td>`)
       });
     });
 }
