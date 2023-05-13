@@ -167,3 +167,9 @@
     padding-bottom: 70px;
     padding-top: 50px;
 }
+
+.contenedorWishlist{
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+}
