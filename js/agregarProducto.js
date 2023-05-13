@@ -23,14 +23,14 @@ async function agregarUsuario() {
     const stock = document.querySelector("#stockProducto").value
 
     const producto = {
-        "id": Math.floor(Math.random() * 1000),
+        //"id": Math.floor(Math.random() * 1000),
         "nombre": nombre,
         "marca": marca,
         "precio":precio,
         "stock":stock,
-        "supermercado":{
-            "id":idSupermercado
-        }
+        //"supermercado":{
+           // "id":idSupermercado
+        //}
     }
     // este es para agregar productos a los supermercados
 /**
@@ -231,10 +231,12 @@ function mostrarUsuario(usuario) {
     respuesta.appendChild(fila)
 }
 
+//F U N C I O N E S  P A R A  V A L I D A R
+/*
 function validarTexto(texto) {
   return /^[a-zA-ZÀ-ÿ\s]+$/.test(texto);
 }
 function validarNumeros(cadena) {
   const regex = /^\d{1,6}$/;
   return regex.test(cadena);
-}
+}*/
