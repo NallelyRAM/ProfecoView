@@ -88,14 +88,7 @@ function obtenerUsuarios() {
           <td>${usuario.name}</td>
           <td>${usuario.username}</td>
           <td>${usuario.address.geo.lat}</td>
-          <td>${usuario.address.geo.lng}</td>
-                      <td><button data-id="${usuario.id}" class="actualizar" href="myModal" class="btn btn-success">Actualizar</button>
-                          <button data-id="${usuario.id}" class="eliminar">Eliminar</button class="btn btn-danger"></td>
-
-          <td>${usuario.email}</td>
-                      <td><button data-id="${usuario.id}" class="actualizar" href="myModal">Actualizar</button>
-                          <button data-id="${usuario.id}" class="eliminar">Eliminar</button></td>
-
+          <td>${usuario.address.geo.lat}</td>
           <td style="margin-left=30px"><button data-id="${usuario.id}" class="actualizar" data-toggle="modal" data-target="#myModalUpdate">Actualizar</button>
                 <button data-id="${usuario.id}" class="eliminar">Eliminar</button></td>
 
