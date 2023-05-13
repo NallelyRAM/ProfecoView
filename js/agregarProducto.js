@@ -1,6 +1,6 @@
 const url = 'https://jsonplaceholder.typicode.com/users';
 const respuesta = document.querySelector("#respuesta")
-const btnAgregar = document.querySelector("#btnGuardar")
+const btnAgregar = document.querySelector("#botonGuardar")
 const tabla = document.querySelector("table tbody");
 
 const idSupermercado = 5
@@ -52,6 +52,7 @@ async function agregarUsuario() {
         console.error('Error:', error);
         return
       });*/
+
 
     const fila = document.createElement("tr");
             //nombre
