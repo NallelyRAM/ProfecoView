@@ -59,10 +59,8 @@ async function agregarUsuario() {
             //marca
             //precio
             //stock
-            //SUPER SE TIENE CAMBIAR AUTO ↓↓↓↓↓↓            
-
-            /*
-            fila.innerHTML = `
+            //SUPER SE TIENE CAMBIAR AUTO ↓↓↓↓↓↓
+       /**     fila.innerHTML = `
               <td>${producto.nombre}</td>
               <td>${producto.marca}</td>
               <td>${producto.precio}</td>
@@ -70,10 +68,9 @@ async function agregarUsuario() {
                           <td><button data-id="${producto.id}" class="actualizar" href="myModal" class="btn btn-primary">Actualizar</button>
                               <button data-id="${producto.id}" class="eliminar" class="btn btn-danger">Eliminar</button></td>
             `;
-            tabla.appendChild(fila);
-            */
+            tabla.appendChild(fila);*/
 
-            // V A L I D A C I O N E S 
+
             const nombreValido = validarTexto(producto.nombre);
             const marcaValida = validarTexto(producto.marca);
             const precioValido = validarNumeros(producto.precio);
@@ -94,6 +91,7 @@ async function agregarUsuario() {
             } else {
               // Crear fila y agregar a tabla
               const fila = document.createElement("tr");
+          
               fila.innerHTML = `
                 <td>${producto.nombre}</td>
                 <td>${producto.marca}</td>
@@ -104,13 +102,16 @@ async function agregarUsuario() {
                   <button data-id="${producto.id}" class="eliminar" class="btn btn-danger">Eliminar</button>
                 </td>
               `;
+          
               tabla.appendChild(fila);
+               // Limpiar campos
               document.querySelector("#nombreProducto").value="";
               document.querySelector("#marcaProducto").value="";
               document.querySelector("#precioProducto").value="";
               document.querySelector("#stockProducto").value="";
             }
-            
+
+
     console.log(respuesta)
 }
 
@@ -143,14 +144,7 @@ function obtenerUsuarios() {
 
 
 obtenerUsuarios();
-//Obtener los detalles del prodcuto
-tabla.addEventListener("click", (event) => {
-  const botonDetalles = event.target.closest(".detalles");
-  if (botonDetalles) {
-    const idUsuario = botonDetalles.dataset.id;
-    mostrarDetallesUsuario(idUsuario);
-  }
-});
+
 
 // Agregar event listener para el botón "Eliminar"
 tabla.addEventListener('click', e => {
@@ -204,20 +198,31 @@ tabla.addEventListener('click', e => {
         formulario.addEventListener('submit', e => {
           e.preventDefault();
           // Crear objeto con los nuevos datos del usuario
+          /**
           const nuevoUsuario = {
-            name: formulario.querySelector('#nombreProducto').value,
-            username: formulario.querySelector('#marcaProducto').value,
+            name: formulario.querySelector('#nombreProductoActualizar').value,
+            username: formulario.querySelector('#marcaProductoActualizar').value,
             address: {
               geo: {
-                lat: formulario.querySelector('#precioProducto').value,
-                lng: formulario.querySelector('#stockProducto').value
+                lat: formulario.querySelector('#precioProductoActualizar').value,
+                lng: formulario.querySelector('#stockProductoActualizar').value
               }
             }
-          };
+          };*/
+          const producto = {
+            //"id": Math.floor(Math.random() * 1000),
+            "nombre": formulario.querySelector('#nombreProductoActualizar').value,
+            "marca": formulario.querySelector('#marcaProductoActualizar').value,
+            "precio":formulario.querySelector('#precioProductoActualizar').value,
+            "stock":formulario.querySelector('#stockProductoActualizar').value
+            //"supermercado":{
+               // "id":idSupermercado
+            //}
+          }
           // Realizar solicitud fetch para actualizar los datos del usuario
           fetch(`https://jsonplaceholder.typicode.com/users/${idUsuario}`, {
             method: 'PUT',
-            body: JSON.stringify(nuevoUsuario),
+            body: JSON.stringify(producto),
             headers: {
               'Content-Type': 'application/json'
             }
@@ -234,29 +239,13 @@ tabla.addEventListener('click', e => {
               //modal.style.display = 'none';
             });
         });
+
       });
+      //.catch(error => alert(error.message));
   }
 });
 
 
-//ABRE OTRA PANTALLA DONDE OBTIENE LA INFORMACIÓN
-function mostrarDetallesUsuario(idUsuario) {
-  const url = `https://jsonplaceholder.typicode.com/users/${idUsuario}`;
-  fetch(url)
-    .then((response) => response.json())
-    .then((usuario) => {
-      const pantallaDetalles = window.open("", "Detalles", "width=400,height=400");
-      pantallaDetalles.document.body.innerHTML = `
-        <h1>${usuario.name}</h1>
-        <p><strong>Username:</strong> ${usuario.username}</p>
-        <p><strong>Email:</strong> ${usuario.email}</p>
-        <p><strong>Phone:</strong> ${usuario.phone}</p>
-        <p><strong>Website:</strong> ${usuario.website}</p>
-        <p><strong>Company:</strong> ${usuario.company.name}</p>
-        <p><strong>Address:</strong> ${usuario.address.street}, ${usuario.address.suite}, ${usuario.address.city}, ${usuario.address.zipcode}</p>
-      `;
-    });
-}
 
 function mostrarUsuario(usuario) {
     const fila = document.createElement('tr')
