@@ -1,28 +1,30 @@
-const table = document.getElementById('users-table');
+// Función que muestra los comentarios en la tabla
+const mostrarComentarios = comentarios => {
+  // Limpiar la tabla antes de agregar nuevos comentarios
+  tablaComentarios.innerHTML = '';
 
-fetch('https://jsonplaceholder.typicode.com/users')
-  .then(response => response.json())
-  .then(data => {
-    data.forEach(user => {
-      const row = document.createElement('tr');
-      row.innerHTML = `
-        <td>${user.id}</td>
-        <td>${user.name}</td>
-        <td>${user.username}</td>
-        <td>${user.email}</td>
-        <td>${user.website}</td>
-        <td>
-          <button class="update-button" data-id="${user.id}">Update</button>
-        </td>
-      `;
-      table.querySelector('tbody').appendChild(row);
-    });
+  // Recorrer los comentarios y agregarlos a la tabla
+  comentarios.forEach(comentario => {
+    const row = document.createElement('tr');
+    const nombre = document.createElement('td');
+    const id = document.createElement('td');
+    const email = document.createElement('td');
+    const enlace = document.createElement('td');
+    const link = document.createElement('a');
+
+    nombre.textContent = comentario.name;
+    id.textContent = comentario.id;
+    email.textContent = comentario.email;
+    link.textContent = 'Ver detalles';
+    link.href = `detalle.html?name=${comentario.name}`;
+
+    enlace.appendChild(link);
+
+    row.appendChild(nombre);
+    row.appendChild(id);
+    row.appendChild(email);
+    row.appendChild(enlace);
+
+    tablaComentarios.appendChild(row);
   });
-table.addEventListener('click', event => {
-  const button = event.target.closest('.update-button');
-  if (button) {
-    const userId = button.dataset.id;
-    const url = `update.html?id=${userId}`;
-    window.open(url, '_blank');
-  }
-});
+};

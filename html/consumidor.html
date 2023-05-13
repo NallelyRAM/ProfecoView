@@ -45,7 +45,7 @@
 
 
     <div class="container mt-3">
-        <h2>Productos de interés.</h2>
+
         <ul class="nav nav-tabs">
             <li class="nav-item">
                 <a class="nav-link" href="../html/consumidorWishList.html">WishList</a>
@@ -62,39 +62,33 @@
         </ul>
         <br>
         <div>
-        <section>
-            <div class="contenedorListaSuper">
-                <div class="fila">
-                    <div class="col-8 offset-2">
-                        <table class="table table-bordered">
-                            <thead>
-                            <tr>
-                                <th>Nombre</th>
-                                <th>Direción</th>
-                                <th>Email</th>
-            
-                            </tr>
-                            </thead>
-                            <tbody id="respuesta">
-                            <!--
-                            <tr>
-                                <td> OXXO</td>
-                                <td> Miguel Aleman</td>
-                                <td> oxxo.miguel@gmail.com</td>
-                            </tr>-->
-                            </tbody>
-                        </table>
-            
-                    </div>
-            
-                </div>
-            </div>
-        </section>.
+
+            <!--EMPIEZA TABLAAAA-->
+            <h1>Productos</h1>
+            <input type="text" id="buscador" placeholder="Buscar por nombre, precio o supermercado" style="width: 500px;">
+
+            <table>
+                <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Precio</th>
+                    <th>Supermercado</th>
+                </tr>
+                </thead>
+                <tbody id="tabla-prductos">
+                </tbody>
+            </table>
+
+
+
+
+
+
     </div>
 
 </div>
 
-<script src="../js/listaSuper.js"></script>
+<script src="../js/productoBuscar.js"></script>
 
 </body>
 <footer class="footer">
