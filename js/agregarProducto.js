@@ -68,9 +68,9 @@ function obtenerUsuarios() {
       });
     });
 }
+
+
 obtenerUsuarios();
-
-
 //Obtener los detalles del prodcuto
 tabla.addEventListener("click", (event) => {
   const botonDetalles = event.target.closest(".detalles");
@@ -194,4 +194,12 @@ function mostrarUsuario(usuario) {
         <td>${usuario.address.geo.lng}</td>
     `
     respuesta.appendChild(fila)
+}
+
+function validarTexto(texto) {
+  return /^[a-zA-ZÀ-ÿ\s]+$/.test(texto);
+}
+function validarNumeros(cadena) {
+  const regex = /^\d{1,6}$/;
+  return regex.test(cadena);
 }
