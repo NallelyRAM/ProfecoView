@@ -1,65 +1,49 @@
-//console.log("entro")
-//AQUI
+const url = "https://jsonplaceholder.typicode.com/users";
+const tabla = document.querySelector("table tbody");
 
-const url='https://jsonplaceholder.typicode.com/users';
-const respuesta= document.querySelector("#respuesta")
-
-//Evento
-document.addEventListener("DOMContentLoaded", llamrAPI)
-
-/** FORMA 1
-function llamrAPI(){
-    //console.log("Entroo2")
-    fetch(url)
-    .then(resp => resp.json())
-    .then((dato) => mostarListaSuper(dato))
-}
-*/
-/**FORMA 2 */
-async function llamrAPI(){
-    const respuesta = await fetch(url)
-    const datos = await respuesta.json()
-    ordenarprecio(datos)
-}
-
-/*function mostarListaSuper(datos){
-    datos.forEach(item =>{
-        console.log(item)
-    });
-}*/
-function mostarListaSuper(datos){
-    datos.forEach(element => {
-        //console.log(element)
-        const fila = document.createElement('tr')
-        fila.innerHTML= `
-        <td>${element.name}</td>
-        <td>${element.address.geo.lng}</td>
-        `
-        respuesta.appendChild(fila)
-        ordenarprecio(`<td>${element.address.geo.lng}</td>`)
-
-    });
-
-}
-
-async function ordenarprecio(datos){
-    fetch('https://jsonplaceholder.typicode.com/users')
-    .then(response => response.json())
-    .then(data => {
-      // Ordenar usuarios por lng de mayor a menor
-      data.sort((a, b) => a.address.geo.lng - b.address.geo.lng);
-      // Mostrar usuarios ordenados
-      console.log('Usuarios ordenados por lng de mayor a menor:');
-      data.forEach(user => {
-        console.log(`Nombre: ${user.name} | lng: ${user.address.geo.lng}`);
-
-        const fila = document.createElement('tr')
-        fila.innerHTML= `
-        <td>${user.name}</td>
-        <td>${user.address.geo.lng}</td>
-        `
-        respuesta.appendChild(fila)
+function obtenerUsuarios() {
+  fetch(url)
+    .then((response) => response.json())
+    .then((data) => {
+      data.forEach((usuario) => {
+        const fila = document.createElement("tr");
+        fila.innerHTML = `
+          <td>${usuario.name}</td>
+          <td>${usuario.username}</td>
+          <td>${usuario.email}</td>
+          <td>${usuario.phone}</td>
+          <td>${usuario.company.name}</td>
+          <td><button data-id="${usuario.id}" class="detalles">Detalles</button></td>
+        `;
+        tabla.appendChild(fila);
       });
     });
 }
 
+obtenerUsuarios();
+tabla.addEventListener("click", (event) => {
+  const botonDetalles = event.target.closest(".detalles");
+  if (botonDetalles) {
+    const idUsuario = botonDetalles.dataset.id;
+    mostrarDetallesUsuario(idUsuario);
+  }
+});
+
+//ABRE OTRA PANTALLA DO NDE OBTIENE LA INFO
+function mostrarDetallesUsuario(idUsuario) {
+  const url = `https://jsonplaceholder.typicode.com/users/${idUsuario}`;
+  fetch(url)
+    .then((response) => response.json())
+    .then((usuario) => {
+      const pantallaDetalles = window.open("", "Detalles", "width=400,height=400");
+      pantallaDetalles.document.body.innerHTML = `
+        <h1>${usuario.name}</h1>
+        <p><strong>Username:</strong> ${usuario.username}</p>
+        <p><strong>Email:</strong> ${usuario.email}</p>
+        <p><strong>Phone:</strong> ${usuario.phone}</p>
+        <p><strong>Website:</strong> ${usuario.website}</p>
+        <p><strong>Company:</strong> ${usuario.company.name}</p>
+        <p><strong>Address:</strong> ${usuario.address.street}, ${usuario.address.suite}, ${usuario.address.city}, ${usuario.address.zipcode}</p>
+      `;
+    });
+}
