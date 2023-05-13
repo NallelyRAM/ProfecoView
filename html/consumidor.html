@@ -65,9 +65,19 @@
 
             <!--EMPIEZA TABLAAAA-->
             <h1>Productos</h1>
+
+            <input type="text" id="buscador" placeholder="Buscar por nombre, precio o supermercado" style="width: 500px;">
+            <!--RADIO BUTTON-->
+            <input type="radio" name="orden" value="descendente" checked> Mayor a menor
+            <input type="radio" name="orden" value="ascendente"> Menor a mayor
+            <button onclick="mostrarProductos()">Buscar</button>
+            <button onclick="limpiarSeleccion()">Limpiar</button>
+            <table id="tabla-Comentarios">
+
             <input type="text" id="buscador" placeholder="Buscar por nombre, precio o supermercado" style="width: 500px;" class="form-control">
 
             <table class="table table-dark table-striped" style="margin-top: 20px;">
+
                 <thead>
                 <tr>
                     <th>Nombre</th>
