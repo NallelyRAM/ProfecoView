@@ -52,31 +52,13 @@ async function agregarUsuario() {
         console.error('Error:', error);
         return
       });*/
-
-
     const fila = document.createElement("tr");
-            //nombre
-            //marca
-            //precio
-            //stock
-            //SUPER SE TIENE CAMBIAR AUTO ↓↓↓↓↓↓
-       /**     fila.innerHTML = `
-              <td>${producto.nombre}</td>
-              <td>${producto.marca}</td>
-              <td>${producto.precio}</td>
-              <td>${producto.stock}</td>
-                          <td><button data-id="${producto.id}" class="actualizar" href="myModal" class="btn btn-primary">Actualizar</button>
-                              <button data-id="${producto.id}" class="eliminar" class="btn btn-danger">Eliminar</button></td>
-            `;
-            tabla.appendChild(fila);*/
             const nombreValido = validarTexto(producto.nombre);
             const marcaValida = validarTexto(producto.marca);
             const precioValido = validarNumeros(producto.precio);
             const stockValido = validarNumeros(producto.stock);
-
             if (!nombreValido) {
               alert("Debe introducir un nombre válido");
-
             } else if (!marcaValida) {
               alert("La marca debe contener solo letras y espacios");
               document.querySelector("#marcaProducto").value = "";
@@ -89,7 +71,6 @@ async function agregarUsuario() {
             } else {
               // Crear fila y agregar a tabla
               const fila = document.createElement("tr");
-          
               fila.innerHTML = `
                 <td>${producto.nombre}</td>
                 <td>${producto.marca}</td>
@@ -100,20 +81,14 @@ async function agregarUsuario() {
                   <button data-id="${producto.id}" class="eliminar" class="btn btn-danger">Eliminar</button>
                 </td>
               `;
-          
               tabla.appendChild(fila);
-               // Limpiar campos
               document.querySelector("#nombreProducto").value="";
               document.querySelector("#marcaProducto").value="";
               document.querySelector("#precioProducto").value="";
               document.querySelector("#stockProducto").value="";
             }
-
-
     console.log(respuesta)
 }
-
-
 
 function obtenerUsuarios() {
   fetch(url)
@@ -121,27 +96,6 @@ function obtenerUsuarios() {
     .then((data) => {
       data.forEach((usuario) => {
         const fila = document.createElement("tr");
-        /*
-        const nombreValido = validarTexto(producto.nombre);
-        const marcaValida = validarTexto(producto.marca);
-        const precioValido = validarNumeros(producto.precio);
-        const stockValido = validarNumeros(producto.stock);
-
-        if (!nombreValido) {
-          alert("Debe introducir un nombre válido");
-          document.querySelector("#nombreProductoActualizar").value = "";
-        } else if (!marcaValida) {
-          alert("La marca debe contener solo letras y espacios");
-          document.querySelector("#marcaProductoActualizar").value = "";
-        } else if (!precioValido) {
-          alert("El precio debe ser un número de hasta 6 dígitos");
-          document.querySelector("#precioProductoActualizar").value = "";
-        } else if (!stockValido) {
-          alert("El stock debe ser un número de hasta 6 dígitos");
-          document.querySelector("#stockProductoActualizar").value = "";
-        } else {
-        
-*/
         fila.innerHTML = `
           <td>${usuario.name}</td>
           <td>${usuario.username}</td>
@@ -150,20 +104,10 @@ function obtenerUsuarios() {
           <td style="margin-left=30px"><button data-id="${usuario.id}" class="actualizar" data-toggle="modal" data-target="#myModalUpdate">Actualizar</button>
                 <button data-id="${usuario.id}" class="eliminar">Eliminar</button></td>
         `;
-
         tabla.appendChild(fila);
-        /*
-        // Limpiar campos
-        document.querySelector("#nombreProductoActualizar").value="";
-        document.querySelector("#marcaProductoActualizar").value="";
-        document.querySelector("#precioProductoActualizar").value="";
-        document.querySelector("#stockProductoActualizar").value="";
-        */
-
       });
     });
 }
-
 
 obtenerUsuarios();
 // Agregar event listener para el botón "Eliminar"
@@ -209,16 +153,16 @@ tabla.addEventListener('click', e => {
 
         const modal = new bootstrap.Modal(document.querySelector('#myModalUpdate'));
         modal.show();
-/**
+          /*
           modal.classList.add("show");
           modal.classList.add("fade");
-          document.body.classList.add("modal-open");*/
-
+          document.body.classList.add("modal-open");
+          */
         // Agregar evento submit al formulario de la ventana modal
         formulario.addEventListener('submit', e => {
           e.preventDefault();
           // Crear objeto con los nuevos datos del usuario
-          /**
+          /*
           const nuevoUsuario = {
             name: formulario.querySelector('#nombreProductoActualizar').value,
             username: formulario.querySelector('#marcaProductoActualizar').value,
@@ -228,7 +172,8 @@ tabla.addEventListener('click', e => {
                 lng: formulario.querySelector('#stockProductoActualizar').value
               }
             }
-          };*/
+          };
+          */
           const producto = {
             //"id": Math.floor(Math.random() * 1000),
             "nombre": formulario.querySelector('#nombreProductoActualizar').value,
@@ -259,15 +204,10 @@ tabla.addEventListener('click', e => {
               //modal.style.display = 'none';
             });
         });
-
-
       });
-    
       //.catch(error => alert(error.message));
   }
 });
-
-
 
 function mostrarUsuario(usuario) {
     const fila = document.createElement('tr')
@@ -279,7 +219,6 @@ function mostrarUsuario(usuario) {
     `
     respuesta.appendChild(fila)
 }
-
 
 //F U N C I O N E S  P A R A  V A L I D A R
 function validarTexto(texto) {
