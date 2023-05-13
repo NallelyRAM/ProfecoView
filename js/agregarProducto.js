@@ -16,7 +16,7 @@ async function mostrarUsuarios() {
    // obtenerUsuarios()
 }
 
-async function agregarUsuario() {
+function agregarUsuario() {
     const nombre = document.querySelector("#nombreProducto").value
     const marca = document.querySelector("#marcaProducto").value
     const precio = document.querySelector("#precioProducto").value
@@ -53,6 +53,7 @@ async function agregarUsuario() {
         return
       });*/
     const fila = document.createElement("tr");
+            console.log(respuesta)
             const nombreValido = validarTexto(producto.nombre);
             const marcaValida = validarTexto(producto.marca);
             const precioValido = validarNumeros(producto.precio);
@@ -77,8 +78,8 @@ async function agregarUsuario() {
                 <td>${producto.precio}</td>
                 <td>${producto.stock}</td>
                 <td>
-                  <button data-id="${producto.id}" class="actualizar" href="myModal" class="btn btn-primary">Actualizar</button>
-                  <button data-id="${producto.id}" class="eliminar" class="btn btn-danger">Eliminar</button>
+                  <button data-id="${producto.id}" class="btn btn-light" href="myModal">Actualizar</button>
+                  <button data-id="${producto.id}" class="btn btn-danger">Eliminar</button>
                 </td>
               `;
               tabla.appendChild(fila);
@@ -101,8 +102,8 @@ function obtenerUsuarios() {
           <td>${usuario.username}</td>
           <td>${usuario.address.geo.lat}</td>
           <td>${usuario.address.geo.lat}</td>
-          <td style="margin-left=30px"><button data-id="${usuario.id}" class="actualizar" data-toggle="modal" data-target="#myModalUpdate">Actualizar</button>
-                <button data-id="${usuario.id}" class="eliminar">Eliminar</button></td>
+          <td style="margin-left=30px"><button data-id="${usuario.id}" class="btn btn-primary" data-toggle="modal" data-target="#myModalUpdate">Actualizar</button>
+                <button data-id="${usuario.id}" class="btn btn-danger">Eliminar</button></td>
         `;
         tabla.appendChild(fila);
       });
