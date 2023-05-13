@@ -51,12 +51,17 @@ function obtenerUsuarios() {
     .then((data) => {
       data.forEach((usuario) => {
         const fila = document.createElement("tr");
+        //nombre
+        //marca
+        //precio
+        //stock
+        //SUPER SE TIENE CAMBIAR AUTO ↓↓↓↓↓↓
         fila.innerHTML = `
           <td>${usuario.name}</td>
           <td>${usuario.username}</td>
+          <td>${usuario.address.geo.lat}</td>
+          <td>${usuario.address.geo.lng}</td>
           <td>${usuario.email}</td>
-          <td>${usuario.phone}</td>
-          <td>${usuario.company.name}</td>
           <td><button data-id="${usuario.id}" class="detalles">Detalles</button></td>
                       <td><button data-id="${usuario.id}" class="actualizar">Actualizar</button>
                           <button data-id="${usuario.id}" class="eliminar">Eliminar</button></td>
