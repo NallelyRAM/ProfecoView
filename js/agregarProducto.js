@@ -1,8 +1,9 @@
 const url = 'https://jsonplaceholder.typicode.com/users';
 const respuesta = document.querySelector("#respuesta")
-const btnAgregar = document.querySelector("#botonActualizar")
+const btnAgregar = document.querySelector("#btnGuardar")
 const tabla = document.querySelector("table tbody");
 
+const idSupermercado = 5
 
 document.addEventListener("DOMContentLoaded", mostrarUsuarios)
 
@@ -16,31 +17,58 @@ async function mostrarUsuarios() {
 }
 
 async function agregarUsuario() {
-    const name = document.querySelector("#nombreProducto").value
-    const username = document.querySelector("#marcaProducto").value
-    const lat = document.querySelector("#precioProducto").value
-    const lng = document.querySelector("#stockProducto").value
+    const nombre = document.querySelector("#nombreProducto").value
+    const marca = document.querySelector("#marcaProducto").value
+    const precio = document.querySelector("#precioProducto").value
+    const stock = document.querySelector("#stockProducto").value
 
-    const nuevoUsuario = {
-        name: name,
-        username: username,
-        address: {
-            geo: {
-                lat: lat,
-                lng: lng
-            }
+    const producto = {
+        "id": Math.floor(Math.random() * 1000),
+        "nombre": nombre,
+        "marca": marca,
+        "precio":precio,
+        "stock":stock,
+        "supermercado":{
+            "id":idSupermercado
         }
     }
-
-    const respuesta = await fetch(url, {
-        method: 'POST',
-        body: JSON.stringify(nuevoUsuario),
-        headers: {
-            'Content-Type': 'application/json'
-        }
+    // este es para agregar productos a los supermercados
+/**
+    let idProductoAgregado = 0
+    fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(producto)
     })
-    const usuarioCreado = await respuesta.json()
-    mostrarUsuario(usuarioCreado)
+      .then(response => response.json())
+      .then(data => {
+        idProductoAgregado = data.id
+        console.log(data);
+      })
+      .catch(error => {
+        // Manejar errores
+        console.error('Error:', error);
+        return
+      });*/
+
+    const fila = document.createElement("tr");
+            //nombre
+            //marca
+            //precio
+            //stock
+            //SUPER SE TIENE CAMBIAR AUTO ↓↓↓↓↓↓
+            fila.innerHTML = `
+              <td>${producto.nombre}</td>
+              <td>${producto.marca}</td>
+              <td>${producto.precio}</td>
+              <td>${producto.stock}</td>
+                          <td><button data-id="${producto.id}" class="actualizar" href="myModal">Actualizar</button>
+                              <button data-id="${producto.id}" class="eliminar">Eliminar</button></td>
+            `;
+            tabla.appendChild(fila);
+
     console.log(respuesta)
 }
 
@@ -61,8 +89,14 @@ function obtenerUsuarios() {
           <td>${usuario.username}</td>
           <td>${usuario.address.geo.lat}</td>
           <td>${usuario.address.geo.lng}</td>
-          <td><button data-id="${usuario.id}" class="actualizar" data-toggle="modal" data-target="#myModalUpdate">Actualizar</button>
+<<<<<<< HEAD
+          <td>${usuario.email}</td>
+                      <td><button data-id="${usuario.id}" class="actualizar" href="myModal">Actualizar</button>
+                          <button data-id="${usuario.id}" class="eliminar">Eliminar</button></td>
+=======
+          <td style="margin-left=30px"><button data-id="${usuario.id}" class="actualizar" data-toggle="modal" data-target="#myModalUpdate">Actualizar</button>
                 <button data-id="${usuario.id}" class="eliminar">Eliminar</button></td>
+>>>>>>> 935369795acd0ced4473dc880ba864546e7f4d85
         `;
         tabla.appendChild(fila);
       });
@@ -120,12 +154,13 @@ tabla.addEventListener('click', e => {
         formulario.querySelector('#stockProducto').value = usuario.address.geo.lng;
 
         // Mostrar la ventana modal
-        const modal = document.querySelector('#myModal');
-        //modal.style.display = 'modal';
 
+        const modal = new bootstrap.Modal(document.querySelector('#myModal'));
+        modal.show();
+/**
           modal.classList.add("show");
           modal.classList.add("fade");
-          document.body.classList.add("modal-open");
+          document.body.classList.add("modal-open");*/
 
         // Agregar evento submit al formulario de la ventana modal
         formulario.addEventListener('submit', e => {
