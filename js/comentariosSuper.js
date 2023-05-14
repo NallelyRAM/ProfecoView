@@ -44,7 +44,7 @@ function agregarComentario(){
 
     let idProductoAgregado = 0
     fetch(url, {
-    method: 'POST',
+    method: 'GET',
     headers: {
         'Content-Type': 'application/json'
     },
