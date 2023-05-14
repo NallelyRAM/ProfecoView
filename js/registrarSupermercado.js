@@ -39,14 +39,13 @@ const usuario = {
 };
 
 localStorage.setItem('usuario', JSON.stringify(usuario));
-  //console.log(usuario)
 const usuarioActivo = JSON.parse(localStorage.getItem('usuario'));
-  //console.log(usuarioActivo)
 const nombreUsuario = usuarioActivo.nombre;
-  //console.log(nombreUsuario)
-if(nombreUsuario != null){
+//const bienvenida = document.getElementById('bienvenida');
+if(nombreUsuario){
     alert("Bienvenido "+nombreUsuario);
 }
-  // Redirigir al usuario a la siguiente página
 window.location.href = '../html/supermercado.html';
+//bienvenida.innerHTML = `¡Bienvenido/a, ${nombreUsuario}!`;
+//    console.log(bienvenida)
 });
