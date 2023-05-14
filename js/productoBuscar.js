@@ -74,3 +74,43 @@ buscar();
 
      });
  }
+
+ //SELECCIÓN DE PRODUCTO Y AGREGARLO EN LA WISH
+//SELECCIÓN DE PRODUCTO Y AGREGARLO EN LA WISH
+
+fetch('https://jsonplaceholder.typicode.com/comments')
+  .then(response => response.json())
+  .then(data => {
+    const commentsTable = document.getElementById("tabla-Comentarios");
+
+    data.forEach(comment => {
+      const row = document.createElement("tr");
+      const checkboxCell = document.createElement("td");
+      const checkbox = document.createElement("input");
+      checkbox.type = "checkbox";
+      checkbox.name = "comment";
+      checkbox.value = JSON.stringify(comment);
+      checkboxCell.appendChild(checkbox);
+      row.appendChild(checkboxCell);
+      row.appendChild(document.createElement("td")).textContent = comment.name;
+      row.appendChild(document.createElement("td")).textContent = comment.id;
+      row.appendChild(document.createElement("td")).textContent = comment.email;
+      commentsTable.appendChild(row);
+    });
+  })
+  .catch(error => console.error(error));
+function showSelectedComments() {
+  const selectedComments = [];
+  const checkboxes = document.querySelectorAll('input[name="comment"]:checked');
+
+  for (let i = 0; i < checkboxes.length; i++) {
+    selectedComments.push(JSON.parse(checkboxes[i].value));
+  }
+
+  if (selectedComments.length > 0) {
+    localStorage.setItem("selectedComments", JSON.stringify(selectedComments));
+    window.location.href = "wishList.html";
+  } else {
+    alert("Por favor, selecciona al menos un producto.");
+  }
+}

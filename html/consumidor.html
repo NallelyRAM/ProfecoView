@@ -14,88 +14,90 @@
 
 <body>
 
-    <nav id="nav2"> <!-- ////////////////////  HEADER  //////////////////// -->
+<nav id="nav2">
 
 
-        <a class="enlace">
-            <img src="../img/p3.png" alt="" class="logo" />
-        </a>
+    <a class="enlace">
+        <img src="../img/p3.png" alt="" class="logo" />
+    </a>
 
-        <a id="con"> Bienvenid@! . .</a>
-    </nav><!-- ////////////////////  HEADER  //////////////////// -->
+    <a id="con"> Bienvenid@! . .</a>
+</nav>
 
-    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-        <div class="container-fluid">
-            <ul class="navbar-nav">
-                <a class="navbar-brand" href="#">
-                    <img src="../img/user.png" alt="Logo" style="width:40px;" class="rounded-pill">
-                </a>
-                <li class="nav-item">
-                    <a class="nav-link active" href="">Inicio</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="../html/consumidorPerfil.html">Perfil</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="../html/index.html">Cerrar sesión</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-
-
-    <div class="container mt-3">
-
-        <ul class="nav nav-tabs">
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <div class="container-fluid">
+        <ul class="navbar-nav">
+            <a class="navbar-brand" href="#">
+                <img src="../img/user.png" alt="Logo" style="width:40px;" class="rounded-pill">
+            </a>
             <li class="nav-item">
-                <a class="nav-link" href="../html/consumidorWishList.html">WishList</a>
+                <a class="nav-link active" href="">Inicio</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="../html/consumidorFav.html">Favoritos</a>
+                <a class="nav-link" href="../html/consumidorPerfil.html">Perfil</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="../html/consumidorBuscarProducto.html">Buscar producto</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="../html/consumidorSupermercado.html">Buscar supermercado</a>
+                <a class="nav-link" href="../html/index.html">Cerrar sesión</a>
             </li>
         </ul>
-        <br>
-        <div>
-
-            <!--EMPIEZA TABLAAAA-->
-            <h1>Productos</h1>
-
-           <input type="text" id="buscador" placeholder="Buscar por nombre, precio o supermercado" style="width: 500px;">
-            <!--RADIO BUTTON-->
-            <input type="radio" name="orden" value="descendente" checked  onclick="mostrarProductos()"> Mayor a menor
-            <input type="radio" name="orden" value="ascendente" onclick="mostrarProductos()"> Menor a mayor
-           <!-- <button onclick="mostrarProductos()" class="btn btn-info">Buscar</button>
-            <button onclick="limpiarSeleccion()" class="btn btn-outline-info">Limpiar</button>-->
-            <table id="tabla-Comentarios">
-
-            <!--<input type="text" id="buscador" placeholder="Buscar por nombre, precio o supermercado" style="width: 500px;" class="form-control">-->
-
-            <table class="table table-dark table-striped" style="margin-top: 20px;">
-
-                <thead>
-                <tr>
-                    <th>Nombre</th>
-                    <th>Precio</th>
-                    <th>Supermercado</th>
-                </tr>
-                </thead>
-                <tbody id="tabla-prductos">
-                </tbody>
-            </table>
-
-
-
-
-
-
     </div>
+</nav>
 
+
+<div class="container mt-3">
+
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link" href="../html/wishList.html">WishList</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="../html/consumidorFav.html">Favoritos</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="../html/consumidorBuscarProducto.html">Buscar producto</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="../html/consumidorSupermercado.html">Buscar supermercado</a>
+        </li>
+    </ul>
+    <br>
+
+
+    <!--EMPIEZA TABLAAAA-->
+    <h1>Productos</h1>
+
+    <input type="text" id="buscador" placeholder="Buscar por nombre, precio o supermercado" style="width: 500px;">
+    <!--RADIO BUTTON-->
+    <input type="radio" name="orden" value="ascendente" checked onclick="mostrarProductos()"> Menor a mayor
+    <input type="radio" name="orden" value="descendente" onclick="mostrarProductos()"> Mayor a menor
+    <br>
+    <br>
+    <button type="button" onclick="showSelectedComments()" class="btn btn-outline-success">Mostrar comentarios seleccionados</button>
+    <!-- <button onclick="mostrarProductos()" class="btn btn-info">Buscar</button>
+            <button onclick="limpiarSeleccion()" class="btn btn-outline-info">Limpiar</button>-->
+    <table class="table table-dark table-striped" style="margin-top: 20px;" id="tabla-Comentarios">
+
+        <!--<input type="text" id="buscador" placeholder="Buscar por nombre, precio o supermercado" style="width: 500px;" class="form-control">-->
+        <!--PARA QUE APAREZCA AL PRINCIPIO CUANDO ABRES LA PANTALLA-->
+        <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Precio</th>
+            <th>Supermercado</th>
+        </tr>
+        </thead>
+        <table class="table table-dark table-striped" style="margin-top: 20px;" id="table">
+            <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Supermercado</th>
+            </tr>
+            </thead>
+            <tbody id="tabla-prductos">
+            </tbody>
+        </table>
+    </table>
 </div>
 
 <script src="../js/productoBuscar.js"></script>
@@ -103,12 +105,13 @@
 </body>
 <footer class="footer">
     <nav>
-        <a href="#" class="enlace"><img src="../img/logo4.png" alt="" class="logo2"/></a>
+        <a href="#" class="enlace"><img src="../img/logo4.png" alt="" class="logo2" /></a>
         <a id="info">Contáctanos</a>
         <a id="info2">Av. José Vasconcelos 208 Col. Condesa, Demarcación Territorial Cuauhtémoc 06140 Ciudad de México</a>
         <a id="info3">Teléfono: (55) 5625 6700</a>
         <a id="info4">Atención Ciudadana: 800 468 8722</a>
     </nav>
 </footer>
+
 </html>
 <!--  -->

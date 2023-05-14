@@ -4,18 +4,26 @@
     <title>Obtener cuerpo de API</title>
 </head>
 <body>
-<input type="radio" name="orden" value="descendente" checked> Mayor a menor
-<input type="radio" name="orden" value="ascendente"> Menor a mayor
-<button onclick="mostrarProductos()">Buscar</button>
-<button onclick="limpiarSeleccion()">Limpiar selección</button>
+<h1>Selecciona los comentarios:</h1>
 
-<table id="tabla-Comentarios">
+<table id="table">
+    <thead>
     <tr>
-        <th>Name</th>
-        <th>ID</th>
-        <th>Email</th>
+        <th></th>
+        <th>Nombre</th>
+        <th>Precio</th>
+
+        <th>Supermercado</th>
     </tr>
+    </thead>
+    <tbody>
+    <!-- Las filas de la tabla se generarán dinámicamente con JavaScript -->
+    </tbody>
 </table>
+
+<button type="button" onclick="showSelectedComments()">Mostrar comentarios seleccionados</button>
+
+
 <script src="/js/prueba1.js"></script>
 </body>
 </html>
