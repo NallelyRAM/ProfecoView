@@ -1,10 +1,8 @@
 const URL_API = 'https://jsonplaceholder.typicode.com/comments';
-
-// Obtener los elementos HTML necesarios
 const buscador = document.getElementById('buscador');
 const tablaSupermercado = document.getElementById('tabla-prductos');
 
-// Función que realiza la búsqueda por nombre, ID o email
+//BUSCAA
 const buscar = () => {
   const textoBusqueda = buscador.value.toLowerCase();
 
@@ -72,21 +70,7 @@ buscar();
        const tabla = document.getElementById("tabla-Comentarios");
        tabla.innerHTML = ""; // Limpiar la tabla
        // Agregar las filas de la tabla
-       for (let i = 0; i < data.length; i++) {
-         const comentario = data[i];
-         const fila = document.createElement("tr");
-         fila.innerHTML = `
-           <td>${comentario.name}</td>
-           <td>${comentario.id}</td>
-           <td>${comentario.email}</td>
-         `;
-         tabla.appendChild(fila);
-       }
+       mostrarComentarios(data);
+
      });
- }
- function limpiarSeleccion() {
-   const ordenRadios = document.getElementsByName("orden");
-   for (let i = 0; i < ordenRadios.length; i++) {
-     ordenRadios[i].checked = false;
-   }
  }
