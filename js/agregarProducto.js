@@ -52,6 +52,7 @@ function agregarUsuario() {
         console.error('Error:', error);
         return
       });*/
+      
     const fila = document.createElement("tr");
             console.log(respuesta)
             const nombreValido = validarTexto(producto.nombre);
