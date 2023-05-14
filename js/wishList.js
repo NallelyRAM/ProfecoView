@@ -19,4 +19,17 @@ selectedComments.forEach(comment => {
   row.appendChild(tdDelete);
   selectedCommentsTableBody.appendChild(row);
 
+
+//Accion para que elimine un producto de la wish
+ btnDelete.addEventListener("click", () => {
+    if (confirm("¿Está seguro que desea eliminar este comentario?")) {
+      // Eliminar fila de la tabla
+      row.remove();
+      // Eliminar comentario del almacenamiento local
+      const index = selectedComments.indexOf(comment);
+      selectedComments.splice(index, 1);
+      localStorage.setItem("selectedComments", JSON.stringify(selectedComments));
+    }
+  });
+
 });

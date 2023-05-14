@@ -85,7 +85,10 @@ buscar();
 
  //SELECCIÓN DE PRODUCTO Y AGREGARLO EN LA WISH
 //SELECCIÓN DE PRODUCTO Y AGREGARLO EN LA WISH
+// obtener comentarios previamente seleccionados (cuando esta vacia))
+let selectedComments = JSON.parse(localStorage.getItem("selectedComments")) || [];
 
+// rellenar la tabla con comentarios
 fetch('https://jsonplaceholder.typicode.com/comments')
   .then(response => response.json())
   .then(data => {
@@ -98,6 +101,11 @@ fetch('https://jsonplaceholder.typicode.com/comments')
       checkbox.type = "checkbox";
       checkbox.name = "comment";
       checkbox.value = JSON.stringify(comment);
+      // marque la casilla si este comentario fue seleccionado previamente
+      if (selectedComments.find(selectedComment => selectedComment.id === comment.id)) {
+        checkbox.checked = true;
+        checkbox.disabled = true; // deshabilitar checkbox si ya está seleccionado
+      }
       checkboxCell.appendChild(checkbox);
       row.appendChild(checkboxCell);
       row.appendChild(document.createElement("td")).textContent = comment.name;
@@ -107,16 +115,23 @@ fetch('https://jsonplaceholder.typicode.com/comments')
     });
   })
   .catch(error => console.error(error));
+
 function showSelectedComments() {
-  const selectedComments = [];
   const checkboxes = document.querySelectorAll('input[name="comment"]:checked');
 
-  for (let i = 0; i < checkboxes.length; i++) {
-    selectedComments.push(JSON.parse(checkboxes[i].value));
-  }
+  // añadir los nuevos comentarios seleccionados a los existentes
+  checkboxes.forEach(checkbox => {
+    const comment = JSON.parse(checkbox.value);
+    if (!selectedComments.find(selectedComment => selectedComment.id === comment.id)) {
+      selectedComments.push(comment);
+    }
+  });
+
+  // guardar los comentarios seleccionados actualizados
+  localStorage.setItem("selectedComments", JSON.stringify(selectedComments));
+
 
   if (selectedComments.length > 0) {
-    localStorage.setItem("selectedComments", JSON.stringify(selectedComments));
     window.location.href = "wishList.html";
   } else {
     alert("Por favor, selecciona al menos un producto.");
