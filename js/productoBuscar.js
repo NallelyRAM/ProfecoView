@@ -11,7 +11,7 @@ const buscar = () => {
     .then(response => response.json())
     .then(comentarios => {
       // Filtrar los comentarios por nombre, precio o super
-      const comentariosFiltrados = comentarios.filter(comentario => {
+        const comentariosFiltrados = comentarios.filter(comentario => {
         const nombre = comentario.name.toLowerCase();
         const id = comentario.id.toString().toLowerCase();
         const email = comentario.email.toLowerCase();
@@ -32,14 +32,22 @@ const mostrarComentarios = comentarios => {
   // Recorrer los comentarios y agregarlos a la tabla
   comentarios.forEach(comentario => {
     const row = document.createElement('tr');
+    const checkboxCell = document.createElement("td");
+    const checkbox = document.createElement("input");
     const nombre = document.createElement('td');
     const id = document.createElement('td');
     const email = document.createElement('td');
+
+    checkbox.type = "checkbox";
+    checkbox.name = "comment";
+    checkbox.value = JSON.stringify(comentario);
+    checkboxCell.appendChild(checkbox);
 
     nombre.textContent = comentario.name;
     id.textContent = comentario.id;
     email.textContent = comentario.email;
 
+    row.appendChild(checkboxCell);
     row.appendChild(nombre);
     row.appendChild(id);
     row.appendChild(email);
