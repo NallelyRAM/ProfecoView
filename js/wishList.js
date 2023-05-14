@@ -11,8 +11,12 @@ selectedComments.forEach(comment => {
 
   const btnEdit = document.createElement("button");
   btnEdit.textContent = "Editar";
+  btnEdit.classList.add("btn");
+  btnEdit.classList.add("btn-primary");
   const btnDelete = document.createElement("button");
   btnDelete.textContent = "Eliminar";
+  btnDelete.classList.add("btn");
+  btnDelete.classList.add("btn-danger")
   const tdEdit = document.createElement("td");
   const tdDelete = document.createElement("td");
   tdEdit.appendChild(btnEdit);
