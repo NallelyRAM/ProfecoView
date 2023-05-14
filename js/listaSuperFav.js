@@ -6,42 +6,6 @@ selectedComments.forEach(comment => {
   const row = document.createElement("tr");
   row.appendChild(document.createElement("td")).textContent = comment.name;
 
-
-/*
-  //Mapping
-  const wishList = {
-    //"id:" Math.floor(Math.random() * 1000),
-    "deseo": deseo
-    //"supermercado":{
-    //"id": 
-        //idSupermercado
-      //},
-    //"consumidor":{
-      //"id": 
-        //idConsumidor
-      //}
-  }
-
-    let idProductoAgregado = 0
-    fetch(url, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(wishList)
-    })
-      .then(response => response.json())
-      .then(data => {
-        idProductoAgregado = data.id
-        console.log(data);
-      })
-      .catch(error => {
-        // Manejar errores
-        console.error('Error:', error);
-        return
-      });
-*/
-
 //Boton eliminar
   const btnDelete = document.createElement("button");
   btnDelete.textContent = "Eliminar";

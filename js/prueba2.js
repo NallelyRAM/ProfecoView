@@ -1,127 +1,64 @@
-const URL_API = 'https://jsonplaceholder.typicode.com/comments';
-const buscador = document.getElementById('buscador');
-const tablaSupermercado = document.getElementById('tabla-prductos');
+// Obtener los datos de localStorage si existen
+const usuario = localStorage.getItem('usuario');
 
-//BUSCAA
-const buscar = () => {
-  const textoBusqueda = buscador.value.toLowerCase();
 
-  // Realizar la solicitud a la API
-  fetch(URL_API)
-    .then(response => response.json())
-    .then(comentarios => {
-      // Filtrar los comentarios por nombre, precio o super
-      const comentariosFiltrados = comentarios.filter(comentario => {
-        const nombre = comentario.name.toLowerCase();
-        const id = comentario.id.toString().toLowerCase();
-        const email = comentario.email.toLowerCase();
-        return nombre.includes(textoBusqueda) || id.includes(textoBusqueda) || email.includes(textoBusqueda);
-      });
+//const comentario = localStorage.getItem('comentario');
+//hace que se pueda guardar todos los comentarios que se han echo
+const comentarios = JSON.parse(localStorage.getItem('comentarios')) || [];
 
-      // Mostrar los comentarios en la tabla
-      mostrarComentarios(comentariosFiltrados);
-    })
-    .catch(error => console.error(error));
-};
 
-// Función que muestra los comentarios en la tabla
-const mostrarComentarios = comentarios => {
-  // Limpiar la tabla antes de agregar nuevos comentarios
-  tablaSupermercado.innerHTML = '';
+if (comentarios.length > 0) {
+ const tabla = document.createElement('table');
+ const encabezado = tabla.createTHead().insertRow();
+ //Se crea tabla
+ encabezado.insertCell().innerText = 'Supermercado';
+ encabezado.insertCell().innerText = 'Comentario';
+ encabezado.insertCell().innerText = 'Acciones';
 
-  // Recorrer los comentarios y agregarlos a la tabla
-  comentarios.forEach(comentario => {
-    const row = document.createElement('tr');
-    const nombre = document.createElement('td');
-    const id = document.createElement('td');
-    const email = document.createElement('td');
+ const cuerpo = tabla.createTBody();
+ comentarios.forEach((comentario, index) => {
+   // Crear fila para cada comentario
+   const fila = cuerpo.insertRow();
 
-    nombre.textContent = comentario.name;
-    id.textContent = comentario.id;
-    email.textContent = comentario.email;
+   // Insertar datos del comentario en la fila
+   fila.insertCell().innerText = comentario.usuario;
+   fila.insertCell().innerText = comentario.comentario;
 
-    row.appendChild(nombre);
-    row.appendChild(id);
-    row.appendChild(email);
+   // Crear botón de editar
+   const botonEditar = document.createElement('button');
+   botonEditar.innerText = 'Editar';
+   botonEditar.addEventListener('click', () => {
+     // Obtener el comentario a editar
+     const comentarioEditar = comentarios[index];
 
-    tablaSupermercado.appendChild(row);
-  });
-};
 
-// Escuchar el evento de cambio en el cuadro de búsqueda
-buscador.addEventListener('input', buscar);
+   });
 
-// Mostrar todos los comentarios al cargar la página
-buscar();
+   // Crear botón de eliminar
+   const botonEliminar = document.createElement('button');
+   botonEliminar.innerText = 'Eliminar';
+   botonEliminar.addEventListener('click', () => {
+     // Preguntar al usuario si realmente desea eliminar el comentario
+     if (confirm('¿Está seguro que desea eliminar este comentario?')) {
+       // Eliminar el comentario de la lista y actualizar localStorage
+       comentarios.splice(index, 1);
+       localStorage.setItem('comentarios', JSON.stringify(comentarios));
+       location.reload(); // Recargar la página para actualizar la vista
+     }
+   });
 
-function mostrarProductos() {
-  const ordenRadios = document.getElementsByName("orden");
-  let orden = "asc"; // orden por defecto
-  for (let i = 0; i < ordenRadios.length; i++) {
-    if (ordenRadios[i].checked) {
-      orden = ordenRadios[i].value === "ascendente" ? "asc" : "desc";
-    }
-  }
-  fetch(`https://jsonplaceholder.typicode.com/comments?_sort=id&_order=${orden}`)
-    .then(response => response.json())
-    .then(data => {
-      const tabla = document.getElementById("tabla-Comentarios");
-      tabla.innerHTML = ""; // Limpiar la tabla
-      // Agregar las filas de la tabla
-      mostrarComentarios(data);
-    });
+
+   // Insertar botones de editar y eliminar en la fila
+   const celdaAcciones = fila.insertCell();
+   celdaAcciones.appendChild(botonEditar);
+   celdaAcciones.appendChild(botonEliminar);
+ });
+
+ // Agregar la tabla a la página
+ document.body.appendChild(tabla);
+} else {
+  // Si no hay comentarios, mostrar un mensaje al usuario
+  const mensaje = document.createElement('p');
+  mensaje.innerText = 'No se encontraron comentarios.';
+  document.body.appendChild(mensaje);
 }
-
-fetch('https://jsonplaceholder.typicode.com/comments')
-  .then(response => response.json())
-  .then(data => {
-    const commentsTable = document.getElementById("tabla-Comentarios");
-
-    // Agregar cabecera de selección
-    const headerRow = commentsTable.insertRow(0);
-    const headerCell = document.createElement("th");
-    const selectAllCheckbox = document.createElement("input");
-    selectAllCheckbox.type = "checkbox";
-    selectAllCheckbox.name = "selectAll";
-    selectAllCheckbox.addEventListener("change", function () {
-      const checkboxes = document.getElementsByName("comment");
-      for (let i = 0; i < checkboxes.length; i++) {
-        checkboxes[i].checked = this.checked;
-      }
-    });
-
-
-    data.forEach(comment => {
-      const row = document.createElement("tr");
-      const checkboxCell = document.createElement("td");
-      const checkbox = document.createElement("input");
-      checkbox.type = "checkbox";
-      checkbox.name = "comment";
-      checkbox.value = JSON.stringify(comment);
-      checkboxCell.appendChild(checkbox);
-      row.appendChild(checkboxCell);
-      row.appendChild(document.createElement("td")).textContent = comment.name;
-      row.appendChild(document.createElement("td")).textContent = comment.id;
-      row.appendChild(document.createElement("td")).textContent = comment.email;
-      commentsTable.appendChild(row);
-    });
-  })
-  .catch(error => console.error(error));
-
-
-function showSelectedComments() {
-  const selectedComments = [];
-  const checkboxes = document.querySelectorAll('input[name="comment"]:checked');
-
-  for (let i = 0; i < checkboxes.length; i++) {
-    selectedComments.push(JSON.parse(checkboxes[i].value));
-  }
-
-  if (selectedComments.length > 0) {
-    localStorage.setItem("selectedComments", JSON.stringify(selectedComments));
-    window.location.href = "wishList.html";
-  } else {
-    alert("Por favor, selecciona al menos un producto.");
-  }
-}
-
