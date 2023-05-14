@@ -21,7 +21,6 @@
         <img src="../img/p3.png" alt="" class="logo" />
     </a>
 
-    <a id="con"> Bienvenid@! . .</a>
 </nav>
 
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
@@ -45,7 +44,8 @@
 
 
 <div class="container mt-3">
-
+    <h2></h2>
+    <p>Apartado donde se muestran los supermercados.</p>
     <ul class="nav nav-tabs">
         <li class="nav-item">
             <a class="nav-link" href="../html/wish.html">WishList</a>
@@ -62,13 +62,11 @@
 
 
     <!--EMPIEZA TABLAAAA-->
-    <h1>Productos</h1>
+    <h1>Crea tu lista de supermercados favoritos</h1>
 
-    <input type="text" id="buscador" placeholder="Buscar por nombre" style="width: 500px;">
-
-    <br>
-    <br>
-    <button type="button" onclick="showSelectedComments()" class="btn btn-outline-success">Agregar supermercado a mi lista fav</button>
+    <input type="text" id="buscador" placeholder="Buscar supermercado" style="width: 500px;"> 
+    <button type="button" onclick="showSelectedComments()" class="btn btn-success" style="margin-left: 15px;">Agregar</button>
+    
     <!-- <button onclick="mostrarProductos()" class="btn btn-info">Buscar</button>
             <button onclick="limpiarSeleccion()" class="btn btn-outline-info">Limpiar</button>-->
     <table class="table table-dark table-striped" style="margin-top: 20px;" id="tabla-Comentarios">

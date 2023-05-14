@@ -1,13 +1,14 @@
 const url = 'https://jsonplaceholder.typicode.com/users';
 const respuesta = document.querySelector("#respuesta")
 const btnAgregar = document.querySelector("#botonGuardar")
+const btnActualizar = document.querySelector("#btnActualizar")
 const tabla = document.querySelector("table tbody");
 
 const idSupermercado = 5
 
 document.addEventListener("DOMContentLoaded", mostrarUsuarios)
-
 btnAgregar.addEventListener("click", agregarUsuario)
+btnActualizar.addEventListener("click", actualizarUsuario)
 
 async function mostrarUsuarios() {
     const respuesta = await fetch(url)
@@ -32,6 +33,7 @@ function agregarUsuario() {
            // "id":idSupermercado
         //}
     }
+
     // este es para agregar productos a los supermercados
 /**
     let idProductoAgregado = 0
@@ -52,6 +54,8 @@ function agregarUsuario() {
         console.error('Error:', error);
         return
       });*/
+
+
       
     const fila = document.createElement("tr");
             console.log(respuesta)
@@ -91,6 +95,84 @@ function agregarUsuario() {
             }
     console.log(respuesta)
 }
+
+// Método actualizar / PUT 
+/*
+function actualizarUsuario() {
+  const nombre = document.querySelector("#nombreProductoActualizar").value
+  const marca = document.querySelector("#marcaProductoActualizar").value
+  const precio = document.querySelector("#precioProductoActualizar").value
+  const stock = document.querySelector("#stockProductoActualizar").value
+  const idProductoActualizar = event.target.dataset.id;
+
+  const producto = {
+    //"id": Math.floor(Math.random() * 1000),
+    "nombre": nombre,
+    "marca": marca,
+    "precio":precio,
+    "stock":stock,
+    //"supermercado":{
+       // "id":idSupermercado
+    //}
+}
+
+  const nombreValido = validarTexto(producto.nombre);
+  const marcaValida = validarTexto(producto.marca);
+  const precioValido = validarNumeros(producto.precio);
+  const stockValido = validarNumeros(producto.stock);
+  if (!nombreValido) {
+    alert("Debe introducir un nombre válido");
+  } else if (!marcaValida) {
+    alert("La marca debe contener solo letras y espacios");
+    document.querySelector("#marcaProductoActualizar").value = "";
+  } else if (!precioValido) {
+    alert("El precio debe ser un número de hasta 6 dígitos");
+    document.querySelector("#precioProductoActualizar").value = "";
+  } else if (!stockValido) {
+    alert("El stock debe ser un número de hasta 6 dígitos");
+    document.querySelector("#stockProductoActualizar").value = "";
+  } else {
+
+    const fila = document.querySelector(`tr[data-id="${idProductoActualizar}"]`);
+    fila.innerHTML = `
+      <td>${producto.nombre}</td>
+      <td>${producto.marca}</td>
+      <td>${producto.precio}</td>
+      <td>${producto.stock}</td>
+      <td>
+        <button data-id="${idProductoActualizar}" class="btn btn-primary actualizar" href="myModal">Actualizar</button>
+        <button data-id="${idProductoActualizar}" class="btn btn-danger eliminar">Eliminar</button>
+      </td>
+    `;
+//Este es para actualizar el producto en el supermercado
+
+let idProductoActualizado = 0
+  fetch(url, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(producto)
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      idProductoActualizado = data.id
+      console.log(data)
+    })
+    .catch((error) => {
+      console.error("Error al actualizar usuario:", error);
+      return
+    });
+    
+
+    tabla.appendChild(fila);
+    document.querySelector("#nombreProductoActualizar").value="";
+    document.querySelector("#marcaProductoActualizar").value="";
+    document.querySelector("#precioProductoActualizar").value="";
+    document.querySelector("#stockProductoActualizar").value="";
+    }
+    console.log(respuesta)
+}*/
 
 function obtenerUsuarios() {
   fetch(url)
