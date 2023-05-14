@@ -154,27 +154,11 @@ tabla.addEventListener('click', e => {
 
         const modal = new bootstrap.Modal(document.querySelector('#myModalUpdate'));
         modal.show();
-          /*
-          modal.classList.add("show");
-          modal.classList.add("fade");
-          document.body.classList.add("modal-open");
-          */
+
         // Agregar evento submit al formulario de la ventana modal
         formulario.addEventListener('submit', e => {
           e.preventDefault();
-          // Crear objeto con los nuevos datos del usuario
-          /*
-          const nuevoUsuario = {
-            name: formulario.querySelector('#nombreProductoActualizar').value,
-            username: formulario.querySelector('#marcaProductoActualizar').value,
-            address: {
-              geo: {
-                lat: formulario.querySelector('#precioProductoActualizar').value,
-                lng: formulario.querySelector('#stockProductoActualizar').value
-              }
-            }
-          };
-          */
+
           const producto = {
             //"id": Math.floor(Math.random() * 1000),
             "nombre": formulario.querySelector('#nombreProductoActualizar').value,

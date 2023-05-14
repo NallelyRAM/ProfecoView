@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Consumidor</title>
+    <title>Agregar supermercado Favoritos</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/styles.css">
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
@@ -48,10 +48,10 @@
 
     <ul class="nav nav-tabs">
         <li class="nav-item">
-            <a class="nav-link" href="../html/wishList.html">WishList</a>
+            <a class="nav-link" href="listaSuperFav.html">WishList</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="../html/consumidorFav.html">Favoritos</a>
+            <a class="nav-link" href="agregarSuperFav.html">Favoritos</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="../html/consumidorBuscarProducto.html">Buscar producto</a>
@@ -62,15 +62,13 @@
 
 
     <!--EMPIEZA TABLAAAA-->
-    <h1>Productos</h1>
+    <h1>Agregar un supermercado a la lista de favoritos</h1>
 
-    <input type="text" id="buscador" placeholder="Buscar por nombre, precio o supermercado" style="width: 500px;">
-    <!--RADIO BUTTON-->
-    <input type="radio" name="orden" value="ascendente" checked onclick="mostrarProductos()"> Menor a mayor
-    <input type="radio" name="orden" value="descendente" onclick="mostrarProductos()"> Mayor a menor
+    <input type="text" id="buscador" placeholder="Buscar por nombre" style="width: 500px;">
+
     <br>
     <br>
-    <button type="button" onclick="showSelectedComments()" class="btn btn-outline-success">Agregar producto a mi wishlist</button>
+    <button type="button" onclick="showSelectedComments()" class="btn btn-outline-success">Agregar supermercado </button>
     <!-- <button onclick="mostrarProductos()" class="btn btn-info">Buscar</button>
             <button onclick="limpiarSeleccion()" class="btn btn-outline-info">Limpiar</button>-->
     <table class="table table-dark table-striped" style="margin-top: 20px;" id="tabla-Comentarios">
@@ -81,8 +79,7 @@
         <tr>
             <th>Check</th>
             <th>Nombre</th>
-            <th>Precio</th>
-            <th>Supermercado</th>
+
         </tr>
         </thead>
         <table class="table table-dark table-striped" style="margin-top: 20px;" id="table">
@@ -90,8 +87,7 @@
             <tr>
                 <th>Check</th>
                 <th>Nombre</th>
-                <th>Precio</th>
-                <th>Supermercado</th>
+
             </tr>
             </thead>
             <tbody id="tabla-prductos">
@@ -100,7 +96,7 @@
     </table>
 </div>
 
-<script src="../js/productoBuscar.js"></script>
+<script src="../js/superBuscar.js"></script>
 
 </body>
 <footer class="footer">
@@ -114,4 +110,3 @@
 </footer>
 
 </html>
-<!--  -->
