@@ -78,8 +78,8 @@ function agregarUsuario() {
                 <td>${producto.precio}</td>
                 <td>${producto.stock}</td>
                 <td>
-                  <button data-id="${producto.id}" class="btn btn-light" href="myModal">Actualizar</button>
-                  <button data-id="${producto.id}" class="btn btn-danger">Eliminar</button>
+                  <button data-id="${producto.id}" class="btn btn-primary actualizar" href="myModal">Actualizar</button>
+                  <button data-id="${producto.id}" class="btn btn-danger eliminar">Eliminar</button>
                 </td>
               `;
               tabla.appendChild(fila);
