@@ -1,27 +1,9 @@
 const url = 'https://jsonplaceholder.typicode.com/users';
 const form = document.getElementById('myFormrg');
 
-//endpoint supermercado
-const supermercado = {
-  "id": 1,
-  "nombre": formulario.querySelector('#nombreSupermercadoActualizar').value,
-  "contraseña": formulario.querySelector('#direccionSupermercadoActualizar').value,
-  //"supermercado":{
-     // "id":idSupermercado
-  //}
-}
 
-const supermercadoActualizado = {
-  "id": 1,
-  "nombre": formulario.querySelector('#nombreSupermercadoActualizar').value,
-  "contraseña": formulario.querySelector('#direccionSupermercadoActualizar').value,
-  //"supermercado":{
-     // "id":idSupermercado
-  //}
-}
 
 form.addEventListener('submit', (event) => {
-  // Evita que el formulario se envíe automáticamente
 event.preventDefault();
 
   // Obtener los valores de los campos
@@ -70,6 +52,37 @@ window.location.href = '../html/agregarOfertaSupermercado.html';
 //    console.log(bienvenida)
 });
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+//endpoint supermercado
+const supermercado = {
+  "id": 1,
+  "nombre": formulario.querySelector('#nombreSupermercadoActualizar').value,
+  "contraseña": formulario.querySelector('#direccionSupermercadoActualizar').value,
+  //"supermercado":{
+     // "id":idSupermercado
+  //}
+}
+
+const supermercadoActualizado = {
+  "id": 1,
+  "nombre": formulario.querySelector('#nombreSupermercadoActualizar').value,
+  "contraseña": formulario.querySelector('#direccionSupermercadoActualizar').value,
+  //"supermercado":{
+     // "id":idSupermercado
+  //}
+}
 
 fetch(url)
   .then(response => response.json())

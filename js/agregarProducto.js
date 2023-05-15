@@ -4,6 +4,18 @@ const btnAgregar = document.querySelector("#botonGuardar")
 const btnActualizar = document.querySelector("#btnActualizar")
 const tabla = document.querySelector("table tbody");
 
+document.addEventListener("DOMContentLoaded", mostrarUsuarios)
+btnAgregar.addEventListener("click", agregarUsuario)
+btnActualizar.addEventListener("click", actualizarUsuario)
+
+async function mostrarUsuarios() {
+  const respuesta = await fetch(url)
+  const usuarios = await respuesta.json()
+  //mostrarListaUsuarios(usuarios)
+ // obtenerUsuarios()
+}
+
+/*
 //endpoint producto
 const producto = {
   //"id": Math.floor(Math.random() * 1000),
@@ -26,25 +38,26 @@ const productoActualizado = {
      // "id":idSupermercado
   //}
 }
+*/
 
 const idSupermercado = 5
 
-document.addEventListener("DOMContentLoaded", mostrarUsuarios)
-btnAgregar.addEventListener("click", agregarUsuario)
-btnActualizar.addEventListener("click", actualizarUsuario)
-
-async function mostrarUsuarios() {
-    const respuesta = await fetch(url)
-    const usuarios = await respuesta.json()
-    //mostrarListaUsuarios(usuarios)
-   // obtenerUsuarios()
-}
-
-function agregarOferta() {
+function agregarUsuario() {
     const nombre = document.querySelector("#nombreProducto").value
     const marca = document.querySelector("#marcaProducto").value
     const precio = document.querySelector("#precioProducto").value
     const stock = document.querySelector("#stockProducto").value
+
+    const producto = {
+      //"id": Math.floor(Math.random() * 1000),
+      "nombre": nombre,
+      "marca": marca,
+      "precio":precio,
+      "stock":stock,
+      //"supermercado":{
+         // "id":idSupermercado
+      //}
+  }
 
     // este es para agregar productos a los supermercados
 /**
@@ -88,7 +101,6 @@ function agregarOferta() {
               // Crear fila y agregar a tabla
               const fila = document.createElement("tr");
               fila.innerHTML = `
-                <td>${producto.nombre}</td>
                 <td>${producto.nombre}</td>
                 <td>${producto.marca}</td>
                 <td>${producto.precio}</td>
@@ -148,9 +160,8 @@ let idProductoActualizado = 0
     alert("El stock debe ser un número de hasta 6 dígitos");
     document.querySelector("#stockProductoActualizar").value = "";
   } else {
-    //Este es para actualizar el producto en el supermercado
 
-  
+    //Este es para actualizar el producto en el supermercado
   fetch(url, {
     method: "PUT",
     headers: {
@@ -188,6 +199,7 @@ let idProductoActualizado = 0
     }
     console.log(respuesta)
 }
+
 
 
 function obtenerUsuarios() {
