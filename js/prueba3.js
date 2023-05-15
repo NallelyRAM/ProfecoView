@@ -5,6 +5,7 @@ let comentarios = JSON.parse(localStorage.getItem('comentarios')) || [];
 const commentTable = document.getElementById('comment-table');
 
 
+
 // Agregar las filas con los comentarios
 comentarios.forEach(comentario => {
   const row = commentTable.insertRow(1); // insertar después de la fila de los nombres de las columnas
@@ -13,6 +14,7 @@ comentarios.forEach(comentario => {
   superWor.textContent = comentario.usuario;
   commentCell.textContent = comentario.comentario;
 });
+commentTable.innerHTML = '';
 
 fetch('https://jsonplaceholder.typicode.com/comments')
   .then(response => response.json())
@@ -27,6 +29,10 @@ fetch('https://jsonplaceholder.typicode.com/comments')
       option.value = superMercado;
       option.textContent = superMercado;
       superSelect.appendChild(option);
+
+
+        ///Puede ir también aqui el EVENT de actualizar
+
     });
 
 
@@ -49,6 +55,7 @@ fetch('https://jsonplaceholder.typicode.com/comments')
         superWor.textContent = comentario.usuario;
         comentRow.textContent = comentario.comentario;
       });
+
     });
 
 superSelect.addEventListener('change', event => {

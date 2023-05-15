@@ -1,64 +1,97 @@
-// Obtener los datos de localStorage si existen
-const usuario = localStorage.getItem('usuario');
+//const comentarios = JSON.parse(localStorage.getItem('comentarios')) || [];
+//const tabla = document.querySelector("table tbody");
 
-
-//const comentario = localStorage.getItem('comentario');
-//hace que se pueda guardar todos los comentarios que se han echo
 const comentarios = JSON.parse(localStorage.getItem('comentarios')) || [];
-
+const tabla = document.getElementById('tabla-comentarios');
 
 if (comentarios.length > 0) {
- const tabla = document.createElement('table');
- const encabezado = tabla.createTHead().insertRow();
- //Se crea tabla
- encabezado.insertCell().innerText = 'Supermercado';
- encabezado.insertCell().innerText = 'Comentario';
- encabezado.insertCell().innerText = 'Acciones';
+  tabla.innerHTML = comentarios.map(comentario => `
+    <tr>
+      <td>${comentario.usuario}</td>
+      <td>${comentario.comentario}</td>
+      <td>
+        <button class="editar">Editar</button>
+        <button class="eliminar">Eliminar</button>
+      </td>
+    </tr>
+  `).join('');
+} else {
+  const mensaje = document.createElement('p');
+  mensaje.innerText = 'No se encontraron comentarios.';
+  tabla.appendChild(mensaje);
+}
 
- const cuerpo = tabla.createTBody();
- comentarios.forEach((comentario, index) => {
-   // Crear fila para cada comentario
-   const fila = cuerpo.insertRow();
+//boton eliminar
+const botonesEliminar = document.querySelectorAll('.eliminar');
 
-   // Insertar datos del comentario en la fila
-   fila.insertCell().innerText = comentario.usuario;
-   fila.insertCell().innerText = comentario.comentario;
+botonesEliminar.forEach((boton, index) => {
+  boton.addEventListener('click', () => {
+    // Obtener el comentario a eliminar
+    const comentarioEliminar = comentarios[index];
 
-   // Crear botón de editar
-   const botonEditar = document.createElement('button');
-   botonEditar.innerText = 'Editar';
-   botonEditar.addEventListener('click', () => {
-     // Obtener el comentario a editar
-     const comentarioEditar = comentarios[index];
-
-
-   });
-
-   // Crear botón de eliminar
-   const botonEliminar = document.createElement('button');
-   botonEliminar.innerText = 'Eliminar';
-   botonEliminar.addEventListener('click', () => {
-     // Preguntar al usuario si realmente desea eliminar el comentario
-     if (confirm('¿Está seguro que desea eliminar este comentario?')) {
+    // Mostrar un mensaje de confirmación
+      if (confirm('¿Está seguro que desea eliminar este comentario?')) {
        // Eliminar el comentario de la lista y actualizar localStorage
        comentarios.splice(index, 1);
        localStorage.setItem('comentarios', JSON.stringify(comentarios));
        location.reload(); // Recargar la página para actualizar la vista
      }
-   });
 
+    // Eliminar el comentario de la fila que se selecciono
+    comentarios.splice(index, 1);
 
-   // Insertar botones de editar y eliminar en la fila
-   const celdaAcciones = fila.insertCell();
-   celdaAcciones.appendChild(botonEditar);
-   celdaAcciones.appendChild(botonEliminar);
- });
+    // Volver a guardar la  actualizada de la tabla  en localStorage
+    localStorage.setItem('comentarios', JSON.stringify(comentarios));
 
- // Agregar la tabla a la página
- document.body.appendChild(tabla);
-} else {
-  // Si no hay comentarios, mostrar un mensaje al usuario
-  const mensaje = document.createElement('p');
-  mensaje.innerText = 'No se encontraron comentarios.';
-  document.body.appendChild(mensaje);
-}
+    // Recargar la página
+    //location.reload();
+  });
+});
+
+// boton actualizar
+const botonesEditar = document.querySelectorAll('.editar');
+
+// Manejar el evento de clic en los botones de editar
+botonesEditar.forEach((boton, index) => {
+  boton.addEventListener('click', () => {
+    // Obtener el comentario a editar
+    const comentarioEditar = comentarios[index];
+
+    // Crear el formulario de edición
+    const formHtml = `
+      <form>
+        <label for="usuario">Supermercado:</label>
+        <input type="text" id="usuario" name="usuario" value="${comentarioEditar.usuario}" required>
+        <label for="comentario">Comentario:</label>
+        <textarea id="comentario" name="comentario" required>${comentarioEditar.comentario}</textarea>
+        <button type="submit">Guardar cambios</button>
+      </form>
+    `;
+
+    // Mostrar la ventana emergente con el formulario de edición
+    const ventanaEmergente = window.open('', '_blank', 'width=400,height=300');
+    ventanaEmergente.document.write(formHtml);
+
+    // Manejar el envío del formulario
+    ventanaEmergente.document.querySelector('form').addEventListener('submit', event => {
+      event.preventDefault();
+
+      // Obtener los nuevos datos del formulario
+      const nuevoUsuario = ventanaEmergente.document.getElementById('usuario').value;
+      const nuevoComentario = ventanaEmergente.document.getElementById('comentario').value;
+
+      // Actualizar el comentario en la matriz de comentarios
+      comentarios[index].usuario = nuevoUsuario;
+      comentarios[index].comentario = nuevoComentario;
+
+      // Volver a guardar la matriz actualizada en localStorage
+      localStorage.setItem('comentarios', JSON.stringify(comentarios));
+
+      // Cerrar la ventana emergente
+      ventanaEmergente.close();
+
+      // Recargar la página
+      location.reload();
+    });
+  });
+});
