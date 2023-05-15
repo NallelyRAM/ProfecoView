@@ -97,7 +97,7 @@ function agregarUsuario() {
 }
 
 // Método actualizar / PUT 
-/*
+
 function actualizarUsuario() {
   const nombre = document.querySelector("#nombreProductoActualizar").value
   const marca = document.querySelector("#marcaProductoActualizar").value
@@ -144,6 +144,7 @@ function actualizarUsuario() {
         <button data-id="${idProductoActualizar}" class="btn btn-danger eliminar">Eliminar</button>
       </td>
     `;
+    
 //Este es para actualizar el producto en el supermercado
 
 let idProductoActualizado = 0
@@ -172,7 +173,8 @@ let idProductoActualizado = 0
     document.querySelector("#stockProductoActualizar").value="";
     }
     console.log(respuesta)
-}*/
+}
+
 
 function obtenerUsuarios() {
   fetch(url)
