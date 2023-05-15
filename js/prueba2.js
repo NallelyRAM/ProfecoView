@@ -10,8 +10,8 @@ if (comentarios.length > 0) {
       <td>${comentario.usuario}</td>
       <td>${comentario.comentario}</td>
       <td>
-        <button class="editar">Editar</button>
-        <button class="eliminar">Eliminar</button>
+        <button class="btn btn-primary editar">Editar</button>
+        <button class="btn btn-danger eliminar">Eliminar</button>
       </td>
     </tr>
   `).join('');
