@@ -2,6 +2,8 @@ const URL_API = 'https://jsonplaceholder.typicode.com/comments';
 const buscador = document.getElementById('buscador');
 const tablaSupermercado = document.getElementById('tabla-prductos');
 
+
+
 //BUSCAA
 const buscar = () => {
   const textoBusqueda = buscador.value.toLowerCase();
@@ -132,3 +134,37 @@ function showSelectedComments() {
     alert("Por favor, selecciona al menos un producto.");
   }
 }
+
+const url = URL_API;
+const consumidor = {
+   //"id_consumidores": Math.floor(Math.random() * 1000),
+    "nombre": nombre,
+    "contraseña": marca,
+    "email":precio,
+    "edad":stock,
+    //"id": consumidorId,
+    //"wishList":{
+        // "id":consumidorId
+    //}
+    //"supermercadosFavoritosList":{
+        // "id":consumidorId
+    //}
+};
+
+fetch(url, {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify(consumidor)
+})
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error(error));
+  
+  
+fetch(url)
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error(error));
+

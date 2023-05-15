@@ -79,6 +79,7 @@ function agregarUsuario() {
               const fila = document.createElement("tr");
               fila.innerHTML = `
                 <td>${producto.nombre}</td>
+                <td>${producto.nombre}</td>
                 <td>${producto.marca}</td>
                 <td>${producto.precio}</td>
                 <td>${producto.stock}</td>
@@ -245,7 +246,7 @@ tabla.addEventListener('click', e => {
           e.preventDefault();
 
           const producto = {
-            //"id": Math.floor(Math.random() * 1000),
+            "id": 1,
             "nombre": formulario.querySelector('#nombreProductoActualizar').value,
             "marca": formulario.querySelector('#marcaProductoActualizar').value,
             "precio":formulario.querySelector('#precioProductoActualizar').value,
@@ -288,6 +289,18 @@ function mostrarUsuario(usuario) {
         <td>${usuario.address.geo.lng}</td>
     `
     respuesta.appendChild(fila)
+}
+
+function mostrarUsuarioID(usuario) {
+  const fila = document.createElement('tr')
+  fila.innerHTML = `
+      <td>${usuario.id}</td>
+      <td>${usuario.name}</td>
+      <td>${usuario.username}</td>
+      <td>${usuario.address.geo.lat}</td>
+      <td>${usuario.address.geo.lng}</td>
+  `
+  respuesta.appendChild(fila)
 }
 
 //F U N C I O N E S  P A R A  V A L I D A R
