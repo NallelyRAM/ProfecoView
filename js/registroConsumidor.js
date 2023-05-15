@@ -2,6 +2,33 @@ const registerForm = document.getElementById('register-form');
 registerForm.addEventListener('submit', (event) => {
   event.preventDefault(); // evitar que el formulario se envíe automáticamente
 
+  const consumidorActualizado = {
+    "id": 1,
+    "nombre": formulario.querySelector('#nombreConsumidorActualizar').value,
+    "contraseña": formulario.querySelector('#contraseñaConsumidorActualizar').value,
+    "email":formulario.querySelector('#emailConsumidorActualizar').value,
+    "edad":formulario.querySelector('#edadConsumidorActualizar').value
+    //"supermercado":{
+       // "id":idSupermercado
+    //}
+  }
+
+  const consumidor = {
+    //"id_consumidores": Math.floor(Math.random() * 1000),
+    "nombre": nombre,
+    "contraseña": marca,
+    "email":precio,
+    "edad":stock,
+     //"id": consumidorId,
+     //"wishList":{
+         // "id":consumidorId
+     //}
+     //"supermercadosFavoritosList":{
+         // "id":consumidorId
+     //}
+ };
+
+
   // Obtener los datos del formulario
   const name = document.getElementById('name-input').value;
   const email = document.getElementById('email-input').value;
@@ -41,21 +68,6 @@ fetch(url)
     const marca = document.querySelector("#contraseña").value
     const precio = document.querySelector("#email").value
     const stock = document.querySelector("#edad").value
-
-    const consumidor = {
-      //"id_consumidores": Math.floor(Math.random() * 1000),
-       "nombre": nombre,
-       "contraseña": marca,
-       "email":precio,
-       "edad":stock,
-       //"id": consumidorId,
-       //"wishList":{
-           // "id":consumidorId
-       //}
-       //"supermercadosFavoritosList":{
-           // "id":consumidorId
-       //}
-   };
 
     // este es para agregar consumidores a los supermercados
 /**
@@ -141,20 +153,12 @@ tabla.addEventListener('click', e => {
         formulario.addEventListener('submit', e => {
           e.preventDefault();
 
-          const producto = {
-            "id": 1,
-            "nombre": formulario.querySelector('#nombreConsumidorActualizar').value,
-            "contraseña": formulario.querySelector('#contraseñaConsumidorActualizar').value,
-            "email":formulario.querySelector('#emailConsumidorActualizar').value,
-            "edad":formulario.querySelector('#edadConsumidorActualizar').value
-            //"supermercado":{
-               // "id":idSupermercado
-            //}
-          }
+      
+
           // Realizar solicitud fetch para actualizar los datos del usuario
           fetch(`https://jsonplaceholder.typicode.com/users/${idUsuario}`, {
             method: 'PUT',
-            body: JSON.stringify(producto),
+            body: JSON.stringify(consumidorActualizado),
             headers: {
               'Content-Type': 'application/json'
             }

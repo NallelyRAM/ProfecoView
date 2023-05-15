@@ -93,6 +93,7 @@
             </div>
         </div>
     </div>
+    
     <!-- M O D A L   A C T U A L I Z A R -->
     <div class="modal fade" id="myModalUpdate">
         <div class="modal-dialog">
@@ -115,7 +116,7 @@
 
                 <!-- Modal footer -->
                 <div class="modal-footer">
-                    <button id="btnActualizar" type="button" class="btn btn-success" data-dismiss="modal">Listo</button>
+                    <button id="btnActualizar" type="button" onclick="actualizarUsuario(event)" class="btn btn-success" data-dismiss="modal" data-id="${producto.id}">Listo</button>
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
                 </div>
 
@@ -142,6 +143,7 @@
 </div>
 
 <script src="../js/agregarProducto.js"></script>
+
 </body>
 <div id="espacio-en-blanco"></div>
 <footer class="footer">

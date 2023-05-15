@@ -1,4 +1,24 @@
+const url = 'https://jsonplaceholder.typicode.com/users';
 const form = document.getElementById('myFormrg');
+
+//endpoint supermercado
+const supermercado = {
+  "id": 1,
+  "nombre": formulario.querySelector('#nombreSupermercadoActualizar').value,
+  "contraseña": formulario.querySelector('#direccionSupermercadoActualizar').value,
+  //"supermercado":{
+     // "id":idSupermercado
+  //}
+}
+
+const supermercadoActualizado = {
+  "id": 1,
+  "nombre": formulario.querySelector('#nombreSupermercadoActualizar').value,
+  "contraseña": formulario.querySelector('#direccionSupermercadoActualizar').value,
+  //"supermercado":{
+     // "id":idSupermercado
+  //}
+}
 
 form.addEventListener('submit', (event) => {
   // Evita que el formulario se envíe automáticamente
@@ -50,6 +70,7 @@ window.location.href = '../html/agregarOfertaSupermercado.html';
 //    console.log(bienvenida)
 });
 
+
 fetch(url)
   .then(response => response.json())
   .then(data => console.log(data))
@@ -57,34 +78,18 @@ fetch(url)
 
   function agregarSupermercado() {
     const nombre = document.querySelector("#nombre").value
-    const marca = document.querySelector("#contraseña").value
-    const precio = document.querySelector("#email").value
-    const stock = document.querySelector("#edad").value
+    const marca = document.querySelector("#direccion").value
 
-    const consumidor = {
-      //"id_consumidores": Math.floor(Math.random() * 1000),
-       "nombre": nombre,
-       "contraseña": marca,
-       "email":precio,
-       "edad":stock,
-       //"id": consumidorId,
-       //"wishList":{
-           // "id":consumidorId
-       //}
-       //"supermercadosFavoritosList":{
-           // "id":consumidorId
-       //}
-   };
 
-    // este es para agregar consumidores a los supermercados
+    // este es para agregar supermercados
 /**
-    let idConsumidorAgregado = 0
+    let idSupermercadoAgregado = 0
     fetch(url, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(consumidor)
+      body: JSON.stringify(supermercado)
     })
       .then(response => response.json())
       .then(data => {
@@ -100,56 +105,41 @@ fetch(url)
     const fila = document.createElement("tr");
             console.log(respuesta)
             const nombreValido = validarTexto(consumidor.nombre);
-            const contraseniaValida = validarTexto(consumidor.contraseña);
-            const emailValido = validarTexto(consumidor.email);
-            const edadValida = validarNumeros(consumidor.edad);
+            const direccionValida = validarTexto(consumidor.contraseña);
             if (!nombreValido) {
               alert("Debe introducir un nombre válido");
-            } else if (!contraseniaValida) {
-              alert("Error al guardar contraseña");
-              document.querySelector("#contraseña").value = "";
-            } else if (!emailValido) {
-              alert("Ingrese un email valido");
-              document.querySelector("#email").value = "";
-            } else if (!edadValida) {
-              alert("Ingrese una edad valida");
-              document.querySelector("#edad").value = "";
+            } else if (!direccionValida) {
+              alert("Error al guardar direccion");
+              document.querySelector("#direccion").value = "";
             } else {
               // Crear fila y agregar a tabla
               const fila = document.createElement("tr");
               fila.innerHTML = `
-                <td>${consumidor.nombre}</td>
-                <td>${consumidor.nombre}</td>
-                <td>${consumidor.marca}</td>
-                <td>${consumidor.precio}</td>
-                <td>${consumidor.stock}</td>
+                <td>${supermercado.nombre}</td>
+                <td>${supermercado.direccion}</td>
                 <td>
-                  <button data-id="${consumidor.id}" class="btn btn-primary actualizar" href="myModal">Actualizar</button>
-                  <button data-id="${consumidor.id}" class="btn btn-danger eliminar">Eliminar</button>
+                  <button data-id="${supermercado.id}" class="btn btn-primary actualizar" href="myModal">Actualizar</button>
+                  <button data-id="${supermercado.id}" class="btn btn-danger eliminar">Eliminar</button>
                 </td>
               `;
               tabla.appendChild(fila);
               document.querySelector("#nombre").value="";
-              document.querySelector("#contraseña").value="";
-              document.querySelector("#email").value="";
-              document.querySelector("#edad").value="";
+              document.querySelector("#direccion").value="";
             }
     console.log(respuesta)
 }
 
 tabla.addEventListener('click', e => {
   if (e.target.classList.contains('actualizar')) {
-    const idUsuario = e.target.dataset.id;
+    const idSupermercado = e.target.dataset.id;
     // Realizar solicitud fetch para obtener los datos del usuario
     fetch(`https://jsonplaceholder.typicode.com/users/${idUsuario}`)
       .then(response => response.json())
       .then(usuario => {
         // Llenar los campos del formulario con los datos del consumidor
         const formulario = document.querySelector('#formulario-actualizar');
-        formulario.querySelector('#nombreConsumidorActualizar').value = usuario.name;
-        formulario.querySelector('#contraseñaConsumidorActualizar').value = usuario.username;
-        formulario.querySelector('#edadConsumidorActualizar').value = usuario.address.geo.lat;
-        formulario.querySelector('#edadConsumidorActualizar').value = usuario.address.geo.lng;
+        formulario.querySelector('#nombreSupermercadoActualizar').value = usuario.name;
+        formulario.querySelector('#direccionSupermercadoActualizar').value = usuario.username;
 
         // Mostrar la ventana modal
 
@@ -159,21 +149,11 @@ tabla.addEventListener('click', e => {
         // Agregar evento submit al formulario de la ventana modal
         formulario.addEventListener('submit', e => {
           e.preventDefault();
-
-          const producto = {
-            "id": 1,
-            "nombre": formulario.querySelector('#nombreConsumidorActualizar').value,
-            "contraseña": formulario.querySelector('#contraseñaConsumidorActualizar').value,
-            "email":formulario.querySelector('#emailConsumidorActualizar').value,
-            "edad":formulario.querySelector('#edadConsumidorActualizar').value
-            //"supermercado":{
-               // "id":idSupermercado
-            //}
-          }
+          
           // Realizar solicitud fetch para actualizar los datos del usuario
           fetch(`https://jsonplaceholder.typicode.com/users/${idUsuario}`, {
             method: 'PUT',
-            body: JSON.stringify(producto),
+            body: JSON.stringify(supermercadoActualizado),
             headers: {
               'Content-Type': 'application/json'
             }
@@ -184,8 +164,6 @@ tabla.addEventListener('click', e => {
               const fila = e.target.closest('tr');
               fila.querySelector('td:nth-child(1)').textContent = consumidorActualizado.name;
               fila.querySelector('td:nth-child(2)').textContent = consumidorActualizado.username;
-              fila.querySelector('td:nth-child(3)').textContent = consumidorActualizado.address.geo.lat;
-              fila.querySelector('td:nth-child(4)').textContent = consumidorActualizado.address.geo.lng;
               // Cerrar la ventana modal
               //modal.style.display = 'none';
             });
@@ -197,19 +175,19 @@ tabla.addEventListener('click', e => {
 
 tabla.addEventListener('click', e => {
   if (e.target.classList.contains('eliminar')) {
-    const idUsuario = e.target.dataset.id;
-    if (confirm(`¿Seguro que desea eliminar la oferta ${idUsuario}?`)) {
+    const idSupermercado = e.target.dataset.id;
+    if (confirm(`¿Seguro que desea eliminar el supermercado ${idSupermercado}?`)) {
       // Si el usuario confirma que desea eliminar, enviar la solicitud DELETE a la API
-      fetch(`https://jsonplaceholder.typicode.com/users/${idUsuario}`, {
+      fetch(`https://jsonplaceholder.typicode.com/users/${idSupermercado}`, {
         method: 'DELETE'
       })
         .then(response => {
           if (response.ok) {
             // Si la solicitud DELETE tiene éxito, eliminar la fila correspondiente de la tabla
             e.target.closest('tr').remove();
-            alert(`La oferta ${idUsuario} eliminado correctamente.`);
+            alert(`El supermercado ${idSupermercado} eliminado correctamente.`);
           } else {
-            throw new Error('No se pudo eliminar el consumidor.');
+            throw new Error('No se pudo eliminar el supermercado.');
           }
         })
         .catch(error => alert(error.message));
