@@ -1,19 +1,85 @@
+// obtener los comentarios guardados en el localStorage
+let comentarios = JSON.parse(localStorage.getItem('comentarios')) || [];
+
+// agregar los comentarios a la tabla
+const commentTable = document.getElementById('comment-table');
+
+
+// Agregar las filas con los comentarios
+comentarios.forEach(comentario => {
+  const row = commentTable.insertRow(1); // insertar después de la fila de los nombres de las columnas
+  const superWor = row.insertCell();
+  const commentCell = row.insertCell();
+  superWor.textContent = comentario.usuario;
+  commentCell.textContent = comentario.comentario;
+});
+
 fetch('https://jsonplaceholder.typicode.com/comments')
-	.then(response => response.json())
-	.then(comments => {
-		// obtener los supermercados
-		const superMercado = [...new Set(comments.map(comment => comment.name))];
+  .then(response => response.json())
+  .then(comments => {
+    // obtener los supermercados
+    const superMercado = [...new Set(comments.map(comment => comment.name))];
 
-		// rellenar el combo con los super
-		const superSelect = document.getElementById('super-select');
-		superMercado.forEach(superMercado => {
-			const option = document.createElement('option');
-			option.value = superMercado;
-			option.textContent = superMercado;
-			superSelect.appendChild(option);
-		});
+    // rellenar el combo con los super
+    const superSelect = document.getElementById('super-select');
+    superMercado.forEach(superMercado => {
+      const option = document.createElement('option');
+      option.value = superMercado;
+      option.textContent = superMercado;
+      superSelect.appendChild(option);
+    });
 
-	// manejar el envío del formulario
+
+    //Actualiza la tabla cuando seleccionas un supermercado en especifico
+    superSelect.addEventListener('change', event => {
+      const superSeleccionado = event.target.value;
+      const filtroComentarios = comentarios.filter(comentario => comentario.usuario === superSeleccionado);
+      commentTable.innerHTML = ''; // Limpiar la tabla antes de agregar los comentarios filtrados
+      // Agregar una fila para los nombres de las columnas
+      const headerRow = commentTable.insertRow(0);
+      const superHeader = headerRow.insertCell();
+      const commentHeader = headerRow.insertCell();
+      superHeader.textContent = "Usuario";
+      commentHeader.textContent = "Comentario";
+      // Agregar las filas con los comentarios filtrados
+      filtroComentarios.forEach(comentario => {
+        const row = commentTable.insertRow(1); // insertar después de la fila de los nombres de las columnas
+        const superWor = row.insertCell();
+        const comentRow = row.insertCell();
+        superWor.textContent = comentario.usuario;
+        comentRow.textContent = comentario.comentario;
+      });
+    });
+
+superSelect.addEventListener('change', event => {
+  const selectedSuper = event.target.value;
+  const filteredComments = comentarios.filter(comentario => comentario.usuario === selectedSuper);
+  commentTable.innerHTML = ''; // Limpiar la tabla antes de agregar los comentarios filtrados
+  // Agregar una fila para los nombres de las columnas
+  const headerRow = commentTable.insertRow(0);
+  const superHeader = headerRow.insertCell();
+  const commentHeader = headerRow.insertCell();
+
+  //Cambios, letras en negrita
+  superHeader.innerHTML = "<b>Supermercado</b>";
+  commentHeader.innerHTML = "<b>Comentario</b>";
+
+  //superHeader.textContent = "Supermercado";
+  //commentHeader.textContent = "Comentario";
+
+  // Agregar las filas con los comentarios filtrados
+  filteredComments.forEach(comentario => {
+    const row = commentTable.insertRow(1); // insertar después de la fila de los nombres de las columnas
+    const superWor = row.insertCell();
+    const commentCell = row.insertCell();
+    superWor.textContent = comentario.usuario;
+    commentCell.textContent = comentario.comentario;
+  });
+});
+
+
+
+    // manejar el envío del formulario
     const commentForm = document.getElementById('comment-form');
     commentForm.addEventListener('submit', event => {
       event.preventDefault();
@@ -24,17 +90,16 @@ fetch('https://jsonplaceholder.typicode.com/comments')
 
       // validar que el comentario no esté vacío y no haya seleccionado un super
       if (supermercadoo.trim() === '') {
-          alert('Por favor seleccione un supermercado.');
-          return;
-        }
+        alert('Por favor seleccione un supermercado.');
+        return;
+      }
       if (comment.trim() === '') {
         alert('Por favor ingrese un comentario.');
         return;
       }
 
       // agregar los datos a la tabla
-      const commentTable = document.getElementById('comment-table');
-      const row = commentTable.insertRow();
+      const row = commentTable.insertRow(1); // insertar después de la fila de los nombres de las columnas
       const superRow = row.insertCell();
       const commentCell = row.insertCell();
       superRow.textContent = supermercadoo;
@@ -49,28 +114,12 @@ fetch('https://jsonplaceholder.typicode.com/comments')
 
       // guardar el comentario en el localStorage
       const comentario = { usuario: supermercadoo, comentario: comment };
-      comentarios.push(comentario);
+      comentarios.unshift(comentario); // agregar al principio del array
       localStorage.setItem('comentarios', JSON.stringify(comentarios));
 
       // limpiar el formulario
       superSelect.selectedIndex = 0;
       document.getElementById('comment-input').value = '';
     });
+  });
 
-	});
-// obtener los comentarios guardados en el localStorage
-let comentarios = JSON.parse(localStorage.getItem('comentarios')) || [];
-
-// agregar los comentarios a la tabla
-const commentTable = document.getElementById('comment-table');
-comentarios.forEach(comentario => {
-  const row = commentTable.insertRow();
-  const superWor = row.insertCell();
-  const commentCell = row.insertCell();
-  superWor.textContent = comentario.usuario;
-  commentCell.textContent = comentario.comentario;
-});
-// guardar el comentario en el localStorage
-const comentario = { usuario: user, comentario: comment };
-comentarios.push(comentario);
-localStorage.setItem('comentarios', JSON.stringify(comentarios));

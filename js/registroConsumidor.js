@@ -45,14 +45,7 @@ registerForm.addEventListener('submit', (event) => {
     return;
   }
 
-  // Guardar el usuario en una base de datos o en el localStorage
-  const user = {
-    id: Math.floor(Math.random() * 100000), // generamos un id aleatorio para el usuario
-    name,
-    email,
-    password,
-  };
-  localStorage.setItem('user', JSON.stringify(user)); // guardamos el usuario en el localStorage
+
 
   // Redirigir al usuario a otra página
   window.location.href = 'agregarSuperList.html';
