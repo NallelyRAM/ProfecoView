@@ -31,7 +31,7 @@ fetch('https://jsonplaceholder.typicode.com/comments')
       superSelect.appendChild(option);
 
 
-        ///Puede ir también aqui el EVENT de actualizar
+      ///Puede ir también aqui el EVENT de actualizar
 
     });
 
@@ -43,46 +43,46 @@ fetch('https://jsonplaceholder.typicode.com/comments')
       commentTable.innerHTML = ''; // Limpiar la tabla antes de agregar los comentarios filtrados
       // Agregar una fila para los nombres de las columnas
       const headerRow = commentTable.insertRow(0);
-      const superHeader = headerRow.insertCell();
+      const usuarioHeader = headerRow.insertCell();
       const commentHeader = headerRow.insertCell();
-      superHeader.textContent = "Usuario";
+      usuarioHeader.textContent = "Usuario";
       commentHeader.textContent = "Comentario";
       // Agregar las filas con los comentarios filtrados
       filtroComentarios.forEach(comentario => {
         const row = commentTable.insertRow(1); // insertar después de la fila de los nombres de las columnas
-        const superWor = row.insertCell();
+        const usuarioRow = row.insertCell();
         const comentRow = row.insertCell();
-        superWor.textContent = comentario.usuario;
+        usuarioRow.textContent = comentario.usuario;
         comentRow.textContent = comentario.comentario;
       });
-
     });
 
-superSelect.addEventListener('change', event => {
-  const selectedSuper = event.target.value;
-  const filteredComments = comentarios.filter(comentario => comentario.usuario === selectedSuper);
-  commentTable.innerHTML = ''; // Limpiar la tabla antes de agregar los comentarios filtrados
-  // Agregar una fila para los nombres de las columnas
-  const headerRow = commentTable.insertRow(0);
-  const superHeader = headerRow.insertCell();
-  const commentHeader = headerRow.insertCell();
 
-  //Cambios, letras en negrita
-  superHeader.innerHTML = "<b>Supermercado</b>";
-  commentHeader.innerHTML = "<b>Comentario</b>";
+    superSelect.addEventListener('change', event => {
+      const selectedSuper = event.target.value;
+      const filteredComments = comentarios.filter(comentario => comentario.usuario === selectedSuper);
+      commentTable.innerHTML = ''; // Limpiar la tabla antes de agregar los comentarios filtrados
+      // Agregar una fila para los nombres de las columnas
+      const headerRow = commentTable.insertRow(0);
+      const superHeader = headerRow.insertCell();
+      const commentHeader = headerRow.insertCell();
 
-  //superHeader.textContent = "Supermercado";
-  //commentHeader.textContent = "Comentario";
+      //Cambios, letras en negrita
+      superHeader.innerHTML = "<b>Supermercado</b>";
+      commentHeader.innerHTML = "<b>Comentario</b>";
 
-  // Agregar las filas con los comentarios filtrados
-  filteredComments.forEach(comentario => {
-    const row = commentTable.insertRow(1); // insertar después de la fila de los nombres de las columnas
-    const superWor = row.insertCell();
-    const commentCell = row.insertCell();
-    superWor.textContent = comentario.usuario;
-    commentCell.textContent = comentario.comentario;
-  });
-});
+      //superHeader.textContent = "Supermercado";
+      //commentHeader.textContent = "Comentario";
+
+      // Agregar las filas con los comentarios filtrados
+      filteredComments.forEach(comentario => {
+        const row = commentTable.insertRow(1); // insertar después de la fila de los nombres de las columnas
+        const usuario = row.insertCell();
+        const commentCell = row.insertCell();
+        usuario.textContent = comentario.usuario;
+        commentCell.textContent = comentario.comentario;
+      });
+    });
 
 
 
@@ -124,9 +124,20 @@ superSelect.addEventListener('change', event => {
       comentarios.unshift(comentario); // agregar al principio del array
       localStorage.setItem('comentarios', JSON.stringify(comentarios));
 
+      // mostrar mensaje de éxito
+      showMessage();
+
       // limpiar el formulario
       superSelect.selectedIndex = 0;
       document.getElementById('comment-input').value = '';
+
     });
   });
 
+function showMessage() {
+  const messageDiv = document.getElementById('message');
+  messageDiv.style.display = 'block';
+  setTimeout(() => {
+    messageDiv.style.display = 'none';
+  }, 1000); // Mostrar durante 1 segundos
+}
