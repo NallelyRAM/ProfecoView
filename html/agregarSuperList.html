@@ -15,12 +15,9 @@
 <body>
 
 <nav id="nav2">
-
-
     <a class="enlace">
         <img src="../img/p3.png" alt="" class="logo" />
     </a>
-
 </nav>
 
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
@@ -29,12 +26,11 @@
             <a class="navbar-brand" href="#">
                 <img src="../img/user.png" alt="Logo" style="width:40px;" class="rounded-pill">
             </a>
+            <!-- 
             <li class="nav-item">
                 <a class="nav-link active" href="">Inicio</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="../html/consumidorPerfil.html">Perfil</a>
-            </li>
+            -->
             <li class="nav-item">
                 <a class="nav-link" href="../html/index.html">Cerrar sesión</a>
             </li>
@@ -48,22 +44,28 @@
     <p>Apartado donde se muestran los supermercados.</p>
     <ul class="nav nav-tabs">
         <li class="nav-item">
-            <a class="nav-link" href="../html/wish.html">WishList</a>
+            <a class="nav-link active" href="#">Buscar Supermercado</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="../html/listaSuperFav.html">Supermercados Fav</a>
+            <a class="nav-link" href="../html/prueba3.html">WishList</a>
         </li>
+        
         <li class="nav-item">
             <a class="nav-link" href="../html/consumidorBuscarProducto.html">Buscar producto</a>
         </li>
-
+        <li class="nav-item">
+            <a class="nav-link" href="../html/prueba2.html">Mis comentarios</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="../html/listaSuperFav.html">Supermercados Favoritos</a>
+        </li>
     </ul>
     <br>
 
 
     <!--EMPIEZA TABLAAAA-->
     <h1>Crea tu lista de supermercados favoritos</h1>
-
+    <p>Selecciona un supermercado para agregarlo a tu lista de supermercados favoritos.</p>
     <input type="text" id="buscador" placeholder="Buscar supermercado" style="width: 500px;"> 
     <button type="button" onclick="showSelectedComments()" class="btn btn-success" style="margin-left: 15px;">Agregar</button>
     
