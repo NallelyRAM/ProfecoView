@@ -2,6 +2,28 @@ const url = 'https://jsonplaceholder.typicode.com/users';
 const selectedComments = JSON.parse(localStorage.getItem("selectedComments"));
 const selectedCommentsTableBody = document.querySelector("#selected-comments-table tbody");
 
+const supermercadoFavorito  = {
+    //"id": Math.floor(Math.random() * 1000),
+    //"id": id_favoritos
+    //"supermercado":{
+      // "id":idSupermercado
+    //}
+    //"consumidor":{
+      // "id":consumidorId
+    //}
+}
+
+const supermercadoFavoritoActualizado  = {
+  //"id": Math.floor(Math.random() * 1000),
+  //"id": id_favoritos
+  //"supermercado":{
+    // "id":idSupermercado
+  //}
+  //"consumidor":{
+    // "id":consumidorId
+  //}
+}
+
 selectedComments.forEach(comment => {
   const row = document.createElement("tr");
   row.appendChild(document.createElement("td")).textContent = comment.name;
@@ -30,3 +52,40 @@ selectedComments.forEach(comment => {
   });
 
 });
+
+//agregar super favorito
+fetch(url, {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify(supermercadoFavorito)
+})
+  .then(response => response.json())
+  .then(data => {
+    idProductoAgregado = data.id
+    console.log(data);
+  })
+  .catch(error => {
+    // Manejar errores
+    console.error('Error:', error);
+    return
+  });
+
+//actualizar super favorito
+  fetch(url, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(supermercadoFavoritoActualizado)
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      idProductoActualizado = data.id
+      console.log(data)
+    })
+    .catch((error) => {
+      console.error("Error al actualizar usuario:", error);
+      return
+    });

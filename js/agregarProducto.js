@@ -4,6 +4,29 @@ const btnAgregar = document.querySelector("#botonGuardar")
 const btnActualizar = document.querySelector("#btnActualizar")
 const tabla = document.querySelector("table tbody");
 
+//endpoint producto
+const producto = {
+  //"id": Math.floor(Math.random() * 1000),
+  "nombre": nombre,
+  "marca": marca,
+  "precio":precio,
+  "stock":stock,
+  //"supermercado":{
+     // "id":idSupermercado
+  //}
+}
+
+const productoActualizado = {
+  //"id": Math.floor(Math.random() * 1000),
+  "nombre": nombre,
+  "marca": marca,
+  "precio":precio,
+  "stock":stock,
+  //"supermercado":{
+     // "id":idSupermercado
+  //}
+}
+
 const idSupermercado = 5
 
 document.addEventListener("DOMContentLoaded", mostrarUsuarios)
@@ -17,22 +40,11 @@ async function mostrarUsuarios() {
    // obtenerUsuarios()
 }
 
-function agregarUsuario() {
+function agregarOferta() {
     const nombre = document.querySelector("#nombreProducto").value
     const marca = document.querySelector("#marcaProducto").value
     const precio = document.querySelector("#precioProducto").value
     const stock = document.querySelector("#stockProducto").value
-
-    const producto = {
-        //"id": Math.floor(Math.random() * 1000),
-        "nombre": nombre,
-        "marca": marca,
-        "precio":precio,
-        "stock":stock,
-        //"supermercado":{
-           // "id":idSupermercado
-        //}
-    }
 
     // este es para agregar productos a los supermercados
 /**
@@ -55,8 +67,6 @@ function agregarUsuario() {
         return
       });*/
 
-
-      
     const fila = document.createElement("tr");
             console.log(respuesta)
             const nombreValido = validarTexto(producto.nombre);
@@ -99,12 +109,16 @@ function agregarUsuario() {
 
 // Método actualizar / PUT 
 
-function actualizarUsuario() {
+function actualizarUsuario(e) {
   const nombre = document.querySelector("#nombreProductoActualizar").value
   const marca = document.querySelector("#marcaProductoActualizar").value
   const precio = document.querySelector("#precioProductoActualizar").value
   const stock = document.querySelector("#stockProductoActualizar").value
-  const idProductoActualizar = event.target.dataset.id;
+  const idProductoActualizar = e.target.dataset.id;
+  
+
+  console.log("Entro")
+  console.log(idProductoActualizar)
 
   const producto = {
     //"id": Math.floor(Math.random() * 1000),
@@ -116,11 +130,12 @@ function actualizarUsuario() {
        // "id":idSupermercado
     //}
 }
-
+let idProductoActualizado = 0
   const nombreValido = validarTexto(producto.nombre);
   const marcaValida = validarTexto(producto.marca);
   const precioValido = validarNumeros(producto.precio);
   const stockValido = validarNumeros(producto.stock);
+
   if (!nombreValido) {
     alert("Debe introducir un nombre válido");
   } else if (!marcaValida) {
@@ -133,22 +148,9 @@ function actualizarUsuario() {
     alert("El stock debe ser un número de hasta 6 dígitos");
     document.querySelector("#stockProductoActualizar").value = "";
   } else {
+    //Este es para actualizar el producto en el supermercado
 
-    const fila = document.querySelector(`tr[data-id="${idProductoActualizar}"]`);
-    fila.innerHTML = `
-      <td>${producto.nombre}</td>
-      <td>${producto.marca}</td>
-      <td>${producto.precio}</td>
-      <td>${producto.stock}</td>
-      <td>
-        <button data-id="${idProductoActualizar}" class="btn btn-primary actualizar" href="myModal">Actualizar</button>
-        <button data-id="${idProductoActualizar}" class="btn btn-danger eliminar">Eliminar</button>
-      </td>
-    `;
-    
-//Este es para actualizar el producto en el supermercado
-
-let idProductoActualizado = 0
+  
   fetch(url, {
     method: "PUT",
     headers: {
@@ -165,7 +167,18 @@ let idProductoActualizado = 0
       console.error("Error al actualizar usuario:", error);
       return
     });
-    
+
+    const fila = document.querySelector(`tr[data-id="${idProductoActualizar}"]`);
+    fila.innerHTML = `
+      <td>${producto.nombre}</td>
+      <td>${producto.marca}</td>
+      <td>${producto.precio}</td>
+      <td>${producto.stock}</td>
+      <td>
+        <button data-id="${idProductoActualizar}" class="btn btn-primary actualizar" href="myModal">Actualizar</button>
+        <button data-id="${idProductoActualizar}" class="btn btn-danger eliminar">Eliminar</button>
+      </td>
+    `;
 
     tabla.appendChild(fila);
     document.querySelector("#nombreProductoActualizar").value="";
@@ -197,6 +210,7 @@ function obtenerUsuarios() {
 }
 
 obtenerUsuarios();
+
 // Agregar event listener para el botón "Eliminar"
 tabla.addEventListener('click', e => {
   if (e.target.classList.contains('eliminar')) {
