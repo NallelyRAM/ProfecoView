@@ -4,12 +4,6 @@ let comentarios = JSON.parse(localStorage.getItem('comentarios')) || [];
 // agregar los comentarios a la tabla
 const commentTable = document.getElementById('comment-table');
 
-// Agregar una fila para los nombres de las columnas
-const headerRow = commentTable.insertRow(0);
-const superHeader = headerRow.insertCell();
-const commentHeader = headerRow.insertCell();
-superHeader.textContent = "Supermercado";
-commentHeader.textContent = "Comentario";
 
 // Agregar las filas con los comentarios
 comentarios.forEach(comentario => {
@@ -34,25 +28,27 @@ fetch('https://jsonplaceholder.typicode.com/comments')
       option.textContent = superMercado;
       superSelect.appendChild(option);
     });
-superSelect.addEventListener('change', event => {
-  const selectedSuper = event.target.value;
-  const filteredComments = comentarios.filter(comentario => comentario.usuario === selectedSuper);
-  commentTable.innerHTML = ''; // Limpiar la tabla antes de agregar los comentarios filtrados
-  // Agregar una fila para los nombres de las columnas
-  const headerRow = commentTable.insertRow(0);
-  const superHeader = headerRow.insertCell();
-  const commentHeader = headerRow.insertCell();
-  superHeader.textContent = "Supermercado";
-  commentHeader.textContent = "Comentario";
-  // Agregar las filas con los comentarios filtrados
-  filteredComments.forEach(comentario => {
-    const row = commentTable.insertRow(1); // insertar después de la fila de los nombres de las columnas
-    const superWor = row.insertCell();
-    const commentCell = row.insertCell();
-    superWor.textContent = comentario.usuario;
-    commentCell.textContent = comentario.comentario;
-  });
-});
+
+    //Actualiza la tabla cuando seleccionas un supermercado en especifico
+    superSelect.addEventListener('change', event => {
+      const superSeleccionado = event.target.value;
+      const filtroComentarios = comentarios.filter(comentario => comentario.usuario === superSeleccionado);
+      commentTable.innerHTML = ''; // Limpiar la tabla antes de agregar los comentarios filtrados
+      // Agregar una fila para los nombres de las columnas
+      const headerRow = commentTable.insertRow(0);
+      const superHeader = headerRow.insertCell();
+      const commentHeader = headerRow.insertCell();
+      superHeader.textContent = "Usuario";
+      commentHeader.textContent = "Comentario";
+      // Agregar las filas con los comentarios filtrados
+      filtroComentarios.forEach(comentario => {
+        const row = commentTable.insertRow(1); // insertar después de la fila de los nombres de las columnas
+        const superWor = row.insertCell();
+        const comentRow = row.insertCell();
+        superWor.textContent = comentario.usuario;
+        comentRow.textContent = comentario.comentario;
+      });
+    });
 
 
     // manejar el envío del formulario
