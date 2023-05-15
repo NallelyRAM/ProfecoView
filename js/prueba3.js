@@ -29,6 +29,7 @@ fetch('https://jsonplaceholder.typicode.com/comments')
       superSelect.appendChild(option);
     });
 
+
     //Actualiza la tabla cuando seleccionas un supermercado en especifico
     superSelect.addEventListener('change', event => {
       const superSeleccionado = event.target.value;
@@ -49,6 +50,33 @@ fetch('https://jsonplaceholder.typicode.com/comments')
         comentRow.textContent = comentario.comentario;
       });
     });
+
+superSelect.addEventListener('change', event => {
+  const selectedSuper = event.target.value;
+  const filteredComments = comentarios.filter(comentario => comentario.usuario === selectedSuper);
+  commentTable.innerHTML = ''; // Limpiar la tabla antes de agregar los comentarios filtrados
+  // Agregar una fila para los nombres de las columnas
+  const headerRow = commentTable.insertRow(0);
+  const superHeader = headerRow.insertCell();
+  const commentHeader = headerRow.insertCell();
+
+  //Cambios, letras en negrita
+  superHeader.innerHTML = "<b>Supermercado</b>";
+  commentHeader.innerHTML = "<b>Comentario</b>";
+
+  //superHeader.textContent = "Supermercado";
+  //commentHeader.textContent = "Comentario";
+
+  // Agregar las filas con los comentarios filtrados
+  filteredComments.forEach(comentario => {
+    const row = commentTable.insertRow(1); // insertar después de la fila de los nombres de las columnas
+    const superWor = row.insertCell();
+    const commentCell = row.insertCell();
+    superWor.textContent = comentario.usuario;
+    commentCell.textContent = comentario.comentario;
+  });
+});
+
 
 
     // manejar el envío del formulario
