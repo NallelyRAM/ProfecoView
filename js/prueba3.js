@@ -42,8 +42,14 @@ superSelect.addEventListener('change', event => {
   const headerRow = commentTable.insertRow(0);
   const superHeader = headerRow.insertCell();
   const commentHeader = headerRow.insertCell();
-  superHeader.textContent = "Supermercado";
-  commentHeader.textContent = "Comentario";
+
+  //Cambios, letras en negrita
+  superHeader.innerHTML = "<b>Supermercado</b>";
+  commentHeader.innerHTML = "<b>Comentario</b>";
+
+  //superHeader.textContent = "Supermercado";
+  //commentHeader.textContent = "Comentario";
+
   // Agregar las filas con los comentarios filtrados
   filteredComments.forEach(comentario => {
     const row = commentTable.insertRow(1); // insertar después de la fila de los nombres de las columnas
