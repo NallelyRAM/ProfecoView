@@ -1,6 +1,9 @@
 const url = 'https://jsonplaceholder.typicode.com/users';
 const selectedComments = JSON.parse(localStorage.getItem("selectedComments"));
 const selectedCommentsTableBody = document.querySelector("#selected-comments-table tbody");
+const urlPostSuperFav ='http://localhost:8060/consumidor/spfavorito';
+const urlGetSuperFav ='http://localhost:8060/consumidor/spfavorito';
+const urlDeletetSuperFav ='http://localhost:8060/consumidor/spfavorito/{idSpFavorito}';
 
 const supermercadoFavorito  = {
     //"id": Math.floor(Math.random() * 1000),

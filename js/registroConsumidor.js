@@ -1,6 +1,8 @@
 const registerForm = document.getElementById('myFormrgg');
-
-
+const urlPutConsumidor = 'http://localhost:8060/consumidor/{idConsumidor}';
+const urlDeleteConsumidor = 'http://localhost:8060/consumidor/{idConsumidor}';
+const urlPostConsumidor = 'http://localhost:8060/consumidor';
+const urlGetConsumidor = 'http://localhost:8060/consumidor';
 registerForm.addEventListener('submit', (event) => {
   event.preventDefault(); // evitar que el formulario se envíe automáticamente.
 

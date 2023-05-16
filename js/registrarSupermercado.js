@@ -1,7 +1,28 @@
 const url = 'https://jsonplaceholder.typicode.com/users';
 const form = document.getElementById('myFormrg');
+const urlPutSupermercado ='http://localhost:8060/supermercado/{idSupermercado}';
+const urlPostSupermercado ='http://localhost:8060/supermercado';
+const urlGetSupermercado ='http://localhost:8060/supermercado';
+const urlDeleteSupermercado ='http://localhost:8060/supermercado/{idSupermercado}';
 
+//endpoint supermercado
+const supermercado = {
+  "id": 1,
+  "nombre": formulario.querySelector('#nombreSupermercadoActualizar').value,
+  "contraseña": formulario.querySelector('#direccionSupermercadoActualizar').value,
+  //"supermercado":{
+     // "id":idSupermercado
+  //}
+}
 
+const supermercadoActualizado = {
+  "id": 1,
+  "nombre": formulario.querySelector('#nombreSupermercadoActualizar').value,
+  "contraseña": formulario.querySelector('#direccionSupermercadoActualizar').value,
+  //"supermercado":{
+     // "id":idSupermercado
+  //}
+}
 
 form.addEventListener('submit', (event) => {
 event.preventDefault();
@@ -52,24 +73,6 @@ window.location.href = '../html/agregarProducto.html';
 //    console.log(bienvenida)
 });
 
-//endpoint supermercado
-const supermercado = {
-  "id": 1,
-  "nombre": formulario.querySelector('#nombreSupermercadoActualizar').value,
-  "contraseña": formulario.querySelector('#direccionSupermercadoActualizar').value,
-  //"supermercado":{
-     // "id":idSupermercado
-  //}
-}
-
-const supermercadoActualizado = {
-  "id": 1,
-  "nombre": formulario.querySelector('#nombreSupermercadoActualizar').value,
-  "contraseña": formulario.querySelector('#direccionSupermercadoActualizar').value,
-  //"supermercado":{
-     // "id":idSupermercado
-  //}
-}
 
 fetch(url)
   .then(response => response.json())

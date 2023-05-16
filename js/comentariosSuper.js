@@ -1,6 +1,9 @@
 const url = 'https://jsonplaceholder.typicode.com/comments';
 const respuesta = document.querySelector("#respuesta")
-
+const urlPutComentario='http://localhost:8060/supermercado/comentario/{idComentario}';
+const urlPostComentario='http://localhost:8060/supermercado/comentario';
+const urlGetComentario='http://localhost:8060/supermercado/comentario';
+const urlDeleteComentario='http://localhost:8060/supermercado/comentario/{idComentario}';
 
 //Evento
 document.addEventListener("DOMContentLoaded", llamrAPI)

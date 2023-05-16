@@ -5,6 +5,10 @@ let comentarios = JSON.parse(localStorage.getItem('comentarios')) || [];
 const commentTable = document.getElementById('comment-table');
 // obtener la selección del usuario guardada en el localStorage (si existe)
 let selectedSuper = localStorage.getItem('selectedSuper') || '';
+const urlPutWishList ='http://localhost:8060/consumidor/wishlist/{idWishlist}';
+const urlPostWishList ='http://localhost:8060/consumidor/wishlist';
+const urlGetWishList ='http://localhost:8060/consumidor/wishlist';
+const urlDeleteWishList ='http://localhost:8060/consumidor/wishlist/{idWishlist}';
 
 /* Mapeo de wishList
 const comentario = {

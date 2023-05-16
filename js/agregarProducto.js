@@ -1,8 +1,11 @@
-const url = 'https://jsonplaceholder.typicode.com/users';
+//const url = 'https://jsonplaceholder.typicode.com/users';
 const respuesta = document.querySelector("#respuesta")
 const btnAgregar = document.querySelector("#botonGuardar")
 const btnActualizar = document.querySelector("#btnActualizar")
 const tabla = document.querySelector("table tbody");
+const urlPostProducto = 'http://localhost:8060/supermercado/producto'
+const urlPutProducto = 'http://localhost:8060/supermercado/producto/{idProducto}'
+const urlGetProducto = 'http://localhost:8060/supermercado/producto'
 
 document.addEventListener("DOMContentLoaded", mostrarProducto)
 btnAgregar.addEventListener("click", agregarProducto)
@@ -204,7 +207,7 @@ function actualizarProducto(e) {
 }
 
 //GEEEEEEEEEEEEEEEEET
-
+//Aqui va la peticion get
 function obtenerProducto() {
   fetch(url)
     .then((response) => response.json())
