@@ -32,14 +32,6 @@
                     <img src="../img/user.png" alt="Logo" style="width:40px;" class="rounded-pill">
                 </a>
                 <li class="nav-item">
-                    <a class="nav-link" href="../html/supermercado.html">Inicio</a>
-                </li>
-<!--  
-                <li class="nav-item">
-                    <a class="nav-link" href="../html/supermercadoPerfil.html">Perfil</a>
-                </li>
--->
-                <li class="nav-item">
                     <a class="nav-link" href="../html/index.html">Cerrar sesión</a>
                 </li>
             </ul>
@@ -48,35 +40,28 @@
 
     <div class="container mt-3">
         <h2></h2>
-
         <p>Sección de comentarios y calificaciones.</p>
-
         <ul class="nav nav-tabs">
             <li class="nav-item">
-                <a class="nav-link " href="../html/agregarOfertaSupermercado.html">Agregar Oferta</a>
+                <a class="nav-link " href="agregarProducto.html">Mis productos</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link active" href="#">Comentarios</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="../html/reporteSupermercado.html">Reporte de inconsistencias</a>
+                <a class="nav-link active" href="#">Mis comentarios</a>
             </li>
         </ul>
-
-        <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-            <form class="form-inline" action="/action_page.php">
-              <input class="form-control mr-sm-2" type="text" placeholder="Producto" size="70" id="search" name="search">
-              <button class="btn btn-success" type="submit">Buscar</button>
-            </form>
-        </nav>
-        <div id="photos"></div>
+        <table id="tabla" class="table table-dark table-striped">
+            <thead>
+                <tr>
+                    <th>Nombre del usuario</th>
+                    <th>Comentario</th>
+                </tr>
+            </thead>
+            <tbody id="respuesta"></tbody>
+        </table>
     </div>
-
+    <script src="/js/comentariosSuper.js"></script>
 </body>
-
-
-<script src="../js/buscarFoto.js"></script>
-
+<div id="espacio-en-blanco"></div>
 <footer class="footer">
     <nav>
         <a href="#" class="enlace"><img src="../img/logo4.png" alt="" class="logo2"/></a>

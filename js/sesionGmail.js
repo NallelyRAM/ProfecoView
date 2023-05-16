@@ -6,6 +6,9 @@
                 console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
                 var id_token = googleUser.getAuthResponse().id_token;
                 console.log(id_token);
+
+                //Si inicia sesion abre otra pantalla
+               window.location.href = "registro.html";
             }
 
 
