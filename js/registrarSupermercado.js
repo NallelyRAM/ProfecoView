@@ -47,7 +47,7 @@ const nombreUsuario = usuarioActivo.nombre;
 if(nombreUsuario){
     alert("Bienvenido "+nombreUsuario);
 }
-window.location.href = '../html/agregarOfertaSupermercado.html';
+window.location.href = '../html/agregarProducto.html';
 //bienvenida.innerHTML = `¡Bienvenido/a, ${nombreUsuario}!`;
 //    console.log(bienvenida)
 });
