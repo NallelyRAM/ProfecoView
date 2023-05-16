@@ -6,6 +6,25 @@ const commentTable = document.getElementById('comment-table');
 // obtener la selección del usuario guardada en el localStorage (si existe)
 let selectedSuper = localStorage.getItem('selectedSuper') || '';
 
+/* Mapeo de wishList
+const comentario = {
+  //"id": Math.floor(Math.random() * 1000),
+  "deseo":"deseo",
+  "supermercadoId":supermercado_id,
+  "consumidorId":{
+      "idConsumidores":consumidor_id
+  }
+}
+
+const comentarioActualizar = {
+  //"id": Math.floor(Math.random() * 1000),
+  "deseo":"deseo",
+  "supermercadoId":supermercado_id,
+  "consumidorId":{
+      "idConsumidores":consumidor_id
+  }
+}
+*/
 
 // Agregar las filas con los comentarios
 comentarios.forEach(comentario => {
@@ -17,6 +36,7 @@ comentarios.forEach(comentario => {
 });
 commentTable.innerHTML = '';
 
+//GET
 fetch('https://jsonplaceholder.typicode.com/comments')
   .then(response => response.json())
   .then(comments => {
@@ -144,3 +164,46 @@ function showMessage() {
     messageDiv.style.display = 'none';
   }, 3000); // Mostrar durante 1 segundos
 }
+
+//PO0000000000000000ST
+  /**
+      fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(comentario)
+      })
+        .then(response => response.json())
+        .then(data => {
+          console.log(data);
+        })
+        .catch(error => {
+          // Manejar errores
+          console.error('Error:', error);
+          return
+        });*/
+
+//PUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUT
+    /*fetch(url, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(comentarioActualizar)
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          idProductoActualizado = data.id
+          console.log(data)
+        })
+        .catch((error) => {
+          console.error("Error al actualizar usuario:", error);
+          return
+        });
+    */
+
+   //DELETE
+    /*fetch(`http://localhost:8060/consumidor/wishlist/{idWishlist}`, {
+    method: 'DELETE'
+    })*/

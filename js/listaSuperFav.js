@@ -89,3 +89,8 @@ fetch(url, {
       console.error("Error al actualizar usuario:", error);
       return
     });
+
+    //DELETE
+    /*fetch(`http://localhost:8060/supermercado/comentario/{idComentario}`, {
+    method: 'DELETE'
+    })*/

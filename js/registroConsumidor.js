@@ -69,7 +69,7 @@ tabla.addEventListener('click', e => {
           e.preventDefault();
 
       
-
+          //PUT
           // Realizar solicitud fetch para actualizar los datos del usuario
           fetch(`https://jsonplaceholder.typicode.com/users/${idUsuario}`, {
             method: 'PUT',
@@ -95,6 +95,7 @@ tabla.addEventListener('click', e => {
   }
 });
 
+//DELETE
 tabla.addEventListener('click', e => {
   if (e.target.classList.contains('eliminar')) {
     const idUsuario = e.target.dataset.id;
@@ -116,10 +117,6 @@ tabla.addEventListener('click', e => {
     }
   }
 });
-
-
-
-
 
 /*
 const consumidorActualizado = {

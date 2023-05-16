@@ -59,6 +59,7 @@ function agregarProducto() {
     //}
   }
 
+  //PO0000000000000000ST
   // este es para agregar productos a los supermercados
   /**
       let idProductoAgregado = 0
@@ -119,6 +120,7 @@ function agregarProducto() {
   console.log(respuesta)
 }
 
+
 // Método actualizar / PUT
 
 function actualizarProducto(e) {
@@ -161,6 +163,7 @@ function actualizarProducto(e) {
     document.querySelector("#stockProductoActualizar").value = "";
   } else {
 
+//PUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUT
     //Este es para actualizar el producto en el supermercado
     fetch(url, {
       method: "PUT",
@@ -200,7 +203,7 @@ function actualizarProducto(e) {
   console.log(respuesta)
 }
 
-
+//GEEEEEEEEEEEEEEEEET
 
 function obtenerProducto() {
   fetch(url)
@@ -221,8 +224,9 @@ function obtenerProducto() {
     });
 }
 
-obtenerProducto();
 
+obtenerProducto();
+//DELETEEEEEEEEEEEEE
 // Agregar event listener para el botón "Eliminar"
 tabla.addEventListener('click', e => {
   if (e.target.classList.contains('eliminar')) {

@@ -44,7 +44,7 @@ function agregarComentario(){
 
     let idProductoAgregado = 0
     fetch(url, {
-    method: 'GET',
+    method: 'POST',
     headers: {
         'Content-Type': 'application/json'
     },
@@ -63,3 +63,28 @@ function agregarComentario(){
 
 }// función agregar comentario
 */ // DESCOMENTARIAR PARA TENER EL MAPEO Y EL POST
+
+    //PUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUT
+    //Este es para actualizar el producto en el supermercado
+    /*fetch(url, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(producto)
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          idProductoActualizado = data.id
+          console.log(data)
+        })
+        .catch((error) => {
+          console.error("Error al actualizar usuario:", error);
+          return
+        });
+    */
+
+   //DELETE
+    /*fetch(`http://localhost:8060/supermercado/comentario/{idComentario}`, {
+    method: 'DELETE'
+    })*/

@@ -131,6 +131,7 @@ const consumidor = {
     //}
 };
 
+//POST
 fetch(url, {
   method: 'POST',
   headers: {
@@ -138,6 +139,7 @@ fetch(url, {
   },
   body: JSON.stringify(consumidor)
 })
+
   .then(response => response.json())
   .then(data => console.log(data))
   .catch(error => console.error(error));
