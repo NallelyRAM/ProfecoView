@@ -9,36 +9,36 @@ const buscar = () => {
   // Realizar la solicitud a la API
   fetch(URL_API)
     .then(response => response.json())
-    .then(comentarios => {
+    .then(supermercados => {
       // Filtrar los comentarios por nombre, precio o super
-      const comentariosFiltrados = comentarios.filter(comentario => {
-        const nombre = comentario.name.toLowerCase();
-        const id = comentario.id.toString().toLowerCase();
-        const email = comentario.email.toLowerCase();
+      const supermercadosFiltrados = supermercados.filter(supermercado => {
+        const nombre = supermercado.name.toLowerCase();
+        const id = supermercado.id.toString().toLowerCase();
+        const email = supermercado.email.toLowerCase();
         return nombre.includes(textoBusqueda) || id.includes(textoBusqueda) || email.includes(textoBusqueda);
       });
 
       // Mostrar los comentarios en la tabla
-      mostrarComentarios(comentariosFiltrados);
+      mostrarSupermercados(supermercadosFiltrados);
     })
     .catch(error => console.error(error));
 };
 
 // Función que muestra los comentarios en la tabla
-const mostrarComentarios = comentarios => {
+const mostrarSupermercados = supermercados => {
   // Limpiar la tabla antes de agregar nuevos comentarios
   tablaSupermercado.innerHTML = '';
 
   // Recorrer los comentarios y agregarlos a la tabla
-  comentarios.forEach(comentario => {
+  supermercados.forEach(supermercado => {
     const row = document.createElement('tr');
     const nombre = document.createElement('td');
     const id = document.createElement('td');
     const email = document.createElement('td');
 
-    nombre.textContent = comentario.name;
-    id.textContent = comentario.id;
-    email.textContent = comentario.email;
+    nombre.textContent = supermercado.name;
+    id.textContent = supermercado.id;
+    email.textContent = supermercado.email;
 
     row.appendChild(nombre);
     row.appendChild(id);
@@ -70,7 +70,7 @@ buscar();
        const tabla = document.getElementById("tabla-Comentarios");
        tabla.innerHTML = ""; // Limpiar la tabla
        // Agregar las filas de la tabla
-       mostrarComentarios(data);
+       mostrarSupermercados(data);
 
      });
  }
