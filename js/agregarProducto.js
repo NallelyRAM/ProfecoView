@@ -1,4 +1,4 @@
-//const url = 'https://jsonplaceholder.typicode.com/users';
+const url = 'https://jsonplaceholder.typicode.com/users';
 const respuesta = document.querySelector("#respuesta")
 const btnAgregar = document.querySelector("#botonGuardar")
 const btnActualizar = document.querySelector("#btnActualizar")
