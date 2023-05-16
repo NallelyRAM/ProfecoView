@@ -34,7 +34,9 @@ botonesEliminar.forEach((boton, index) => {
        // Eliminar el comentario de la lista y actualizar localStorage
        comentarios.splice(index, 1);
        localStorage.setItem('comentarios', JSON.stringify(comentarios));
-       location.reload(); // Recargar la página para actualizar la vista
+       //location.reload(); // Recargar la página para actualizar la vista
+     // Eliminar la fila correspondiente a la tabla
+     boton.parentNode.parentNode.remove();
      }
 
     // Eliminar el comentario de la fila que se selecciono
@@ -51,47 +53,52 @@ botonesEliminar.forEach((boton, index) => {
 // boton actualizar
 const botonesEditar = document.querySelectorAll('.editar');
 
-// Manejar el evento de clic en los botones de editar
-botonesEditar.forEach((boton, index) => {
-  boton.addEventListener('click', () => {
-    // Obtener el comentario a editar
-    const comentarioEditar = comentarios[index];
+// Obtener el modal
+  const modal = document.getElementById('modal');
 
-    // Crear el formulario de edición
-    const formHtml = `
-      <form>
-        <label for="usuario">Supermercado:</label>
-        <input type="text" id="usuario" name="usuario" value="${comentarioEditar.usuario}" required>
-        <label for="comentario">Comentario:</label>
-        <textarea id="comentario" name="comentario" required>${comentarioEditar.comentario}</textarea>
-        <button type="submit">Guardar cambios</button>
-      </form>
-    `;
+  // Obtener los elementos del formulario dentro del modal
+  const usuarioInput = modal.querySelector('#usuario');
+  const comentarioInput = modal.querySelector('#comentario');
+ // Manejar el evento de clic en los botones de editar
+ botonesEditar.forEach((boton, index) => {
+   boton.addEventListener('click', () => {
+     // Obtener el comentario a editar
+     const comentarioEditar = comentarios[index];
 
-    // Mostrar la ventana emergente con el formulario de edición
-    const ventanaEmergente = window.open('', '_blank', 'width=400,height=300');
-    ventanaEmergente.document.write(formHtml);
+     // Establecer los valores iniciales en el formulario del modal
+     usuarioInput.value = comentarioEditar.usuario;
+     usuarioInput.setAttribute('readonly', true);
+     comentarioInput.value = comentarioEditar.comentario;
 
-    // Manejar el envío del formulario
-    ventanaEmergente.document.querySelector('form').addEventListener('submit', event => {
-      event.preventDefault();
+     // Mostrar el modal
+     modal.showModal();
 
-      // Obtener los nuevos datos del formulario
-      const nuevoUsuario = ventanaEmergente.document.getElementById('usuario').value;
-      const nuevoComentario = ventanaEmergente.document.getElementById('comentario').value;
+     // Manejar el envío del formulario
+     modal.querySelector('form').addEventListener('submit', event => {
+       event.preventDefault();
 
-      // Actualizar el comentario en la matriz de comentarios
-      comentarios[index].usuario = nuevoUsuario;
-      comentarios[index].comentario = nuevoComentario;
+       // Obtener los nuevos datos del formulario
+       const nuevoUsuario = usuarioInput.value;
+       const nuevoComentario = comentarioInput.value;
 
-      // Volver a guardar la matriz actualizada en localStorage
-      localStorage.setItem('comentarios', JSON.stringify(comentarios));
+       // Actualizar el comentario en la matriz de comentarios
+       comentarios[index].usuario = nuevoUsuario;
+       comentarios[index].comentario = nuevoComentario;
 
-      // Cerrar la ventana emergente
-      ventanaEmergente.close();
+       // Volver a guardar la matriz actualizada en localStorage
+       localStorage.setItem('comentarios', JSON.stringify(comentarios));
 
-      // Recargar la página
-      location.reload();
-    });
-  });
-});
+       // Cerrar el modal
+       modal.close();
+
+       // Recargar la página
+       location.reload();
+     });
+   });
+ });
+
+//boton de cancelar del model
+ const botonCancelar = document.querySelector('#cancelar');
+      botonCancelar.addEventListener('click', () => {
+        modal.close();
+      });

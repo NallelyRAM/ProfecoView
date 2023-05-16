@@ -73,7 +73,26 @@
             <tbody id="tabla-comentarios"></tbody>
         </table>
     </div>
-<script src="../js/prueba2.js"></script>
+
+
+
+    <dialog id="modal">
+        <div>
+            <h2>Editar comentario</h2>
+            <form>
+                <label for="usuario">Supermercado:</label>
+                <input type="text" id="usuario" name="usuario" size="100" required>
+                <br>
+                <label for="comentario">Comentario:</label>
+                <textarea id="comentario" name="comentario"  required></textarea>
+                <br>
+                <button type="submit">Guardar cambios</button>
+                <button type="button" id="cancelar">Cancelar</button>
+            </form>
+        </div>
+    </dialog>
+
+    <script src="../js/prueba2.js"></script>
 
 </body>
 <footer class="footer">

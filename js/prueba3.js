@@ -41,12 +41,14 @@ fetch('https://jsonplaceholder.typicode.com/comments')
       const superSeleccionado = event.target.value;
       const filtroComentarios = comentarios.filter(comentario => comentario.usuario === superSeleccionado);
       commentTable.innerHTML = ''; // Limpiar la tabla antes de agregar los comentarios filtrados
+
       // Agregar una fila para los nombres de las columnas
       const headerRow = commentTable.insertRow(0);
       const usuarioHeader = headerRow.insertCell();
       const commentHeader = headerRow.insertCell();
       usuarioHeader.textContent = "Usuario";
       commentHeader.textContent = "Comentario";
+
       // Agregar las filas con los comentarios filtrados
       filtroComentarios.forEach(comentario => {
         const row = commentTable.insertRow(1); // insertar después de la fila de los nombres de las columnas
@@ -139,5 +141,5 @@ function showMessage() {
   messageDiv.style.display = 'block';
   setTimeout(() => {
     messageDiv.style.display = 'none';
-  }, 1000); // Mostrar durante 1 segundos
+  }, 3000); // Mostrar durante 1 segundos
 }
