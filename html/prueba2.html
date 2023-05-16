@@ -81,13 +81,13 @@
             <h2>Editar comentario</h2>
             <form>
                 <label for="usuario">Supermercado:</label>
-                <input type="text" id="usuario" name="usuario" size="100" required>
+                <input class="form-control" type="text" id="usuario" name="usuario" size="100" required>
                 <br>
-                <label for="comentario">Comentario:</label>
-                <textarea id="comentario" name="comentario"  required></textarea>
+                <label for="comentario" style="display: block; margin-bottom: 1px;">Comentario: </label>
+                <textarea id="comentario"  name="comentario" style="height: 125px; width: 885px; margin-top: 10px; margin-bottom: 2px;" required></textarea>
                 <br>
-                <button type="submit">Guardar cambios</button>
-                <button type="button" id="cancelar">Cancelar</button>
+                <button type="submit" class="btn btn-success">Guardar cambios</button>
+                <button type="button" class="btn btn-danger" id="cancelar">Cancelar</button>
             </form>
         </div>
     </dialog>
