@@ -7,9 +7,9 @@ const tabla = document.getElementById('tabla-comentarios');
 if (comentarios.length > 0) {
   tabla.innerHTML = comentarios.map(comentario => `
     <tr>
-      <td>${comentario.usuario}</td>
-      <td>${comentario.comentario}</td>
-      <td>
+      <td >${comentario.usuario}</td>
+      <td >${comentario.comentario}</td>
+      <td >
         <button class="btn btn-primary editar">Editar</button>
         <button class="btn btn-danger eliminar">Eliminar</button>
       </td>

@@ -12,6 +12,7 @@
     height: 60px;
 }
 
+
 .container{
     
     justify-content: center;
@@ -28,7 +29,7 @@
 
 
 .footer {
-    position: fixed;
+    position: -ms-page;
     left: 0px;
     bottom: 0px;
     height: 100px;
