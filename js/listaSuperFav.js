@@ -41,7 +41,7 @@ selectedComments.forEach(comment => {
 
 //Accion para que elimine un producto de la wish
   btnDelete.addEventListener("click", () => {
-    if (confirm("¿Está seguro que desea eliminar este comentario?")) {
+    if (confirm("¿Está seguro que desea eliminar este supermercado?")) {
       // Eliminar fila de la tabla
       row.remove();
       // Eliminar comentario del almacenamiento local

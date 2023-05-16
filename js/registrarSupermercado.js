@@ -52,19 +52,6 @@ window.location.href = '../html/agregarOfertaSupermercado.html';
 //    console.log(bienvenida)
 });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 //endpoint supermercado
 const supermercado = {
   "id": 1,
