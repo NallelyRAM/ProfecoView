@@ -3,7 +3,8 @@ let comentarios = JSON.parse(localStorage.getItem('comentarios')) || [];
 
 // agregar los comentarios a la tabla
 const commentTable = document.getElementById('comment-table');
-
+// obtener la selección del usuario guardada en el localStorage (si existe)
+let selectedSuper = localStorage.getItem('selectedSuper') || '';
 
 
 // Agregar las filas con los comentarios
