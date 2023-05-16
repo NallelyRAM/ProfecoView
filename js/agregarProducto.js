@@ -4,15 +4,15 @@ const btnAgregar = document.querySelector("#botonGuardar")
 const btnActualizar = document.querySelector("#btnActualizar")
 const tabla = document.querySelector("table tbody");
 
-document.addEventListener("DOMContentLoaded", mostrarUsuarios)
-btnAgregar.addEventListener("click", agregarUsuario)
-btnActualizar.addEventListener("click", actualizarUsuario)
+document.addEventListener("DOMContentLoaded", mostrarProducto)
+btnAgregar.addEventListener("click", agregarProducto)
+btnActualizar.addEventListener("click", actualizarProducto)
 
-async function mostrarUsuarios() {
+async function mostrarProducto() {
   const respuesta = await fetch(url)
-  const usuarios = await respuesta.json()
+  const productos = await respuesta.json()
   //mostrarListaUsuarios(usuarios)
- // obtenerUsuarios()
+  // obtenerUsuarios()
 }
 
 /*
@@ -42,65 +42,65 @@ const productoActualizado = {
 
 const idSupermercado = 5
 
-function agregarUsuario() {
-    const nombre = document.querySelector("#nombreProducto").value
-    const marca = document.querySelector("#marcaProducto").value
-    const precio = document.querySelector("#precioProducto").value
-    const stock = document.querySelector("#stockProducto").value
+function agregarProducto() {
+  const nombre = document.querySelector("#nombreProducto").value
+  const marca = document.querySelector("#marcaProducto").value
+  const precio = document.querySelector("#precioProducto").value
+  const stock = document.querySelector("#stockProducto").value
 
-    const producto = {
-      //"id": Math.floor(Math.random() * 1000),
-      "nombre": nombre,
-      "marca": marca,
-      "precio":precio,
-      "stock":stock,
-      //"supermercado":{
-         // "id":idSupermercado
-      //}
+  const producto = {
+    //"id": Math.floor(Math.random() * 1000),
+    "nombre": nombre,
+    "marca": marca,
+    "precio": precio,
+    "stock": stock,
+    //"supermercado":{
+    // "id":idSupermercado
+    //}
   }
 
-    // este es para agregar productos a los supermercados
-/**
-    let idProductoAgregado = 0
-    fetch(url, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(producto)
-    })
-      .then(response => response.json())
-      .then(data => {
-        idProductoAgregado = data.id
-        console.log(data);
+  // este es para agregar productos a los supermercados
+  /**
+      let idProductoAgregado = 0
+      fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(producto)
       })
-      .catch(error => {
-        // Manejar errores
-        console.error('Error:', error);
-        return
-      });*/
+        .then(response => response.json())
+        .then(data => {
+          idProductoAgregado = data.id
+          console.log(data);
+        })
+        .catch(error => {
+          // Manejar errores
+          console.error('Error:', error);
+          return
+        });*/
 
+  const fila = document.createElement("tr");
+  console.log(respuesta)
+  const nombreValido = validarTexto(producto.nombre);
+  const marcaValida = validarTexto(producto.marca);
+  const precioValido = validarNumeros(producto.precio);
+  const stockValido = validarNumeros(producto.stock);
+  if (!nombreValido) {
+    alert("Debe introducir un nombre válido");
+  } else if (!marcaValida) {
+    alert("La marca debe contener solo letras y espacios");
+    document.querySelector("#marcaProducto").value = "";
+  } else if (!precioValido) {
+    alert("El precio debe ser un número de hasta 6 dígitos");
+    document.querySelector("#precioProducto").value = "";
+  } else if (!stockValido) {
+    alert("El stock debe ser un número de hasta 6 dígitos");
+    document.querySelector("#stockProducto").value = "";
+  } else {
+    // Crear fila y agregar a tabla
     const fila = document.createElement("tr");
-            console.log(respuesta)
-            const nombreValido = validarTexto(producto.nombre);
-            const marcaValida = validarTexto(producto.marca);
-            const precioValido = validarNumeros(producto.precio);
-            const stockValido = validarNumeros(producto.stock);
-            if (!nombreValido) {
-              alert("Debe introducir un nombre válido");
-            } else if (!marcaValida) {
-              alert("La marca debe contener solo letras y espacios");
-              document.querySelector("#marcaProducto").value = "";
-            } else if (!precioValido) {
-              alert("El precio debe ser un número de hasta 6 dígitos");
-              document.querySelector("#precioProducto").value = "";
-            } else if (!stockValido) {
-              alert("El stock debe ser un número de hasta 6 dígitos");
-              document.querySelector("#stockProducto").value = "";
-            } else {
-              // Crear fila y agregar a tabla
-              const fila = document.createElement("tr");
-              fila.innerHTML = `
+    fila.innerHTML = `
                 <td>${producto.nombre}</td>
                 <td>${producto.marca}</td>
                 <td>${producto.precio}</td>
@@ -110,24 +110,24 @@ function agregarUsuario() {
                   <button data-id="${producto.id}" class="btn btn-danger eliminar">Eliminar</button>
                 </td>
               `;
-              tabla.appendChild(fila);
-              document.querySelector("#nombreProducto").value="";
-              document.querySelector("#marcaProducto").value="";
-              document.querySelector("#precioProducto").value="";
-              document.querySelector("#stockProducto").value="";
-            }
-    console.log(respuesta)
+    tabla.appendChild(fila);
+    document.querySelector("#nombreProducto").value = "";
+    document.querySelector("#marcaProducto").value = "";
+    document.querySelector("#precioProducto").value = "";
+    document.querySelector("#stockProducto").value = "";
+  }
+  console.log(respuesta)
 }
 
-// Método actualizar / PUT 
+// Método actualizar / PUT
 
-function actualizarUsuario(e) {
+function actualizarProducto(e) {
   const nombre = document.querySelector("#nombreProductoActualizar").value
   const marca = document.querySelector("#marcaProductoActualizar").value
   const precio = document.querySelector("#precioProductoActualizar").value
   const stock = document.querySelector("#stockProductoActualizar").value
   const idProductoActualizar = e.target.dataset.id;
-  
+
 
   console.log("Entro")
   console.log(idProductoActualizar)
@@ -136,13 +136,13 @@ function actualizarUsuario(e) {
     //"id": Math.floor(Math.random() * 1000),
     "nombre": nombre,
     "marca": marca,
-    "precio":precio,
-    "stock":stock,
+    "precio": precio,
+    "stock": stock,
     //"supermercado":{
-       // "id":idSupermercado
+    // "id":idSupermercado
     //}
-}
-let idProductoActualizado = 0
+  }
+  let idProductoActualizado = 0
   const nombreValido = validarTexto(producto.nombre);
   const marcaValida = validarTexto(producto.marca);
   const precioValido = validarNumeros(producto.precio);
@@ -162,22 +162,22 @@ let idProductoActualizado = 0
   } else {
 
     //Este es para actualizar el producto en el supermercado
-  fetch(url, {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(producto)
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      idProductoActualizado = data.id
-      console.log(data)
+    fetch(url, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(producto)
     })
-    .catch((error) => {
-      console.error("Error al actualizar usuario:", error);
-      return
-    });
+      .then((response) => response.json())
+      .then((data) => {
+        idProductoActualizado = data.id
+        console.log(data)
+      })
+      .catch((error) => {
+        console.error("Error al actualizar usuario:", error);
+        return
+      });
 
     const fila = document.querySelector(`tr[data-id="${idProductoActualizar}"]`);
     fila.innerHTML = `
@@ -192,36 +192,36 @@ let idProductoActualizado = 0
     `;
 
     tabla.appendChild(fila);
-    document.querySelector("#nombreProductoActualizar").value="";
-    document.querySelector("#marcaProductoActualizar").value="";
-    document.querySelector("#precioProductoActualizar").value="";
-    document.querySelector("#stockProductoActualizar").value="";
-    }
-    console.log(respuesta)
+    document.querySelector("#nombreProductoActualizar").value = "";
+    document.querySelector("#marcaProductoActualizar").value = "";
+    document.querySelector("#precioProductoActualizar").value = "";
+    document.querySelector("#stockProductoActualizar").value = "";
+  }
+  console.log(respuesta)
 }
 
 
 
-function obtenerUsuarios() {
+function obtenerProducto() {
   fetch(url)
     .then((response) => response.json())
     .then((data) => {
-      data.forEach((usuario) => {
+      data.forEach((producto) => {
         const fila = document.createElement("tr");
         fila.innerHTML = `
-          <td>${usuario.name}</td>
-          <td>${usuario.username}</td>
-          <td>${usuario.address.geo.lat}</td>
-          <td>${usuario.address.geo.lat}</td>
-          <td style="margin-left=30px"><button data-id="${usuario.id}" class="btn btn-primary actualizar" data-toggle="modal" data-target="#myModalUpdate">Actualizar</button>
-                <button data-id="${usuario.id}" class="btn btn-danger eliminar">Eliminar</button></td>
+          <td>${producto.name}</td>
+          <td>${producto.username}</td>
+          <td>${producto.address.geo.lat}</td>
+          <td>${producto.address.geo.lat}</td>
+          <td style="margin-left=30px"><button data-id="${producto.id}" class="btn btn-primary actualizar" data-toggle="modal" data-target="#myModalUpdate">Actualizar</button>
+                <button data-id="${producto.id}" class="btn btn-danger eliminar">Eliminar</button></td>
         `;
         tabla.appendChild(fila);
       });
     });
 }
 
-obtenerUsuarios();
+obtenerProducto();
 
 // Agregar event listener para el botón "Eliminar"
 tabla.addEventListener('click', e => {
@@ -250,17 +250,17 @@ tabla.addEventListener('click', e => {
 // Agregar event listener para el botón "Actualizar"
 tabla.addEventListener('click', e => {
   if (e.target.classList.contains('actualizar')) {
-    const idUsuario = e.target.dataset.id;
+    const idProducto = e.target.dataset.id;
     // Realizar solicitud fetch para obtener los datos del usuario
-    fetch(`https://jsonplaceholder.typicode.com/users/${idUsuario}`)
+    fetch(`https://jsonplaceholder.typicode.com/users/${idProducto}`)
       .then(response => response.json())
-      .then(usuario => {
+      .then(producto => {
         // Llenar los campos del formulario con los datos del usuario
         const formulario = document.querySelector('#formulario-actualizar');
-        formulario.querySelector('#nombreProductoActualizar').value = usuario.name;
-        formulario.querySelector('#marcaProductoActualizar').value = usuario.username;
-        formulario.querySelector('#precioProductoActualizar').value = usuario.address.geo.lat;
-        formulario.querySelector('#stockProductoActualizar').value = usuario.address.geo.lng;
+        formulario.querySelector('#nombreProductoActualizar').value = producto.name;
+        formulario.querySelector('#marcaProductoActualizar').value = producto.username;
+        formulario.querySelector('#precioProductoActualizar').value = producto.address.geo.lat;
+        formulario.querySelector('#stockProductoActualizar').value = producto.address.geo.lng;
 
         // Mostrar la ventana modal
 
@@ -275,14 +275,14 @@ tabla.addEventListener('click', e => {
             "id": 1,
             "nombre": formulario.querySelector('#nombreProductoActualizar').value,
             "marca": formulario.querySelector('#marcaProductoActualizar').value,
-            "precio":formulario.querySelector('#precioProductoActualizar').value,
-            "stock":formulario.querySelector('#stockProductoActualizar').value
+            "precio": formulario.querySelector('#precioProductoActualizar').value,
+            "stock": formulario.querySelector('#stockProductoActualizar').value
             //"supermercado":{
-               // "id":idSupermercado
+            // "id":idSupermercado
             //}
           }
           // Realizar solicitud fetch para actualizar los datos del usuario
-          fetch(`https://jsonplaceholder.typicode.com/users/${idUsuario}`, {
+          fetch(`https://jsonplaceholder.typicode.com/users/${idProducto}`, {
             method: 'PUT',
             body: JSON.stringify(producto),
             headers: {
@@ -290,41 +290,41 @@ tabla.addEventListener('click', e => {
             }
           })
             .then(response => response.json())
-            .then(usuarioActualizado => {
+            .then(productoActualizado => {
               // Actualizar los datos del usuario en la tabla
               const fila = e.target.closest('tr');
-              fila.querySelector('td:nth-child(1)').textContent = usuarioActualizado.name;
-              fila.querySelector('td:nth-child(2)').textContent = usuarioActualizado.username;
-              fila.querySelector('td:nth-child(3)').textContent = usuarioActualizado.address.geo.lat;
-              fila.querySelector('td:nth-child(4)').textContent = usuarioActualizado.address.geo.lng;
+              fila.querySelector('td:nth-child(1)').textContent = productoActualizado.name;
+              fila.querySelector('td:nth-child(2)').textContent = productoActualizado.username;
+              fila.querySelector('td:nth-child(3)').textContent = productoActualizado.address.geo.lat;
+              fila.querySelector('td:nth-child(4)').textContent = productoActualizado.address.geo.lng;
               // Cerrar la ventana modal
               //modal.style.display = 'none';
             });
         });
       });
-      //.catch(error => alert(error.message));
+    //.catch(error => alert(error.message));
   }
 });
 
-function mostrarUsuario(usuario) {
-    const fila = document.createElement('tr')
-    fila.innerHTML = `
-        <td>${usuario.name}</td>
-        <td>${usuario.username}</td>
-        <td>${usuario.address.geo.lat}</td>
-        <td>${usuario.address.geo.lng}</td>
-    `
-    respuesta.appendChild(fila)
-}
-
-function mostrarUsuarioID(usuario) {
+function mostrarProducto(producto) {
   const fila = document.createElement('tr')
   fila.innerHTML = `
-      <td>${usuario.id}</td>
-      <td>${usuario.name}</td>
-      <td>${usuario.username}</td>
-      <td>${usuario.address.geo.lat}</td>
-      <td>${usuario.address.geo.lng}</td>
+        <td>${producto.name}</td>
+        <td>${producto.username}</td>
+        <td>${producto.address.geo.lat}</td>
+        <td>${producto.address.geo.lng}</td>
+    `
+  respuesta.appendChild(fila)
+}
+
+function mostrarProductoID(producto) {
+  const fila = document.createElement('tr')
+  fila.innerHTML = `
+      <td>${producto.id}</td>
+      <td>${producto.name}</td>
+      <td>${producto.username}</td>
+      <td>${producto.address.geo.lat}</td>
+      <td>${producto.address.geo.lng}</td>
   `
   respuesta.appendChild(fila)
 }
