@@ -30,25 +30,24 @@ botonesEliminar.forEach((boton, index) => {
     const comentarioEliminar = comentarios[index];
 
     // Mostrar un mensaje de confirmación
-      if (confirm('¿Está seguro que desea eliminar este comentario?')) {
-       // Eliminar el comentario de la lista y actualizar localStorage
-       comentarios.splice(index, 1);
-       localStorage.setItem('comentarios', JSON.stringify(comentarios));
-       //location.reload(); // Recargar la página para actualizar la vista
-     // Eliminar la fila correspondiente a la tabla
-     boton.parentNode.parentNode.remove();
-     }
+    if (confirm('¿Está seguro que desea eliminar este comentario?')) {
+      // Eliminar el comentario de la lista y actualizar localStorage
+      comentarios.splice(index, 1);
+      localStorage.setItem('comentarios', JSON.stringify(comentarios));
 
-    // Eliminar el comentario de la fila que se selecciono
-    comentarios.splice(index, 1);
+      // Eliminar la fila correspondiente a la tabla
+      boton.parentNode.parentNode.remove();
 
-    // Volver a guardar la  actualizada de la tabla  en localStorage
-    localStorage.setItem('comentarios', JSON.stringify(comentarios));
-
-    // Recargar la página
-    //location.reload();
+      // Recargar la página para actualizar la vista
+      //location.reload();
+    } else {
+      // Si el usuario cancela, no hacer nada
+      return;
+    }
   });
 });
+
+
 
 // boton actualizar
 const botonesEditar = document.querySelectorAll('.editar');
